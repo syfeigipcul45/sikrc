@@ -22,11 +22,24 @@
     Main Menu
 </div>
 
-<!-- Nav Item - Charts -->
+<li class="nav-item {{ Request::is('management-profil*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('dashboard.profil.index') }}">
+        <i class="fas fa-fw fa-building"></i>
+        <span>Profil</span>
+    </a>
+</li>
+
 <li class="nav-item {{ Request::is('management-posts*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('dashboard.posts.index') }}">
         <i class="fas fa-fw fa-newspaper"></i>
         <span>Berita</span>
+    </a>
+</li>
+
+<li class="nav-item {{ Request::is('management-trainer*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('dashboard.trainer.index') }}">
+        <i class="fas fa-fw fa-users"></i>
+        <span>Pengajar</span>
     </a>
 </li>
 
