@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>KPHP Kendilo - Dashboard</title>
+    <title>@yield('title') | SI-KRC</title>
 
     <link href="{{ asset('img/favicon.png') }}" rel="icon">
     
