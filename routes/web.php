@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Dashboard\FasilitasController;
 use App\Http\Controllers\Dashboard\KategoriPengajarController;
 use App\Http\Controllers\Dashboard\PengajarController;
 use App\Http\Controllers\Dashboard\PostController;
@@ -62,4 +63,12 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/management-trainer/{id}/show', [PengajarController::class, 'show'])->name('dashboard.trainer.show');
     Route::post('/management-trainer/{id}/update', [PengajarController::class, 'update'])->name('dashboard.trainer.update');
     Route::post('/management-trainer/{id}', [PengajarController::class, 'destroy'])->name('dashboard.trainer.destroy');
+
+    Route::get('/management-facility', [FasilitasController::class, 'index'])->name('dashboard.fasilitas.index');
+    Route::get('/management-facility/create', [FasilitasController::class, 'create'])->name('dashboard.fasilitas.create');
+    Route::post('/management-facility', [FasilitasController::class, 'store'])->name('dashboard.fasilitas.store');
+    Route::get('/management-facility/{id}/edit', [FasilitasController::class, 'edit'])->name('dashboard.fasilitas.edit');
+    Route::get('/management-facility/{id}/show', [FasilitasController::class, 'show'])->name('dashboard.fasilitas.show');
+    Route::post('/management-facility/{id}/update', [FasilitasController::class, 'update'])->name('dashboard.fasilitas.update');
+    Route::post('/management-facility/{id}', [FasilitasController::class, 'destroy'])->name('dashboard.fasilitas.destroy');
 });
