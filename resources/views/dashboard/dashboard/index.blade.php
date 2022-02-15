@@ -1,4 +1,9 @@
 @extends('dashboard.layouts.app')
+
+@section('title')
+Dashboard
+@endsection
+
 @section('content')
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">

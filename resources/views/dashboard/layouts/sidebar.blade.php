@@ -37,10 +37,16 @@
 </li>
 
 <li class="nav-item {{ Request::is('management-trainer*') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('dashboard.trainer.index') }}">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePengajar" aria-expanded="true" aria-controls="collapseMedia">
         <i class="fas fa-fw fa-users"></i>
         <span>Pengajar</span>
     </a>
+    <div id="collapsePengajar" class="collapse {{ Request::is('management-trainer*') ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="{{ route('dashboard.kategori_pengajar.index') }}">Kategori Pengajar</a>
+            <a class="collapse-item" href="{{ route('dashboard.trainer.index') }}">Daftar Pengajar</a>
+        </div>
+    </div>
 </li>
 
 <li class="nav-item {{ Request::is('media*') ? 'active' : '' }}">

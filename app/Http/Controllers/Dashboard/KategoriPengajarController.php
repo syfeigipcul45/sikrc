@@ -3,13 +3,12 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Models\Profil;
-use Illuminate\Support\Str;
+use App\Models\KategoriPengajar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
-class ProfilController extends Controller
+class KategoriPengajarController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -20,6 +19,7 @@ class ProfilController extends Controller
     {
         $this->middleware('auth');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -27,8 +27,8 @@ class ProfilController extends Controller
      */
     public function index()
     {
-        $data['profil'] = Profil::orderby('order', 'asc')->get();
-        return view('dashboard.profil.index', $data);
+        $data['kategori_pengajars'] = KategoriPengajar::orderby('kategori_pengajar', 'asc')->get();
+        return view('dashboard.kategori-pengajar.index', $data);
     }
 
     /**
@@ -38,7 +38,7 @@ class ProfilController extends Controller
      */
     public function create()
     {
-        return view('dashboard.profil.create');
+        return view('dashboard.kategori-pengajar.create');
     }
 
     /**
@@ -51,28 +51,23 @@ class ProfilController extends Controller
     {
         try {
             $validator = Validator::make($request->all(), [
-                'name' => 'required',
-                'content' => 'required'
+                'kategori_pengajar' => 'required'
             ], [
-                'name.required' => 'Nama submenu harus diisi!',
-                'content.required' => 'Deskripsi submenu harus diisi!'
+                'kategori_pengajar.required' => 'Kategori pengajar harus diisi!'
             ]);
 
-            if ($validator->fails()) {
+            if($validator->fails()){
                 return redirect()->back()->withInput()->withErrors($validator);
             }
 
             $data = [
-                "name" => $request->name,
-                "content" => $request->content,
-                "slug" => Str::slug($request->name)
+                "kategori_pengajar" => $request->kategori_pengajar
             ];
-
-            Profil::create($data);
+            KategoriPengajar::create($data);
             Session::flash('success', 'Data Berhasil Tersimpan');
 
-            return redirect()->route('dashboard.profil.index');
-        } catch (\Exception $exception) {
+            return redirect()->route('dashboard.kategori_pengajar.index');
+        } catch (\Exception $th) {
             return redirect()->back()->with('error', 'Ada sesuatu yang salah di server!');
         }
     }
@@ -85,8 +80,7 @@ class ProfilController extends Controller
      */
     public function show($id)
     {
-        $data['profil'] = Profil::find($id);
-        return view('dashboard.profil.show', $data);
+        //
     }
 
     /**
@@ -97,8 +91,8 @@ class ProfilController extends Controller
      */
     public function edit($id)
     {
-        $data['profil'] = Profil::find($id);
-        return view('dashboard.profil.edit', $data);
+        $data['kategori_pengajar'] = KategoriPengajar::find($id);
+        return view('dashboard.kategori-pengajar.edit', $data);
     }
 
     /**
@@ -110,31 +104,26 @@ class ProfilController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $profil = Profil::find($id);
+        $kategori_pengajar = KategoriPengajar::find($id);
         try {
             $validator = Validator::make($request->all(), [
-                'name' => 'required',
-                'content' => 'required'
+                'kategori_pengajar' => 'required'
             ], [
-                'name.required' => 'Nama submenu harus diisi!',
-                'content.required' => 'Deskripsi submenu harus diisi!'
+                'kategori_pengajar.required' => 'Kategori pengajar harus diisi!'
             ]);
 
-            if ($validator->fails()) {
+            if($validator->fails()){
                 return redirect()->back()->withInput()->withErrors($validator);
             }
 
             $updateData = [
-                "name" => $request->name,
-                "content" => $request->content,
-                "slug" => Str::slug($request->name)
+                "kategori_pengajar" => $request->kategori_pengajar
             ];
-
-            $profil->update($updateData);
+            $kategori_pengajar->update($updateData);
             Session::flash('success', 'Data Berhasil Diubah');
 
-            return redirect()->route('dashboard.profil.index');
-        } catch (\Exception $exception) {
+            return redirect()->route('dashboard.kategori_pengajar.index');
+        } catch (\Exception $th) {
             return redirect()->back()->with('error', 'Ada sesuatu yang salah di server!');
         }
     }
@@ -147,34 +136,10 @@ class ProfilController extends Controller
      */
     public function destroy($id)
     {
-        $profil = Profil::find($id);
-        $profil->delete();
+        $kategori_pengajar = KategoriPengajar::find($id);
+        $kategori_pengajar->delete();
         Session::flash('success', 'Data Berhasil Dihapus');
 
         return redirect()->back();
-    }
-
-    public function increase($id)
-    {
-        $profil = Profil::find($id);
-
-        if ($profil->order > 1) {
-            $profil->order = $profil->order - 1;
-            $profil->save();
-            Session::flash('success', 'Urutan Berhasil Naik');
-        } else {
-            Session::flash('error', 'Urutan Mencapai Batas Naik');
-        }
-
-        return redirect(route('dashboard.profil.index'));
-    }
-
-    public function decrease($id)
-    {
-        $profil = Profil::find($id);
-        $profil->order = $profil->order + 1;
-        $profil->save();
-        Session::flash('success', 'Urutan Berhasil Turun');
-        return redirect(route('dashboard.profil.index'));
     }
 }

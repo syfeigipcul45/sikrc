@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Dashboard\KategoriPengajarController;
+use App\Http\Controllers\Dashboard\PengajarController;
 use App\Http\Controllers\Dashboard\PostController;
 use App\Http\Controllers\Dashboard\ProfilController;
 use Illuminate\Support\Facades\Auth;
@@ -45,13 +47,19 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('/management-profil/{id}/increase', [ProfilController::class, 'increase'])->name('dashboard.profil.increase');
     Route::post('/management-profil/{id}/decrease', [ProfilController::class, 'decrease'])->name('dashboard.profil.decrease');
 
-    Route::get('/management-trainer', [ProfilController::class, 'index'])->name('dashboard.trainer.index');
-    Route::get('/management-trainer/create', [ProfilController::class, 'create'])->name('dashboard.trainer.create');
-    Route::post('/management-trainer', [ProfilController::class, 'store'])->name('dashboard.trainer.store');
-    Route::get('/management-trainer/{id}/edit', [ProfilController::class, 'edit'])->name('dashboard.trainer.edit');
-    Route::get('/management-trainer/{id}/show', [ProfilController::class, 'show'])->name('dashboard.trainer.show');
-    Route::post('/management-trainer/{id}/update', [ProfilController::class, 'update'])->name('dashboard.trainer.update');
-    Route::post('/management-trainer/{id}', [ProfilController::class, 'destroy'])->name('dashboard.trainer.destroy');
-    Route::post('/management-trainer/{id}/increase', [ProfilController::class, 'increase'])->name('dashboard.trainer.increase');
-    Route::post('/management-trainer/{id}/decrease', [ProfilController::class, 'decrease'])->name('dashboard.trainer.decrease');
+    Route::get('/management-trainer-category', [KategoriPengajarController::class, 'index'])->name('dashboard.kategori_pengajar.index');
+    Route::get('/management-trainer-category/create', [KategoriPengajarController::class, 'create'])->name('dashboard.kategori_pengajar.create');
+    Route::post('/management-trainer-category', [KategoriPengajarController::class, 'store'])->name('dashboard.kategori_pengajar.store');
+    Route::get('/management-trainer-category/{id}/edit', [KategoriPengajarController::class, 'edit'])->name('dashboard.kategori_pengajar.edit');
+    Route::get('/management-trainer-category/{id}/show', [KategoriPengajarController::class, 'show'])->name('dashboard.kategori_pengajar.show');
+    Route::post('/management-trainer-category/{id}/update', [KategoriPengajarController::class, 'update'])->name('dashboard.kategori_pengajar.update');
+    Route::post('/management-trainer-category/{id}', [KategoriPengajarController::class, 'destroy'])->name('dashboard.kategori_pengajar.destroy');
+
+    Route::get('/management-trainer', [PengajarController::class, 'index'])->name('dashboard.trainer.index');
+    Route::get('/management-trainer/create', [PengajarController::class, 'create'])->name('dashboard.trainer.create');
+    Route::post('/management-trainer', [PengajarController::class, 'store'])->name('dashboard.trainer.store');
+    Route::get('/management-trainer/{id}/edit', [PengajarController::class, 'edit'])->name('dashboard.trainer.edit');
+    Route::get('/management-trainer/{id}/show', [PengajarController::class, 'show'])->name('dashboard.trainer.show');
+    Route::post('/management-trainer/{id}/update', [PengajarController::class, 'update'])->name('dashboard.trainer.update');
+    Route::post('/management-trainer/{id}', [PengajarController::class, 'destroy'])->name('dashboard.trainer.destroy');
 });
