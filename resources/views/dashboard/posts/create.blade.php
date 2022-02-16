@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.app')
 
 @section('title')
-Buat Posts
+Tambah Berita
 @endsection
 
 @section('extra-css')
@@ -67,15 +67,10 @@ Buat Posts
                         <button type="submit" class="btn btn-primary btn-icon-split">
                             <span class="text">Posting</span>
                         </button>
+                        <a href="" class="btn btn-warning" onclick="location.href = document.referrer; return false;">
+                            Kembali
+                        </a>
                     </div>
-                    <!-- <div class="d-flex align-items-center justify-content-between">
-                        <span>Status Berita</span>
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" id="status" class="custom-control-input" checked />
-                            <input type="hidden" id="status-value" name="is_published" value="1" />
-                            <label class="custom-control-label" for="status"></label>
-                        </div>
-                    </div> -->
                     <hr>
                     <div>
                         <strong>Upload Thumbnail</strong>

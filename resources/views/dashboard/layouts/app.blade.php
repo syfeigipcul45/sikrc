@@ -22,6 +22,7 @@
 
     <!-- custom css -->
     <link href="{{ asset('_dashboard/css/custom.css') }}" rel="stylesheet">
+    <script src="{{ asset('_dashboard/vendor/jquery/jquery.min.js') }}"></script>
 
     <!-- extra css -->
     @yield('extra-css')
@@ -81,7 +82,6 @@
     @include('dashboard.layouts.modal-logout')
 
     <!-- Bootstrap core JavaScript-->
-    <script src="{{ asset('_dashboard/vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('_dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
     <!-- Core plugin JavaScript-->

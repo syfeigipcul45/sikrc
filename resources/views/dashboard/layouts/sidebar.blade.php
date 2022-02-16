@@ -64,7 +64,7 @@
     <div id="collapseTema" class="collapse {{ Request::is('management-training*') ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="{{ route('dashboard.tema_pelatihan.index') }}">Tema Pelatihan</a>
-            <a class="collapse-item" href="{{ route('dashboard.kategori_pengajar.index') }}">Jadwal Pelatihan</a>
+            <a class="collapse-item" href="{{ route('dashboard.jadwal_pelatihan.index') }}">Jadwal Pelatihan</a>
             <a class="collapse-item" href="{{ route('dashboard.instructur.index') }}">Materi Pelatihan</a>
         </div>
     </div>

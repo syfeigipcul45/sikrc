@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.app')
 
 @section('title')
-Buat Submenu Profil
+Lihat Tema Pelatihan
 @endsection
 
 @section('extra-css')
@@ -16,9 +16,6 @@ Buat Submenu Profil
 
 @section('content')
 
-<form action="{{ route('dashboard.profil.store') }}" method="POST" enctype="multipart/form-data">
-    @csrf
-
     <!-- Content Row -->
     <div class="row">
         <div class="col-xl-8 col-lg-7">
@@ -26,11 +23,11 @@ Buat Submenu Profil
             <!-- Area Chart -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Nama Submenu</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Nama Tema Pelatihan</h6>
                 </div>
                 <div class="card-body">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="name" value="{{ old('name') }}" />
+                        <input type="text" class="form-control" name="name" value="{{ old('name', $tema->name) }}" readonly />
                         @error('name')
                         <small class="form-text error-input">{{ $message }}</small>
                         @enderror
@@ -41,11 +38,11 @@ Buat Submenu Profil
             <!-- Bar Chart -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Deskripsi</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Deskripsi Pelatihan</h6>
                 </div>
                 <div class="card-body">
-                    <textarea id="content-news" name="content">{{ old('content') }}</textarea>
-                    @error('content')
+                    <textarea id="content-tema" name="description">{{ old('description', $tema->description) }}</textarea>
+                    @error('description')
                     <small class="form-text error-input">{{ $message }}</small>
                     @enderror
                 </div>
@@ -62,11 +59,8 @@ Buat Submenu Profil
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                    <div class="d-flex align-items-center justify-content-between mb-3">
+                    <div class="d-flex align-items-center justify-content-between mb-2">
                         <span>{{ \Carbon\Carbon::now()->isoFormat('dddd, D MMMM Y') }}</span>
-                        <button type="submit" class="btn btn-primary btn-icon-split">
-                            <span class="text">Posting</span>
-                        </button>
                         <a href="" class="btn btn-warning" onclick="location.href = document.referrer; return false;">
                             Kembali
                         </a>
@@ -76,14 +70,15 @@ Buat Submenu Profil
             </div>
         </div>
     </div>
-</form>
+
 @endsection
 
 @section('extra-js')
 <script>
     var useDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
     tinymce.init({
-        selector: 'textarea#content-news',
+        readonly: 1,
+        selector: 'textarea#content-tema',
         plugins: 'print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons',
         imagetools_cors_hosts: ['picsum.photos'],
         menubar: 'file edit view insert format tools table help',
@@ -174,21 +169,5 @@ Buat Submenu Profil
         content_css: useDarkMode ? 'dark' : 'default',
         content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
     });
-
-    $("#imageUpload").change(function() {
-        readURL(this);
-    });
-
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                $('#image-preview').attr('src', e.target.result);
-                $('#image-preview').hide();
-                $('#image-preview').fadeIn(650);
-            }
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
 </script>
 @endsection

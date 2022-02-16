@@ -1,5 +1,12 @@
 <?php
+
+use Carbon\Carbon;
 use Illuminate\Support\Str;
+
+function changeDate($date)
+{
+    return Carbon::parse($date)->translatedFormat('l, d F Y');
+}
 
 
 if (! function_exists('shrinkText')) {

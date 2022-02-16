@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.app')
 
 @section('title')
-Buat Submenu Profil
+Tambah Jadwal Pelatihan
 @endsection
 
 @section('extra-css')
@@ -12,47 +12,73 @@ Buat Submenu Profil
         color: #d44950;
     }
 </style>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 @endsection
 
 @section('content')
 
-<form action="{{ route('dashboard.profil.store') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('dashboard.jadwal_pelatihan.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
 
     <!-- Content Row -->
     <div class="row">
         <div class="col-xl-8 col-lg-7">
-    
+            @if(session('error'))
+            <div class="alert alert-danger" role="alert">
+                {{ session('error') }}
+            </div>
+            @endif
+
             <!-- Area Chart -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Nama Submenu</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Tema Pelatihan</h6>
                 </div>
                 <div class="card-body">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="name" value="{{ old('name') }}" />
-                        @error('name')
+                        <select name="tema_id" class="form-control js-example-basic-single">
+                            <option value="" disabled selected>:: Pilih ::</option>
+                            @foreach($tema as $key => $item)
+                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('tema_id')
                         <small class="form-text error-input">{{ $message }}</small>
                         @enderror
                     </div>
                 </div>
             </div>
-    
-            <!-- Bar Chart -->
+
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Deskripsi</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Lokasi Pelatihan</h6>
                 </div>
                 <div class="card-body">
-                    <textarea id="content-news" name="content">{{ old('content') }}</textarea>
-                    @error('content')
-                    <small class="form-text error-input">{{ $message }}</small>
-                    @enderror
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="lokasi_pelatihan" value="{{ old('lokasi_pelatihan') }}" />
+                        @error('lokasi_pelatihan')
+                        <small class="form-text error-input">{{ $message }}</small>
+                        @enderror
+                    </div>
                 </div>
             </div>
-    
+
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Waktu Pelatihan</h6>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <input type="date" class="form-control" name="waktu_pelatihan" value="{{ old('waktu_pelatihan') }}" />
+                        @error('waktu_pelatihan')
+                        <small class="form-text error-input">{{ $message }}</small>
+                        @enderror
+                    </div>
+                </div>
+            </div>
         </div>
-    
+
         <!-- Donut Chart -->
         <div class="col-xl-4 col-lg-5">
             <div class="card shadow mb-4">
@@ -83,7 +109,7 @@ Buat Submenu Profil
 <script>
     var useDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
     tinymce.init({
-        selector: 'textarea#content-news',
+        selector: 'textarea#content-tema',
         plugins: 'print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons',
         imagetools_cors_hosts: ['picsum.photos'],
         menubar: 'file edit view insert format tools table help',
@@ -175,20 +201,8 @@ Buat Submenu Profil
         content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
     });
 
-    $("#imageUpload").change(function() {
-        readURL(this);
+    $(document).ready(function() {
+        $('.js-example-basic-single').select2();
     });
-
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                $('#image-preview').attr('src', e.target.result);
-                $('#image-preview').hide();
-                $('#image-preview').fadeIn(650);
-            }
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
 </script>
 @endsection

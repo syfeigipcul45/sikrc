@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.app')
 
 @section('title')
-Buat Submenu Profil
+Edit Jadwal Pelatihan
 @endsection
 
 @section('extra-css')
@@ -16,43 +16,63 @@ Buat Submenu Profil
 
 @section('content')
 
-<form action="{{ route('dashboard.profil.store') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('dashboard.jadwal_pelatihan.update', $jadwal->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
 
     <!-- Content Row -->
     <div class="row">
         <div class="col-xl-8 col-lg-7">
-    
+
             <!-- Area Chart -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Nama Submenu</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Tema Pelatihan</h6>
                 </div>
                 <div class="card-body">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="name" value="{{ old('name') }}" />
-                        @error('name')
+                        <select name="tema_id" class="form-control js-example-basic-single">
+                            <option value="" disabled selected>:: Pilih ::</option>
+                            @foreach($tema as $key => $item)
+                            <option value="{{ $item->id }}" @if($item->id === $jadwal->tema_id) selected @endif>{{ $item->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('tema_id')
                         <small class="form-text error-input">{{ $message }}</small>
                         @enderror
                     </div>
                 </div>
             </div>
-    
-            <!-- Bar Chart -->
+
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Deskripsi</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Lokasi Pelatihan</h6>
                 </div>
                 <div class="card-body">
-                    <textarea id="content-news" name="content">{{ old('content') }}</textarea>
-                    @error('content')
-                    <small class="form-text error-input">{{ $message }}</small>
-                    @enderror
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="lokasi_pelatihan" value="{{ old('lokasi_pelatihan', $jadwal->lokasi_pelatihan) }}" />
+                        @error('lokasi_pelatihan')
+                        <small class="form-text error-input">{{ $message }}</small>
+                        @enderror
+                    </div>
                 </div>
             </div>
-    
+
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Waktu Pelatihan</h6>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <input type="date" class="form-control" name="waktu_pelatihan" value="{{ old('waktu_pelatihan', $jadwal->waktu_pelatihan) }}" />
+                        @error('waktu_pelatihan')
+                        <small class="form-text error-input">{{ $message }}</small>
+                        @enderror
+                    </div>
+                </div>
+            </div>
+
         </div>
-    
+
         <!-- Donut Chart -->
         <div class="col-xl-4 col-lg-5">
             <div class="card shadow mb-4">
@@ -62,10 +82,10 @@ Buat Submenu Profil
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                    <div class="d-flex align-items-center justify-content-between mb-3">
+                    <div class="d-flex align-items-center justify-content-between mb-2">
                         <span>{{ \Carbon\Carbon::now()->isoFormat('dddd, D MMMM Y') }}</span>
                         <button type="submit" class="btn btn-primary btn-icon-split">
-                            <span class="text">Posting</span>
+                            <span class="text">Update</span>
                         </button>
                         <a href="" class="btn btn-warning" onclick="location.href = document.referrer; return false;">
                             Kembali
@@ -83,7 +103,7 @@ Buat Submenu Profil
 <script>
     var useDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
     tinymce.init({
-        selector: 'textarea#content-news',
+        selector: 'textarea#content-tema',
         plugins: 'print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons',
         imagetools_cors_hosts: ['picsum.photos'],
         menubar: 'file edit view insert format tools table help',
@@ -174,21 +194,5 @@ Buat Submenu Profil
         content_css: useDarkMode ? 'dark' : 'default',
         content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
     });
-
-    $("#imageUpload").change(function() {
-        readURL(this);
-    });
-
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                $('#image-preview').attr('src', e.target.result);
-                $('#image-preview').hide();
-                $('#image-preview').fadeIn(650);
-            }
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
 </script>
 @endsection

@@ -53,6 +53,9 @@ Tambah Kategori Pengajar
                         <button type="submit" class="btn btn-primary btn-icon-split">
                             <span class="text">Posting</span>
                         </button>
+                        <a href="" class="btn btn-warning" onclick="location.href = document.referrer; return false;">
+                            Kembali
+                        </a>
                     </div>
                     <hr>
                 </div>
