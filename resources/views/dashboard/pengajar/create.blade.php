@@ -16,7 +16,7 @@ Tambah Daftar Pengajar
 
 @section('content')
 
-<form action="{{ route('dashboard.trainer.store') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('dashboard.instructur.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
 
     <!-- Content Row -->
@@ -98,4 +98,24 @@ Tambah Daftar Pengajar
         </div>
     </div>
 </form>
+@endsection
+
+@section('extra-js')
+<script>
+    $("#imageUpload").change(function() {
+        readURL(this);
+    });
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#image-preview').attr('src', e.target.result);
+                $('#image-preview').hide();
+                $('#image-preview').fadeIn(650);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
 @endsection

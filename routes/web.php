@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\FasilitasController;
+use App\Http\Controllers\Dashboard\JadwalPelatihanController;
 use App\Http\Controllers\Dashboard\KategoriPengajarController;
 use App\Http\Controllers\Dashboard\PengajarController;
 use App\Http\Controllers\Dashboard\PostController;
 use App\Http\Controllers\Dashboard\ProfilController;
+use App\Http\Controllers\Dashboard\TemaPelatihanController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -27,7 +29,7 @@ Route::get('/', function () {
 Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::group(['middleware' => ['auth']], function(){
+Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', [DashboardController::class, 'index'])->name('beranda');
 
     Route::get('/management-posts', [PostController::class, 'index'])->name('dashboard.posts.index');
@@ -48,21 +50,21 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('/management-profil/{id}/increase', [ProfilController::class, 'increase'])->name('dashboard.profil.increase');
     Route::post('/management-profil/{id}/decrease', [ProfilController::class, 'decrease'])->name('dashboard.profil.decrease');
 
-    Route::get('/management-trainer-category', [KategoriPengajarController::class, 'index'])->name('dashboard.kategori_pengajar.index');
-    Route::get('/management-trainer-category/create', [KategoriPengajarController::class, 'create'])->name('dashboard.kategori_pengajar.create');
-    Route::post('/management-trainer-category', [KategoriPengajarController::class, 'store'])->name('dashboard.kategori_pengajar.store');
-    Route::get('/management-trainer-category/{id}/edit', [KategoriPengajarController::class, 'edit'])->name('dashboard.kategori_pengajar.edit');
-    Route::get('/management-trainer-category/{id}/show', [KategoriPengajarController::class, 'show'])->name('dashboard.kategori_pengajar.show');
-    Route::post('/management-trainer-category/{id}/update', [KategoriPengajarController::class, 'update'])->name('dashboard.kategori_pengajar.update');
-    Route::post('/management-trainer-category/{id}', [KategoriPengajarController::class, 'destroy'])->name('dashboard.kategori_pengajar.destroy');
+    Route::get('/management-instructur-category', [KategoriPengajarController::class, 'index'])->name('dashboard.kategori_pengajar.index');
+    Route::get('/management-instructur-category/create', [KategoriPengajarController::class, 'create'])->name('dashboard.kategori_pengajar.create');
+    Route::post('/management-instructur-category', [KategoriPengajarController::class, 'store'])->name('dashboard.kategori_pengajar.store');
+    Route::get('/management-instructur-category/{id}/edit', [KategoriPengajarController::class, 'edit'])->name('dashboard.kategori_pengajar.edit');
+    Route::get('/management-instructur-category/{id}/show', [KategoriPengajarController::class, 'show'])->name('dashboard.kategori_pengajar.show');
+    Route::post('/management-instructur-category/{id}/update', [KategoriPengajarController::class, 'update'])->name('dashboard.kategori_pengajar.update');
+    Route::post('/management-instructur-category/{id}', [KategoriPengajarController::class, 'destroy'])->name('dashboard.kategori_pengajar.destroy');
 
-    Route::get('/management-trainer', [PengajarController::class, 'index'])->name('dashboard.trainer.index');
-    Route::get('/management-trainer/create', [PengajarController::class, 'create'])->name('dashboard.trainer.create');
-    Route::post('/management-trainer', [PengajarController::class, 'store'])->name('dashboard.trainer.store');
-    Route::get('/management-trainer/{id}/edit', [PengajarController::class, 'edit'])->name('dashboard.trainer.edit');
-    Route::get('/management-trainer/{id}/show', [PengajarController::class, 'show'])->name('dashboard.trainer.show');
-    Route::post('/management-trainer/{id}/update', [PengajarController::class, 'update'])->name('dashboard.trainer.update');
-    Route::post('/management-trainer/{id}', [PengajarController::class, 'destroy'])->name('dashboard.trainer.destroy');
+    Route::get('/management-instructur', [PengajarController::class, 'index'])->name('dashboard.instructur.index');
+    Route::get('/management-instructur/create', [PengajarController::class, 'create'])->name('dashboard.instructur.create');
+    Route::post('/management-instructur', [PengajarController::class, 'store'])->name('dashboard.instructur.store');
+    Route::get('/management-instructur/{id}/edit', [PengajarController::class, 'edit'])->name('dashboard.instructur.edit');
+    Route::get('/management-instructur/{id}/show', [PengajarController::class, 'show'])->name('dashboard.instructur.show');
+    Route::post('/management-instructur/{id}/update', [PengajarController::class, 'update'])->name('dashboard.instructur.update');
+    Route::post('/management-instructur/{id}', [PengajarController::class, 'destroy'])->name('dashboard.instructur.destroy');
 
     Route::get('/management-facility', [FasilitasController::class, 'index'])->name('dashboard.fasilitas.index');
     Route::get('/management-facility/create', [FasilitasController::class, 'create'])->name('dashboard.fasilitas.create');
@@ -71,4 +73,22 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/management-facility/{id}/show', [FasilitasController::class, 'show'])->name('dashboard.fasilitas.show');
     Route::post('/management-facility/{id}/update', [FasilitasController::class, 'update'])->name('dashboard.fasilitas.update');
     Route::post('/management-facility/{id}', [FasilitasController::class, 'destroy'])->name('dashboard.fasilitas.destroy');
+
+    Route::prefix('management-training')->group(function () {
+        Route::get('/tema', [TemaPelatihanController::class, 'index'])->name('dashboard.tema_pelatihan.index');
+        Route::get('/tema/create', [TemaPelatihanController::class, 'create'])->name('dashboard.tema_pelatihan.create');
+        Route::post('/tema', [TemaPelatihanController::class, 'store'])->name('dashboard.tema_pelatihan.store');
+        Route::get('/tema/{id}/edit', [TemaPelatihanController::class, 'edit'])->name('dashboard.tema_pelatihan.edit');
+        Route::get('/tema/{id}/show', [TemaPelatihanController::class, 'show'])->name('dashboard.tema_pelatihan.show');
+        Route::post('/tema/{id}/update', [TemaPelatihanController::class, 'update'])->name('dashboard.tema_pelatihan.update');
+        Route::post('/tema/{id}', [TemaPelatihanController::class, 'destroy'])->name('dashboard.tema_pelatihan.destroy');
+
+        Route::get('/jadwal', [JadwalPelatihanController::class, 'index'])->name('dashboard.jadwal_pelatihan.index');
+        Route::get('/jadwal/create', [JadwalPelatihanController::class, 'create'])->name('dashboard.jadwal_pelatihan.create');
+        Route::post('/jadwal', [JadwalPelatihanController::class, 'store'])->name('dashboard.jadwal_pelatihan.store');
+        Route::get('/jadwal/{id}/edit', [JadwalPelatihanController::class, 'edit'])->name('dashboard.jadwal_pelatihan.edit');
+        Route::get('/jadwal/{id}/show', [JadwalPelatihanController::class, 'show'])->name('dashboard.jadwal_pelatihan.show');
+        Route::post('/jadwal/{id}/update', [JadwalPelatihanController::class, 'update'])->name('dashboard.jadwal_pelatihan.update');
+        Route::post('/jadwal/{id}', [JadwalPelatihanController::class, 'destroy'])->name('dashboard.jadwal_pelatihan.destroy');
+    });
 });

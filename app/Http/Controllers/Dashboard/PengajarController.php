@@ -65,7 +65,7 @@ class PengajarController extends Controller
             }
             Session::flash('success', 'Data Berhasil Tersimpan');
 
-            return redirect()->route('dashboard.trainer.index');
+            return redirect()->route('dashboard.instructur.index');
         } catch (\Exception $exception) {
             return redirect()->back()->with('error', 'Ada sesuatu yang salah di server!');
         }
@@ -119,7 +119,7 @@ class PengajarController extends Controller
             $pengajar->update($updateData);
             Session::flash('success', 'Data Berhasil Diubah');
 
-            return redirect()->route('dashboard.trainer.index');
+            return redirect()->route('dashboard.instructur.index');
         } catch (\Exception $exception) {
             return redirect()->back()->with('error', 'Ada sesuatu yang salah di server!');
         }

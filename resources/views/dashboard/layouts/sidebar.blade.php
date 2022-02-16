@@ -36,15 +36,15 @@
     </a>
 </li>
 
-<li class="nav-item {{ Request::is('management-trainer*') ? 'active' : '' }}">
+<li class="nav-item {{ Request::is('management-instructur*') ? 'active' : '' }}">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePengajar" aria-expanded="true" aria-controls="collapseMedia">
         <i class="fas fa-fw fa-users"></i>
         <span>Pengajar</span>
     </a>
-    <div id="collapsePengajar" class="collapse {{ Request::is('management-trainer*') ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+    <div id="collapsePengajar" class="collapse {{ Request::is('management-instructur*') ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="{{ route('dashboard.kategori_pengajar.index') }}">Kategori Pengajar</a>
-            <a class="collapse-item" href="{{ route('dashboard.trainer.index') }}">Daftar Pengajar</a>
+            <a class="collapse-item" href="{{ route('dashboard.instructur.index') }}">Daftar Pengajar</a>
         </div>
     </div>
 </li>
@@ -56,15 +56,16 @@
     </a>
 </li>
 
-<li class="nav-item {{ Request::is('media*') ? 'active' : '' }}">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePelatihan" aria-expanded="true" aria-controls="collapseMedia">
-        <i class="fas fa-fw fa-chalkboard"></i>
+<li class="nav-item {{ Request::is('management-training*') ? 'active' : '' }}">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTema" aria-expanded="true" aria-controls="collapseMedia">
+        <i class="fas fa-fw fa-users"></i>
         <span>Pelatihan</span>
     </a>
-    <div id="collapsePelatihan" class="collapse {{ Request::is('media*') ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+    <div id="collapseTema" class="collapse {{ Request::is('management-training*') ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="">Foto</a>
-            <a class="collapse-item" href="">Video</a>
+            <a class="collapse-item" href="{{ route('dashboard.tema_pelatihan.index') }}">Tema Pelatihan</a>
+            <a class="collapse-item" href="{{ route('dashboard.kategori_pengajar.index') }}">Jadwal Pelatihan</a>
+            <a class="collapse-item" href="{{ route('dashboard.instructur.index') }}">Materi Pelatihan</a>
         </div>
     </div>
 </li>

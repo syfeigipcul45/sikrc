@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.app')
 
 @section('title')
-Management Pengajar
+Management Tema Pelatihan
 @endsection
 
 @section('extra-css')
@@ -13,12 +13,12 @@ Management Pengajar
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header d-flex align-items-center justify-content-between py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Daftar Pengajar</h6>
-        <a href="{{ route('dashboard.instructur.create') }}" class="btn btn-primary btn-icon-split">
+        <h6 class="m-0 font-weight-bold text-primary">Daftar Tema Pelatihan</h6>
+        <a href="{{ route('dashboard.tema_pelatihan.create') }}" class="btn btn-primary btn-icon-split">
             <span class="icon text-white-50">
                 <i class="fas fa-newspaper"></i>
             </span>
-            <span class="text">Tambah Pengajar</span>
+            <span class="text">Tambah Tema Pelatihan</span>
         </a>
     </div>
     <div class="card-body">
@@ -27,8 +27,8 @@ Management Pengajar
             {{ session('success') }}
         </div>
         @endif
-        @if (session('error'))
-        <div class="alert alert-error" role="alert">
+        @if(session('error'))
+        <div class="alert alert-danger" role="alert">
             {{ session('error') }}
         </div>
         @endif
@@ -37,41 +37,33 @@ Management Pengajar
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Foto Pengajar</th>
-                        <th>Nama Pengajar</th>
+                        <th>Tema Pelatihan</th>
                         <th>Deskripsi</th>
-                        <th>Kategori Pengajar</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
                         <th>No</th>
-                        <th>Foto Pengajar</th>
-                        <th>Nama Pengajar</th>
+                        <th>Tema Pelatihan</th>
                         <th>Deskripsi</th>
-                        <th>Kategori Pengajar</th>
                         <th>Aksi</th>
                     </tr>
                 </tfoot>
                 <tbody>
-                    @foreach($pengajars as $key => $item)
+                    @foreach($tema as $key => $item)
                     <tr>
                         <td>{{ ++$key }}</td>
-                        <td>
-                            <img src="{{ $item->getFirstMediaUrl('pengajars', 'thumb')}} " alt="" class="img-fluid h-40" />
-                        </td>
                         <td>{{ $item->name }}</td>
-                        <td>{{ $item->description }}</td>
-                        <td>{{ $item->kategoriPengajar->kategori_pengajar }}</td>
+                        <td>{{ Str::limit(strip_tags($item->description,'/<([a-z][a-z0-9]*)[^>]*?(\/?)>/si'), 50) }}</td>
                         <td class="text-center">
-                            <a href="{{ route('dashboard.instructur.show', $item->id) }}" class="btn btn-info btn-circle btn-sm">
+                            <a href="{{ route('dashboard.tema_pelatihan.show', $item->id) }}" class="btn btn-info btn-circle btn-sm">
                                 <i class="fas fa-eye"></i>
                             </a>
-                            <a href="{{ route('dashboard.instructur.edit', $item->id) }}" class="btn btn-warning btn-circle btn-sm">
+                            <a href="{{ route('dashboard.tema_pelatihan.edit', $item->id) }}" class="btn btn-warning btn-circle btn-sm">
                                 <i class="fas fa-pencil-alt"></i>
                             </a>
-                            <a href="#" class="btn btn-danger btn-circle btn-sm remove-pengajar" data-toggle="modal" data-target="#deleteModal" data-href="{{ route('dashboard.instructur.destroy', $item->id) }}">
+                            <a href="#" class="btn btn-danger btn-circle btn-sm remove-tema" data-toggle="modal" data-target="#deleteModal" data-href="{{ route('dashboard.tema_pelatihan.destroy', $item->id) }}">
                                 <i class="fas fa-trash"></i>
                             </a>
                         </td>
@@ -85,7 +77,7 @@ Management Pengajar
 @endsection
 
 <!-- Delete Modal-->
-@include('dashboard.pengajar.includes.modal-delete')
+@include('dashboard.tema-pelatihan.includes.modal-delete')
 
 @section('extra-js')
 <!-- Page level plugins -->
@@ -97,9 +89,9 @@ Management Pengajar
 
 <!-- Custom scripts -->
 <script>
-    $('.remove-pengajar').click(function() {
+    $('.remove-tema').click(function() {
         const hrefRemove = $(this).data('href');
-        $('#remove-pengajar').attr('action', hrefRemove);
+        $('#remove-tema').attr('action', hrefRemove);
     });
 </script>
 @endsection

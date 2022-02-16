@@ -16,7 +16,7 @@ Edit Pengajar
 
 @section('content')
 
-<form action="{{ route('dashboard.trainer.update', $pengajar->id) }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('dashboard.instructur.update', $pengajar->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
 
     <!-- Content Row -->
