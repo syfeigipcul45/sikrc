@@ -4,6 +4,7 @@ use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\FasilitasController;
 use App\Http\Controllers\Dashboard\JadwalPelatihanController;
 use App\Http\Controllers\Dashboard\KategoriPengajarController;
+use App\Http\Controllers\Dashboard\MateriPelatihanController;
 use App\Http\Controllers\Dashboard\PengajarController;
 use App\Http\Controllers\Dashboard\PostController;
 use App\Http\Controllers\Dashboard\ProfilController;
@@ -90,5 +91,26 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/jadwal/{id}/show', [JadwalPelatihanController::class, 'show'])->name('dashboard.jadwal_pelatihan.show');
         Route::post('/jadwal/{id}/update', [JadwalPelatihanController::class, 'update'])->name('dashboard.jadwal_pelatihan.update');
         Route::post('/jadwal/{id}', [JadwalPelatihanController::class, 'destroy'])->name('dashboard.jadwal_pelatihan.destroy');
+
+        Route::get('/materi', [MateriPelatihanController::class, 'index'])->name('dashboard.materi_pelatihan.index');
+        Route::get('/materi/{id}/show', [MateriPelatihanController::class, 'show'])->name('dashboard.materi_pelatihan.show');
+
+        Route::get('/materi/{id}/createPresentasi', [MateriPelatihanController::class, 'createPresentasi'])->name('dashboard.materi_pelatihan.createPresentasi');
+        Route::post('/materiPresentasi', [MateriPelatihanController::class, 'storePresentasi'])->name('dashboard.materi_pelatihan.storePresentasi');
+        Route::get('/materi/{id}/editPresentasi', [MateriPelatihanController::class, 'editPresentasi'])->name('dashboard.materi_pelatihan.editPresentasi');
+        Route::post('/materi/{id}/updatePresentasi', [MateriPelatihanController::class, 'updatePresentasi'])->name('dashboard.materi_pelatihan.updatePresentasi');
+        Route::post('/materiPresentasi/{id}', [MateriPelatihanController::class, 'destroyPresentasi'])->name('dashboard.materi_pelatihan.destroyPresentasi');
+
+        Route::get('/materi/{id}/createGambar', [MateriPelatihanController::class, 'createGambar'])->name('dashboard.materi_pelatihan.createGambar');
+        Route::post('/materiGambar', [MateriPelatihanController::class, 'storeGambar'])->name('dashboard.materi_pelatihan.storeGambar');
+        Route::get('/materi/{id}/editGambar', [MateriPelatihanController::class, 'editGambar'])->name('dashboard.materi_pelatihan.editGambar');
+        Route::post('/materi/{id}/updateGambar', [MateriPelatihanController::class, 'updateGambar'])->name('dashboard.materi_pelatihan.updateGambar');
+        Route::post('/materiGambar/{id}', [MateriPelatihanController::class, 'destroyGambar'])->name('dashboard.materi_pelatihan.destroyGambar');
+
+        Route::get('/materi/{id}/createVideo', [MateriPelatihanController::class, 'createVideo'])->name('dashboard.materi_pelatihan.createVideo');
+        Route::post('/materiVideo', [MateriPelatihanController::class, 'storeVideo'])->name('dashboard.materi_pelatihan.storeVideo');
+        Route::get('/materi/{id}/editVideo', [MateriPelatihanController::class, 'editVideo'])->name('dashboard.materi_pelatihan.editVideo');
+        Route::post('/materi/{id}/updateVideo', [MateriPelatihanController::class, 'updateVideo'])->name('dashboard.materi_pelatihan.updateVideo');
+        Route::post('/materiVideo/{id}', [MateriPelatihanController::class, 'destroyVideo'])->name('dashboard.materi_pelatihan.destroyVideo');
     });
 });

@@ -65,7 +65,7 @@
         <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="{{ route('dashboard.tema_pelatihan.index') }}">Tema Pelatihan</a>
             <a class="collapse-item" href="{{ route('dashboard.jadwal_pelatihan.index') }}">Jadwal Pelatihan</a>
-            <a class="collapse-item" href="{{ route('dashboard.instructur.index') }}">Materi Pelatihan</a>
+            <a class="collapse-item" href="{{ route('dashboard.materi_pelatihan.index') }}">Materi Pelatihan</a>
         </div>
     </div>
 </li>
