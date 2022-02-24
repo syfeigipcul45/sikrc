@@ -22,22 +22,41 @@ Tambah Tema Pelatihan
     <!-- Content Row -->
     <div class="row">
         <div class="col-xl-8 col-lg-7">
-    
+
             <!-- Area Chart -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Nama Tema Pelatihan</h6>
                 </div>
                 <div class="card-body">
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="name" value="{{ old('name') }}" />
-                        @error('name')
-                        <small class="form-text error-input">{{ $message }}</small>
-                        @enderror
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong>Upload Thumbnail</strong>
+                            <div class="card my-2">
+                                <label for="imageUpload" class="mb-0 cursor-pointer">
+                                    <img id="image-preview" class="card-img-top" src="https://www.pngkey.com/png/detail/233-2332677_image-500580-placeholder-transparent.png" alt="Card image cap">
+                                </label>
+                                <input type='file' id="imageUpload" name="thumbnail" accept=".png, .jpg, .jpeg" hidden />
+                            </div>
+                            @error('thumbnail')
+                            <small class="form-text error-input">{{ $message }}</small>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Judul</label>
+                                <input type="text" class="form-control" name="name" value="{{ old('name') }}" />
+                                @error('name')
+                                <small class="form-text error-input">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-    
+
             <!-- Bar Chart -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
@@ -50,9 +69,9 @@ Tambah Tema Pelatihan
                     @enderror
                 </div>
             </div>
-    
+
         </div>
-    
+
         <!-- Donut Chart -->
         <div class="col-xl-4 col-lg-5">
             <div class="card shadow mb-4">
@@ -174,5 +193,21 @@ Tambah Tema Pelatihan
         content_css: useDarkMode ? 'dark' : 'default',
         content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
     });
+
+    $("#imageUpload").change(function() {
+        readURL(this);
+    });
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#image-preview').attr('src', e.target.result);
+                $('#image-preview').hide();
+                $('#image-preview').fadeIn(650);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
 </script>
 @endsection

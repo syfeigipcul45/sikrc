@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\FasilitasController;
+use App\Http\Controllers\Dashboard\HeroImageController;
 use App\Http\Controllers\Dashboard\JadwalPelatihanController;
 use App\Http\Controllers\Dashboard\KategoriPengajarController;
 use App\Http\Controllers\Dashboard\MateriPelatihanController;
 use App\Http\Controllers\Dashboard\MediaGalleriesController;
+use App\Http\Controllers\Dashboard\OptionController;
 use App\Http\Controllers\Dashboard\PengajarController;
 use App\Http\Controllers\Dashboard\PostController;
 use App\Http\Controllers\Dashboard\ProfilController;
@@ -131,4 +133,14 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/video/{id}/update', [MediaGalleriesController::class, 'updateVideo'])->name('dashboard.media_video.update');
         Route::post('/video/{id}', [MediaGalleriesController::class, 'destroyVideo'])->name('dashboard.media_video.destroy');
     });
+
+    Route::get('/management-settings', [OptionController::class, 'index'])->name('dashboard.settings.index');
+    Route::post('/management-settings', [OptionController::class, 'store'])->name('dashboard.settings.store');
+
+    Route::get('/management-images', [HeroImageController::class, 'index'])->name('dashboard.hero_images.index');
+    Route::get('/management-images/create', [HeroImageController::class, 'create'])->name('dashboard.hero_images.create');
+    Route::post('/management-images', [HeroImageController::class, 'store'])->name('dashboard.hero_images.store');
+    Route::get('/management-images/{id}/edit', [HeroImageController::class, 'edit'])->name('dashboard.hero_images.edit');
+    Route::post('/management-images/{id}/update', [HeroImageController::class, 'update'])->name('dashboard.hero_images.update');
+    Route::post('/management-images/{id}', [HeroImageController::class, 'destroy'])->name('dashboard.hero_images.destroy');
 });

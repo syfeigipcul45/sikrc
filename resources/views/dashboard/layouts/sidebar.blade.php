@@ -99,6 +99,24 @@
 
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">
+<!-- Heading -->
+<div class="sidebar-heading">
+    Pengaturan
+</div>
+
+<li class="nav-item {{ Request::is('management-images*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('dashboard.hero_images.index') }}">
+        <i class="fas fa-fw fa-images"></i>
+        <span>Gambar Utama</span>
+    </a>
+</li>
+
+<li class="nav-item {{ Request::is('management-settings*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('dashboard.settings.index') }}">
+        <i class="fas fa-fw fa-cog"></i>
+        <span>Pengaturan</span>
+    </a>
+</li>
 
 <!-- Sidebar Toggler (Sidebar) -->
 <div class="text-center d-none d-md-inline">

@@ -9,15 +9,14 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class TemaPelatihan extends Model implements HasMedia
+class HeroImage extends Model implements HasMedia
 {
     use HasFactory;
     use InteractsWithMedia;
 
     protected $fillable = [
-        'name',
-        'description',
-        'hit'
+        'title', 
+        'description'
     ];
 
     public function registerMediaConversions(Media $media = null): void
@@ -36,4 +35,5 @@ class TemaPelatihan extends Model implements HasMedia
             ->width(1900)
             ->height(1267);
     }
+
 }

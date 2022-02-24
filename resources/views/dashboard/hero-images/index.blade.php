@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.app')
 
 @section('title')
-Management Tema Pelatihan
+Hero Images
 @endsection
 
 @section('extra-css')
@@ -13,12 +13,12 @@ Management Tema Pelatihan
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header d-flex align-items-center justify-content-between py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Daftar Tema Pelatihan</h6>
-        <a href="{{ route('dashboard.tema_pelatihan.create') }}" class="btn btn-primary btn-icon-split">
+        <h6 class="m-0 font-weight-bold text-primary">Daftar Gambar Utama</h6>
+        <a href="{{ route('dashboard.hero_images.create') }}" class="btn btn-primary btn-icon-split">
             <span class="icon text-white-50">
                 <i class="fas fa-newspaper"></i>
             </span>
-            <span class="text">Tambah Tema Pelatihan</span>
+            <span class="text">Tambah Gambar</span>
         </a>
     </div>
     <div class="card-body">
@@ -27,18 +27,13 @@ Management Tema Pelatihan
             {{ session('success') }}
         </div>
         @endif
-        @if(session('error'))
-        <div class="alert alert-danger" role="alert">
-            {{ session('error') }}
-        </div>
-        @endif
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th>No</th>
                         <th>Thumbnail</th>
-                        <th>Tema Pelatihan</th>
+                        <th>Judul</th>
                         <th>Deskripsi</th>
                         <th>Aksi</th>
                     </tr>
@@ -47,28 +42,25 @@ Management Tema Pelatihan
                     <tr>
                         <th>No</th>
                         <th>Thumbnail</th>
-                        <th>Tema Pelatihan</th>
+                        <th>Judul</th>
                         <th>Deskripsi</th>
                         <th>Aksi</th>
                     </tr>
                 </tfoot>
                 <tbody>
-                    @foreach($tema as $key => $item)
+                    @foreach($hero_images as $key => $item)
                     <tr>
                         <td>{{ ++$key }}</td>
                         <td>
-                            <img src="{{ $item->getFirstMediaUrl('tema-pelatihan', 'thumb') }}" alt="" class="img-fluid h-40" />
+                            <img src="{{ $item->getFirstMediaUrl('hero-image', 'thumb') }}" alt="" class="img-fluid h-40" />
                         </td>
-                        <td>{{ $item->name }}</td>
-                        <td>{{ Str::limit(strip_tags($item->description,'/<([a-z][a-z0-9]*)[^>]*?(\/?)>/si'), 50) }}</td>
-                        <td class="text-center">
-                            <a href="{{ route('dashboard.tema_pelatihan.show', $item->id) }}" class="btn btn-info btn-circle btn-sm">
-                                <i class="fas fa-eye"></i>
-                            </a>
-                            <a href="{{ route('dashboard.tema_pelatihan.edit', $item->id) }}" class="btn btn-warning btn-circle btn-sm">
+                        <td>{{ $item->title }}</td>
+                        <td>{{ $item->description }}</td>
+                        <td class="text-center" style="width: 10%;">
+                            <a href="{{ route('dashboard.hero_images.edit', $item->id) }}" class="btn btn-warning btn-circle btn-sm">
                                 <i class="fas fa-pencil-alt"></i>
                             </a>
-                            <a href="#" class="btn btn-danger btn-circle btn-sm remove-tema" data-toggle="modal" data-target="#deleteModal" data-href="{{ route('dashboard.tema_pelatihan.destroy', $item->id) }}">
+                            <a href="#" class="btn btn-danger btn-circle btn-sm remove-heroes" data-toggle="modal" data-target="#deleteModal" data-href="{{ route('dashboard.hero_images.destroy', $item->id) }}">
                                 <i class="fas fa-trash"></i>
                             </a>
                         </td>
@@ -82,7 +74,7 @@ Management Tema Pelatihan
 @endsection
 
 <!-- Delete Modal-->
-@include('dashboard.tema-pelatihan.includes.modal-delete')
+@include('dashboard.hero-images.includes.modal-delete')
 
 @section('extra-js')
 <!-- Page level plugins -->
@@ -94,9 +86,9 @@ Management Tema Pelatihan
 
 <!-- Custom scripts -->
 <script>
-    $('.remove-tema').click(function() {
-        const hrefRemove = $(this).data('href');
-        $('#remove-tema').attr('action', hrefRemove);
+    $('.remove-heroes').click(function() {
+        const hrefHero = $(this).data('href');
+        $('#remove-heroes').attr('action', hrefHero);
     });
 </script>
 @endsection

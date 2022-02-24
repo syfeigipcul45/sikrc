@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Models\TemaPelatihan;
+use App\Models\HeroImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
-class TemaPelatihanController extends Controller
+class HeroImageController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -19,7 +20,7 @@ class TemaPelatihanController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -27,8 +28,8 @@ class TemaPelatihanController extends Controller
      */
     public function index()
     {
-        $data['tema'] = TemaPelatihan::orderby('name', 'asc')->get();
-        return view('dashboard.tema-pelatihan.index', $data);
+        $data['hero_images'] = HeroImage::all();
+        return view('dashboard.hero-images.index', $data);
     }
 
     /**
@@ -38,7 +39,7 @@ class TemaPelatihanController extends Controller
      */
     public function create()
     {
-        return view('dashboard.tema-pelatihan.create');
+        return view('dashboard.hero-images.create');
     }
 
     /**
@@ -52,31 +53,33 @@ class TemaPelatihanController extends Controller
         try {
             $validator = Validator::make($request->all(), [
                 'thumbnail' => 'required|max:5000',
-                'name' => 'required',
+                'title' => 'required',
                 'description' => 'required'
             ], [
-                'thumbnail.required' => 'Gambar harus diisi!!',
+                'thumbnail.required' => 'Gambar harus diisi!',
                 'thumbnail.max' => 'Ukuran gambar maskimal 5MB',
-                'name.required' => 'Nama harus diisi!!',
-                'description.required' => 'Deskripsi harus diisi!!'
+                'title.required' => 'Judul harus diisi!',
+                'description.required' => 'Deskripsi harus diisi!'
             ]);
 
-            if ($validator->fails()) {
+            if($validator->fails()) {
                 return redirect()->back()->withInput()->withErrors($validator);
             }
-
+            
             $data = [
-                "name" => $request->name,
-                "description" => $request->description
+                "title" => $request->title,
+                "description" => $request->description,
             ];
-            $tema =TemaPelatihan::create($data);
+
+            $hero_image = HeroImage::create($data);
             if ($request->hasFile('thumbnail') && $request->file('thumbnail')->isValid()) {
-                $tema->addMediaFromRequest('thumbnail')->toMediaCollection('tema-pelatihan');
+                $hero_image->addMediaFromRequest('thumbnail')->toMediaCollection('hero-image');
             }
             Session::flash('success', 'Data Berhasil Tersimpan');
 
-            return redirect()->route('dashboard.tema_pelatihan.index');
-        } catch (\Exception $th) {
+            return redirect()->route('dashboard.hero_images.index');
+            
+        } catch (\Exception $exception) {
             return redirect()->back()->with('error', 'Ada sesuatu yang salah di server!');
         }
     }
@@ -89,8 +92,7 @@ class TemaPelatihanController extends Controller
      */
     public function show($id)
     {
-        $data['tema'] = TemaPelatihan::find($id);
-        return view('dashboard.tema-pelatihan.show', $data);
+        //
     }
 
     /**
@@ -101,8 +103,8 @@ class TemaPelatihanController extends Controller
      */
     public function edit($id)
     {
-        $data['tema'] = TemaPelatihan::find($id);
-        return view('dashboard.tema-pelatihan.edit', $data);
+        $data['hero_image'] = HeroImage::find($id);
+        return view('dashboard.hero-images.edit', $data);
     }
 
     /**
@@ -114,37 +116,38 @@ class TemaPelatihanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $tema = TemaPelatihan::find($id);
+        $hero_image = HeroImage::find($id);
+
         try {
-            $validator = Validator::make([
+            $validator = Validator::make($request->all(), [
                 'thumbnail' => 'max:5000',
-                'name' => 'required',
+                'title' => 'required',
                 'description' => 'required'
             ], [
                 'thumbnail.max' => 'Ukuran gambar maskimal 5MB',
-                'name.required' => 'Nama harus diisi!!',
-                'description.required' => 'Deskripsi harus diisi!!'
+                'title.required' => 'Judul harus diisi!',
+                'description.required' => 'Deskripsi harus diisi!'
             ]);
 
-            if ($validator->fails()) {
+            if($validator->fails()) {
                 return redirect()->back()->withInput()->withErrors($validator);
             }
 
             $updateData = [
-                'name' => $request->name,
-                'description' => $request->description
+                'title' => $request->title,
+                'description' => $request->description,
             ];
 
             if ($request->hasFile('url_hero') && $request->file('url_hero')->isValid()) {
-                $tema->clearMediaCollection('tema-pelatihan');
-                $tema->addMedia($request->url_hero)->toMediaCollection('tema-pelatihan');
+                $hero_image->clearMediaCollection('hero-image');
+                $hero_image->addMedia($request->url_hero)->toMediaCollection('posts');
             }
 
-            $tema->update($updateData);
+            $hero_image->update($updateData);
             Session::flash('success', 'Data Berhasil Diubah');
 
-            return redirect()->route('dashboard.tema_pelatihan.index');
-        } catch (\Exception $th) {
+            return redirect()->route('dashboard.hero_images.index');
+        } catch (\Exception $exception) {
             return redirect()->back()->with('error', 'Ada sesuatu yang salah di server!');
         }
     }
@@ -157,10 +160,10 @@ class TemaPelatihanController extends Controller
      */
     public function destroy($id)
     {
-        $tema = TemaPelatihan::find($id);
-        $tema->delete();
+        $hero_image = HeroImage::find($id);
+        $hero_image->delete();
         Session::flash('success', 'Data Berhasil Dihapus');
 
-        return redirect()->route('dashboard.tema_pelatihan.index');
+        return redirect()->back();
     }
 }

@@ -16,60 +16,78 @@ Lihat Tema Pelatihan
 
 @section('content')
 
-    <!-- Content Row -->
-    <div class="row">
-        <div class="col-xl-8 col-lg-7">
-    
-            <!-- Area Chart -->
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Nama Tema Pelatihan</h6>
-                </div>
-                <div class="card-body">
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="name" value="{{ old('name', $tema->name) }}" readonly />
-                        @error('name')
+<!-- Content Row -->
+<div class="row">
+    <div class="col-xl-8 col-lg-7">
+
+        <!-- Area Chart -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Nama Tema Pelatihan</h6>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <strong>Upload Thumbnail</strong>
+                        <div class="card my-2">
+                            <label for="imageUpload">
+                                <img class="card-img-top" src="{{ $tema->getFirstMediaUrl('tema-pelatihan', 'thumb')}}" alt="Card image cap">
+                            </label>
+                        </div>
+                        @error('thumbnail')
                         <small class="form-text error-input">{{ $message }}</small>
                         @enderror
                     </div>
                 </div>
-            </div>
-    
-            <!-- Bar Chart -->
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Deskripsi Pelatihan</h6>
-                </div>
-                <div class="card-body">
-                    <textarea id="content-tema" name="description">{{ old('description', $tema->description) }}</textarea>
-                    @error('description')
-                    <small class="form-text error-input">{{ $message }}</small>
-                    @enderror
-                </div>
-            </div>
-    
-        </div>
-    
-        <!-- Donut Chart -->
-        <div class="col-xl-4 col-lg-5">
-            <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Informasi</h6>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                    <div class="d-flex align-items-center justify-content-between mb-2">
-                        <span>{{ \Carbon\Carbon::now()->isoFormat('dddd, D MMMM Y') }}</span>
-                        <a href="" class="btn btn-warning" onclick="location.href = document.referrer; return false;">
-                            Kembali
-                        </a>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Judul</label>
+                            <input type="text" class="form-control" name="name" value="{{ old('name', $tema->name) }}" readonly />
+                            @error('name')
+                            <small class="form-text error-input">{{ $message }}</small>
+                            @enderror
+                        </div>
                     </div>
-                    <hr>
                 </div>
+            </div>
+        </div>
+
+        <!-- Bar Chart -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Deskripsi Pelatihan</h6>
+            </div>
+            <div class="card-body">
+                <textarea id="content-tema" name="description">{{ old('description', $tema->description) }}</textarea>
+                @error('description')
+                <small class="form-text error-input">{{ $message }}</small>
+                @enderror
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Donut Chart -->
+    <div class="col-xl-4 col-lg-5">
+        <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Informasi</h6>
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <span>{{ \Carbon\Carbon::now()->isoFormat('dddd, D MMMM Y') }}</span>
+                    <a href="" class="btn btn-warning" onclick="location.href = document.referrer; return false;">
+                        Kembali
+                    </a>
+                </div>
+                <hr>
             </div>
         </div>
     </div>
+</div>
 
 @endsection
 

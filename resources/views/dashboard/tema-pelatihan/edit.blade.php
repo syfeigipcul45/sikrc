@@ -29,11 +29,35 @@ Edit Tema Pelatihan
                     <h6 class="m-0 font-weight-bold text-primary">Nama Tema Pelatihan</h6>
                 </div>
                 <div class="card-body">
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="name" value="{{ old('name', $tema->name) }}" />
-                        @error('name')
-                        <small class="form-text error-input">{{ $message }}</small>
-                        @enderror
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong>Upload Thumbnail</strong>
+                            <div class="card my-2">
+                                <label for="imageUpload" class="mb-0 cursor-pointer">
+                                    @if($tema->getFirstMediaUrl('tema-pelatihan', 'thumb'))
+                                    <img id="image-preview" class="card-img-top" src="{{ $tema->getFirstMediaUrl('tema-pelatihan', 'thumb')}}" alt="Card image cap">
+                                    <input type="hidden" name="media" value="{{ $tema->getFirstMediaUrl('tema-pelatihan', 'thumb')}}" />
+                                    @else
+                                    <img id="image-preview" class="card-img-top" src="https://www.pngkey.com/png/detail/233-2332677_image-500580-placeholder-transparent.png" alt="Card image cap">
+                                    @endif
+                                </label>
+                                <input type='file' id="imageUpload" name="url_hero" accept=".png, .jpg, .jpeg" hidden />
+                            </div>
+                            @error('url_hero')
+                            <small class="form-text error-input">{{ $message }}</small>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Judul</label>
+                                <input type="text" class="form-control" name="name" value="{{ old('name', $tema->name) }}" />
+                                @error('name')
+                                <small class="form-text error-input">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -174,5 +198,21 @@ Edit Tema Pelatihan
         content_css: useDarkMode ? 'dark' : 'default',
         content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
     });
+
+    $("#imageUpload").change(function() {
+        readURL(this);
+    });
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#image-preview').attr('src', e.target.result);
+                $('#image-preview').hide();
+                $('#image-preview').fadeIn(650);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
 </script>
 @endsection

@@ -1,11 +1,19 @@
 <?php
 
+use App\Models\Option;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 
 function changeDate($date)
 {
     return Carbon::parse($date)->translatedFormat('l, d F Y');
+}
+
+if (! function_exists('getOption')) {
+    function getOption() {
+        $result = Option::first();
+        return $result;
+    }
 }
 
 if (! function_exists('convertYoutube')) {
