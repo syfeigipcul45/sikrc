@@ -70,6 +70,33 @@
     </div>
 </li>
 
+<li class="nav-item {{ Request::is('management-facility*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('dashboard.fasilitas.index') }}">
+        <i class="fas fa-fw fa-building"></i>
+        <span>Alumni KRC</span>
+    </a>
+</li>
+
+<li class="nav-item {{ Request::is('management-media*') ? 'active' : '' }}">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMedia" aria-expanded="true" aria-controls="collapseMedia">
+        <i class="fas fa-fw fa-photo-video"></i>
+        <span>Media</span>
+    </a>
+    <div id="collapseMedia" class="collapse {{ Request::is('management-media*') ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="{{ route('dashboard.media_photo.index') }}">Foto</a>
+            <a class="collapse-item" href="{{ route('dashboard.media_video.index') }}">Video</a>
+        </div>
+    </div>
+</li>
+
+<li class="nav-item {{ Request::is('management-facility*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('dashboard.fasilitas.index') }}">
+        <i class="fas fa-fw fa-building"></i>
+        <span>Promosi</span>
+    </a>
+</li>
+
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">
 

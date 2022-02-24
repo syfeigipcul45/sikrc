@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.app')
 
 @section('title')
-Tambah Daftar Pengajar
+Tambah Data Fasilitas
 @endsection
 
 @section('extra-css')

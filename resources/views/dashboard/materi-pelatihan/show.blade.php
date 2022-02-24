@@ -140,16 +140,16 @@ Lihat Materi Pelatihan
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>File Presentasi</th>
-                                                <th>Judul Presentasi</th>
+                                                <th>File Gambar</th>
+                                                <th>Judul Gambar</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
                                                 <th>No</th>
-                                                <th>File Presentasi</th>
-                                                <th>Judul Presentasi</th>
+                                                <th>File Gambar</th>
+                                                <th>Judul Gambar</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </tfoot>
@@ -207,16 +207,16 @@ Lihat Materi Pelatihan
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>File Presentasi</th>
-                                                <th>Judul Presentasi</th>
+                                                <th>File Video</th>
+                                                <th>Judul Video</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
                                                 <th>No</th>
-                                                <th>File Presentasi</th>
-                                                <th>Judul Presentasi</th>
+                                                <th>File Video</th>
+                                                <th>Judul Video</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </tfoot>

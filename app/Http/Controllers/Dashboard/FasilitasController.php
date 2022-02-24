@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 class FasilitasController extends Controller
-{/**
+{
+    /**
      * Create a new controller instance.
      *
      * @return void
@@ -18,7 +19,7 @@ class FasilitasController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -122,9 +123,11 @@ class FasilitasController extends Controller
             "description" => $request->description,
         ];
 
-        if (count($request->file('images')) > 0) {
-            foreach ($request->file('images', []) as $media) {
-                $fasilitas->clearMediaCollection('fasilitas');
+        if ($request->file('images')) {
+            if (count($request->file('images')) > 0) {
+                foreach ($request->file('images', []) as $media) {
+                    $fasilitas->clearMediaCollection('fasilitas');
+                }
             }
         }
 

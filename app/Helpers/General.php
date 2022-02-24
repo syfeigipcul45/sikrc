@@ -15,7 +15,7 @@ if (! function_exists('convertYoutube')) {
     function convertYoutube($link) {
         return preg_replace(
             "/\s*[a-zA-Z\/\/:\.]*youtu(be.com\/watch\?v=|.be\/)([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i",
-            "<iframe src=\"//www.youtube.com/embed/$2\" allowfullscreen></iframe>",
+            "<iframe width='200px' height='100px' src=\"//www.youtube.com/embed/$2\" allowfullscreen></iframe>",
             $link
         );
     }

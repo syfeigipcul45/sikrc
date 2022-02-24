@@ -5,6 +5,7 @@ use App\Http\Controllers\Dashboard\FasilitasController;
 use App\Http\Controllers\Dashboard\JadwalPelatihanController;
 use App\Http\Controllers\Dashboard\KategoriPengajarController;
 use App\Http\Controllers\Dashboard\MateriPelatihanController;
+use App\Http\Controllers\Dashboard\MediaGalleriesController;
 use App\Http\Controllers\Dashboard\PengajarController;
 use App\Http\Controllers\Dashboard\PostController;
 use App\Http\Controllers\Dashboard\ProfilController;
@@ -112,5 +113,22 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/materi/{id}/editVideo', [MateriPelatihanController::class, 'editVideo'])->name('dashboard.materi_pelatihan.editVideo');
         Route::post('/materi/{id}/updateVideo', [MateriPelatihanController::class, 'updateVideo'])->name('dashboard.materi_pelatihan.updateVideo');
         Route::post('/materiVideo/{id}', [MateriPelatihanController::class, 'destroyVideo'])->name('dashboard.materi_pelatihan.destroyVideo');
+    });
+
+    Route::prefix('management-media')->group(function () {
+        Route::get('/photo', [MediaGalleriesController::class, 'indexPhoto'])->name('dashboard.media_photo.index');
+        Route::get('/photo/create', [MediaGalleriesController::class, 'createPhoto'])->name('dashboard.media_photo.create');
+        Route::post('/photo', [MediaGalleriesController::class, 'storePhoto'])->name('dashboard.media_photo.store');
+        Route::get('/photo/{id}/edit', [MediaGalleriesController::class, 'editPhoto'])->name('dashboard.media_photo.edit');
+        Route::get('/photo/{id}/show', [MediaGalleriesController::class, 'showPhoto'])->name('dashboard.media_photo.show');
+        Route::post('/photo/{id}/update', [MediaGalleriesController::class, 'updatePhoto'])->name('dashboard.media_photo.update');
+        Route::post('/photo/{id}', [MediaGalleriesController::class, 'destroyPhoto'])->name('dashboard.media_photo.destroy');
+
+        Route::get('/video', [MediaGalleriesController::class, 'indexVideo'])->name('dashboard.media_video.index');
+        Route::get('/video/create', [MediaGalleriesController::class, 'createVideo'])->name('dashboard.media_video.create');
+        Route::post('/video', [MediaGalleriesController::class, 'storeVideo'])->name('dashboard.media_video.store');
+        Route::get('/video/{id}/edit', [MediaGalleriesController::class, 'editVideo'])->name('dashboard.media_video.edit');
+        Route::post('/video/{id}/update', [MediaGalleriesController::class, 'updateVideo'])->name('dashboard.media_video.update');
+        Route::post('/video/{id}', [MediaGalleriesController::class, 'destroyVideo'])->name('dashboard.media_video.destroy');
     });
 });
