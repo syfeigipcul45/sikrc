@@ -140,7 +140,7 @@ class HeroImageController extends Controller
 
             if ($request->hasFile('url_hero') && $request->file('url_hero')->isValid()) {
                 $hero_image->clearMediaCollection('hero-image');
-                $hero_image->addMedia($request->url_hero)->toMediaCollection('posts');
+                $hero_image->addMedia($request->url_hero)->toMediaCollection('hero-image');
             }
 
             $hero_image->update($updateData);
