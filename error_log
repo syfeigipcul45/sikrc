@@ -1,0 +1,40 @@
+[25-Feb-2022 10:28:42 Asia/Jakarta] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Illuminate\Log\Logger::__construct() must be an instance of Psr\Log\LoggerInterface, instance of Monolog\Logger given, called in /home/kphpkendilo/public_html/sikrc/vendor/laravel/framework/src/Illuminate/Log/LogManager.php on line 182 and defined in /home/kphpkendilo/public_html/sikrc/vendor/laravel/framework/src/Illuminate/Log/Logger.php:43
+Stack trace:
+#0 /home/kphpkendilo/public_html/sikrc/vendor/laravel/framework/src/Illuminate/Log/LogManager.php(182): Illuminate\Log\Logger->__construct(Object(Monolog\Logger), Object(Illuminate\Events\Dispatcher))
+#1 /home/kphpkendilo/public_html/sikrc/vendor/laravel/framework/src/Illuminate/Log/LogManager.php(129): Illuminate\Log\LogManager->createEmergencyLogger()
+#2 /home/kphpkendilo/public_html/sikrc/vendor/laravel/framework/src/Illuminate/Log/LogManager.php(112): Illuminate\Log\LogManager->get('stack')
+#3 /home/kphpkendilo/public_html/sikrc/vendor/laravel/framework/src/Illuminate/Log/LogManager.php(590): Illuminate\Log\LogMan in /home/kphpkendilo/public_html/sikrc/vendor/laravel/framework/src/Illuminate/Log/Logger.php on line 43
+[25-Feb-2022 10:28:42 Asia/Jakarta] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Illuminate\Log\Logger::__construct() must be an instance of Psr\Log\LoggerInterface, instance of Monolog\Logger given, called in /home/kphpkendilo/public_html/sikrc/vendor/laravel/framework/src/Illuminate/Log/LogManager.php on line 182 and defined in /home/kphpkendilo/public_html/sikrc/vendor/laravel/framework/src/Illuminate/Log/Logger.php:43
+Stack trace:
+#0 /home/kphpkendilo/public_html/sikrc/vendor/laravel/framework/src/Illuminate/Log/LogManager.php(182): Illuminate\Log\Logger->__construct(Object(Monolog\Logger), Object(Illuminate\Events\Dispatcher))
+#1 /home/kphpkendilo/public_html/sikrc/vendor/laravel/framework/src/Illuminate/Log/LogManager.php(129): Illuminate\Log\LogManager->createEmergencyLogger()
+#2 /home/kphpkendilo/public_html/sikrc/vendor/laravel/framework/src/Illuminate/Log/LogManager.php(112): Illuminate\Log\LogManager->get('stack')
+#3 /home/kphpkendilo/public_html/sikrc/vendor/laravel/framework/src/Illuminate/Log/LogManager.php(590): Illuminate\Log\LogMan in /home/kphpkendilo/public_html/sikrc/vendor/laravel/framework/src/Illuminate/Log/Logger.php on line 43
+[25-Feb-2022 10:30:56 Asia/Jakarta] PHP Parse error:  syntax error, unexpected '|', expecting variable (T_VARIABLE) in /home/kphpkendilo/public_html/sikrc/vendor/psr/log/src/LoggerInterface.php on line 30
+[25-Feb-2022 10:30:56 Asia/Jakarta] PHP Fatal error:  Exception thrown without a stack frame in Unknown on line 0
+[25-Feb-2022 10:30:56 Asia/Jakarta] PHP Parse error:  syntax error, unexpected '|', expecting variable (T_VARIABLE) in /home/kphpkendilo/public_html/sikrc/vendor/psr/log/src/LoggerInterface.php on line 30
+[25-Feb-2022 10:30:56 Asia/Jakarta] PHP Fatal error:  Exception thrown without a stack frame in Unknown on line 0
+[25-Feb-2022 10:31:24 Asia/Jakarta] PHP Parse error:  syntax error, unexpected '|', expecting variable (T_VARIABLE) in /home/kphpkendilo/public_html/sikrc/vendor/psr/log/src/LoggerInterface.php on line 30
+[25-Feb-2022 10:31:24 Asia/Jakarta] PHP Fatal error:  Exception thrown without a stack frame in Unknown on line 0
+[25-Feb-2022 10:31:24 Asia/Jakarta] PHP Parse error:  syntax error, unexpected '|', expecting variable (T_VARIABLE) in /home/kphpkendilo/public_html/sikrc/vendor/psr/log/src/LoggerInterface.php on line 30
+[25-Feb-2022 10:31:24 Asia/Jakarta] PHP Fatal error:  Exception thrown without a stack frame in Unknown on line 0
+[25-Feb-2022 10:34:30 Asia/Jakarta] PHP Parse error:  syntax error, unexpected '|', expecting variable (T_VARIABLE) in /home/kphpkendilo/public_html/sikrc/vendor/psr/log/src/LoggerInterface.php on line 30
+[25-Feb-2022 10:34:30 Asia/Jakarta] PHP Fatal error:  Exception thrown without a stack frame in Unknown on line 0
+[25-Feb-2022 10:34:30 Asia/Jakarta] PHP Parse error:  syntax error, unexpected '|', expecting variable (T_VARIABLE) in /home/kphpkendilo/public_html/sikrc/vendor/psr/log/src/LoggerInterface.php on line 30
+[25-Feb-2022 10:34:30 Asia/Jakarta] PHP Fatal error:  Exception thrown without a stack frame in Unknown on line 0
+[25-Feb-2022 10:34:54 Asia/Jakarta] PHP Parse error:  syntax error, unexpected '|', expecting variable (T_VARIABLE) in /home/kphpkendilo/public_html/sikrc/vendor/psr/log/src/LoggerInterface.php on line 30
+[25-Feb-2022 10:34:54 Asia/Jakarta] PHP Fatal error:  Exception thrown without a stack frame in Unknown on line 0
+[25-Feb-2022 10:34:54 Asia/Jakarta] PHP Parse error:  syntax error, unexpected '|', expecting variable (T_VARIABLE) in /home/kphpkendilo/public_html/sikrc/vendor/psr/log/src/LoggerInterface.php on line 30
+[25-Feb-2022 10:34:54 Asia/Jakarta] PHP Fatal error:  Exception thrown without a stack frame in Unknown on line 0
+[25-Feb-2022 10:54:06 Asia/Jakarta] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Illuminate\Log\Logger::__construct() must be an instance of Psr\Log\LoggerInterface, instance of Monolog\Logger given, called in /home/kphpkendilo/public_html/sikrc/vendor/laravel/framework/src/Illuminate/Log/LogManager.php on line 182 and defined in /home/kphpkendilo/public_html/sikrc/vendor/laravel/framework/src/Illuminate/Log/Logger.php:43
+Stack trace:
+#0 /home/kphpkendilo/public_html/sikrc/vendor/laravel/framework/src/Illuminate/Log/LogManager.php(182): Illuminate\Log\Logger->__construct(Object(Monolog\Logger), Object(Illuminate\Events\Dispatcher))
+#1 /home/kphpkendilo/public_html/sikrc/vendor/laravel/framework/src/Illuminate/Log/LogManager.php(129): Illuminate\Log\LogManager->createEmergencyLogger()
+#2 /home/kphpkendilo/public_html/sikrc/vendor/laravel/framework/src/Illuminate/Log/LogManager.php(112): Illuminate\Log\LogManager->get('stack')
+#3 /home/kphpkendilo/public_html/sikrc/vendor/laravel/framework/src/Illuminate/Log/LogManager.php(590): Illuminate\Log\LogMan in /home/kphpkendilo/public_html/sikrc/vendor/laravel/framework/src/Illuminate/Log/Logger.php on line 43
+[25-Feb-2022 10:54:06 Asia/Jakarta] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Illuminate\Log\Logger::__construct() must be an instance of Psr\Log\LoggerInterface, instance of Monolog\Logger given, called in /home/kphpkendilo/public_html/sikrc/vendor/laravel/framework/src/Illuminate/Log/LogManager.php on line 182 and defined in /home/kphpkendilo/public_html/sikrc/vendor/laravel/framework/src/Illuminate/Log/Logger.php:43
+Stack trace:
+#0 /home/kphpkendilo/public_html/sikrc/vendor/laravel/framework/src/Illuminate/Log/LogManager.php(182): Illuminate\Log\Logger->__construct(Object(Monolog\Logger), Object(Illuminate\Events\Dispatcher))
+#1 /home/kphpkendilo/public_html/sikrc/vendor/laravel/framework/src/Illuminate/Log/LogManager.php(129): Illuminate\Log\LogManager->createEmergencyLogger()
+#2 /home/kphpkendilo/public_html/sikrc/vendor/laravel/framework/src/Illuminate/Log/LogManager.php(112): Illuminate\Log\LogManager->get('stack')
+#3 /home/kphpkendilo/public_html/sikrc/vendor/laravel/framework/src/Illuminate/Log/LogManager.php(590): Illuminate\Log\LogMan in /home/kphpkendilo/public_html/sikrc/vendor/laravel/framework/src/Illuminate/Log/Logger.php on line 43
