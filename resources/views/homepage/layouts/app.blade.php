@@ -6,6 +6,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    @if(!empty(getOption()->favicon))
+    <link href="{{ getOption()->favicon }}" rel="icon">
+    @else
+    <link href="{{ asset('img/favicon.png') }}" rel="icon">
+    @endif
 
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('_homepage/fonts/icomoon/style.css') }}">

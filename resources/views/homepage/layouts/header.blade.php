@@ -2,7 +2,7 @@
     <div class="d-flex align-items-center">
         <div class="site-logo">
             <a href="index.html" class="d-block">
-                <img src="{{ asset('_homepage/images/logo.jpg') }}" alt="Image" class="img-fluid">
+                <img src="{{ getOption()->logo }}" style="height: 70px;" alt="Image" class="img-fluid">
             </a>
         </div>
         <div class="mr-auto">
