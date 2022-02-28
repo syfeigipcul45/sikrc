@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container container-menu">
     <div class="d-flex align-items-center">
         <div class="site-logo">
             <a href="index.html" class="d-block">
@@ -8,35 +8,58 @@
         <div class="mr-auto">
             <nav class="site-navigation position-relative text-right" role="navigation">
                 <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                    <li class="active">
-                        <a href="index.html" class="nav-link text-left">Home</a>
+                    <li class="{{ Request::is('/') ? 'active' : '' }}">
+                        <a href="{{ route('home') }}" class="nav-link text-left">Home</a>
+                    </li>
+                    <li class="has-children {{ Request::is('profil*') ? 'active' : '' }}">
+                        <a href="#" class="nav-link text-left">Profil</a>
+                        <ul class="dropdown">
+                            @foreach(getProfil() as $profil)
+                            <li><a href="{{ route('homepage.profil.detail', $profil->slug) }}">{{ $profil->name }}</a></li>
+                            @endforeach
+                        </ul>
+                    </li>
+                    <li class="{{ Request::is('berita*') ? 'active' : '' }}">
+                        <a href="{{ route('homepage.post.post') }}" class="nav-link text-left">Berita</a>
+                    </li>
+                    <li class="{{ Request::is('pengajar*') ? 'active' : '' }}">
+                        <a href="{{ route('homepage.pengajar.index') }}" class="nav-link text-left">Pengajar</a>
+                    </li>
+                    <li class="{{ Request::is('fasilitas*') ? 'active' : '' }}">
+                        <a href="{{ route('homepage.fasilitas.index') }}" class="nav-link text-left">Fasilitas</a>
                     </li>
                     <li class="has-children">
-                        <a href="about.html" class="nav-link text-left">About Us</a>
+                        <a href="#" class="nav-link text-left">Pelatihan</a>
                         <ul class="dropdown">
-                            <li><a href="teachers.html">Our Teachers</a></li>
-                            <li><a href="about.html">Our School</a></li>
+                            <li><a href="">Jadwal Pelatihan</a></li>
+                            <li><a href="">Materi Pelatihan</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="admissions.html" class="nav-link text-left">Admissions</a>
+                        <a href="" class="nav-link text-left">Alumni KRC</a>
+                    </li>
+                    <li class="has-children">
+                        <a href="#" class="nav-link text-left">Media</a>
+                        <ul class="dropdown">
+                            <li><a href="">Foto</a></li>
+                            <li><a href="">Video</a></li>
+                        </ul>
                     </li>
                     <li>
-                        <a href="courses.html" class="nav-link text-left">Courses</a>
+                        <a href="" class="nav-link text-left">Promosi</a>
                     </li>
                     <li>
-                        <a href="contact.html" class="nav-link text-left">Contact</a>
+                        <a href="" class="nav-link text-left">Kontak</a>
                     </li>
-                </ul>
                 </ul>
             </nav>
 
         </div>
         <div class="ml-auto">
             <div class="social-wrap">
-                <a href="#"><span class="icon-facebook"></span></a>
-                <a href="#"><span class="icon-twitter"></span></a>
-                <a href="#"><span class="icon-linkedin"></span></a>
+                <a href="{{ getOption()->facebook }}" target="_blank"><span class="icon-facebook"></span></a>
+                <a href="{{ getOption()->instagram }}" target="_blank"><span class="icon-instagram"></span></a>
+                <a href="{{ getOption()->youtube }}" target="_blank"><span class="icon-youtube"></span></a>
 
                 <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a>
             </div>

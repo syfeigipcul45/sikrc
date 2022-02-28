@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Option;
+use App\Models\Profil;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 
@@ -12,6 +13,13 @@ function changeDate($date)
 if (! function_exists('getOption')) {
     function getOption() {
         $result = Option::first();
+        return $result;
+    }
+}
+
+if (! function_exists('getProfil')) {
+    function getProfil() {
+        $result = Profil::orderBy('order', 'asc')->get();
         return $result;
     }
 }

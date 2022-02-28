@@ -9,7 +9,7 @@ Login
         <div class="row align-items-end justify-content-center text-center">
             <div class="col-lg-7">
                 <h2 class="mb-0">Login</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+                <p></p>
             </div>
         </div>
     </div>
@@ -32,6 +32,11 @@ Login
             <div class="col-md-5">
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
+                    @if (session('status'))
+                    <div class="alert alert-error" role="alert">
+                        {{ session('status') }}
+                    </div>
+                    @endif
                     <div class="row">
                         <div class="col-md-12 form-group">
                             <label for="username">Username</label>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 use App\Models\Fasilitas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -53,7 +54,7 @@ class FasilitasController extends Controller
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
                 'description' => 'required',
-                'images' => 'required'
+                'images' => 'required',
             ], [
                 'name.required' => 'Nama pengajar harus diisi!',
                 'description.required' => 'Deskripsi pengajar harus diisi!',
@@ -67,6 +68,7 @@ class FasilitasController extends Controller
             $data = [
                 "name" => $request->name,
                 "description" => $request->description,
+                "slug" => Str::slug($request->name, '-')
             ];
             // dd($data);
 
@@ -121,6 +123,7 @@ class FasilitasController extends Controller
         $updateData = [
             "name" => $request->name,
             "description" => $request->description,
+            "slug" => Str::slug($request->name, '-')
         ];
 
         if ($request->file('images')) {

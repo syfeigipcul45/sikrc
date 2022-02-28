@@ -1,7 +1,7 @@
 @extends('homepage.layouts.app')
 
 @section('title')
-Dashboard
+Home
 @endsection
 
 @section('content')
@@ -82,36 +82,41 @@ Dashboard
         <div class="row mb-5 justify-content-center text-center">
             <div class="col-lg-6 mb-5">
                 <h2 class="section-title-underline mb-3">
-                    <span>Popular Courses</span>
+                    <span>Tema Pelatihan</span>
                 </h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia, id?</p>
+                <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia, id?</p> -->
             </div>
         </div>
 
         <div class="row">
             <div class="col-12">
                 <div class="owl-slide-3 owl-carousel">
+                    @foreach($tema_pelatihans as $tema)
                     <div class="course-1-item">
                         <figure class="thumnail">
-                            <a href="course-single.html"><img src="{{ asset('_homepage/images/course_1.jpg') }}" alt="Image" class="img-fluid"></a>
-                            <div class="price">$99.00</div>
+                            @if($tema->getFirstMediaUrl('tema-pelatihan', 'thumb'))
+                            <a href=""><img src="{{ $tema->getFirstMediaUrl('tema-pelatihan', 'thumb') }}" alt="Image" class="img-fluid"></a>
+                            @else
+                            <a href=""><img src="{{asset('img/placeholder.png') }}" alt="Image" class="img-fluid"></a>
+                            @endif
                             <div class="category">
-                                <h3>Mobile Application</h3>
+                                <h3>{{ $tema->name }}</h3>
                             </div>
                         </figure>
                         <div class="course-1-content pb-4">
-                            <h2>How To Create Mobile Apps Using Ionic</h2>
+                            <!-- <h2>How To Create Mobile Apps Using Ionic</h2>
                             <div class="rating text-center mb-3">
                                 <span class="icon-star2 text-warning"></span>
                                 <span class="icon-star2 text-warning"></span>
                                 <span class="icon-star2 text-warning"></span>
                                 <span class="icon-star2 text-warning"></span>
                                 <span class="icon-star2 text-warning"></span>
-                            </div>
-                            <p class="desc mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique accusantium ipsam.</p>
-                            <p><a href="course-single.html" class="btn btn-primary rounded-0 px-4">Enroll In This Course</a></p>
+                            </div> -->
+                            <p class="desc mb-4">{!!shrinkText($tema->description)!!}</p>
+                            <p><a href="" class="btn btn-primary rounded-0 px-4">Lihat Detail</a></p>
                         </div>
                     </div>
+                    @endforeach
 
                     <div class="course-1-item">
                         <figure class="thumnail">
@@ -119,94 +124,6 @@ Dashboard
                             <div class="price">$99.00</div>
                             <div class="category">
                                 <h3>Web Design</h3>
-                            </div>
-                        </figure>
-                        <div class="course-1-content pb-4">
-                            <h2>How To Create Mobile Apps Using Ionic</h2>
-                            <div class="rating text-center mb-3">
-                                <span class="icon-star2 text-warning"></span>
-                                <span class="icon-star2 text-warning"></span>
-                                <span class="icon-star2 text-warning"></span>
-                                <span class="icon-star2 text-warning"></span>
-                                <span class="icon-star2 text-warning"></span>
-                            </div>
-                            <p class="desc mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique accusantium ipsam.</p>
-                            <p><a href="course-single.html" class="btn btn-primary rounded-0 px-4">Enroll In This Course</a></p>
-                        </div>
-                    </div>
-
-                    <div class="course-1-item">
-                        <figure class="thumnail">
-                            <a href="course-single.html"><img src="{{ asset('_homepage/images/course_3.jpg') }}" alt="Image" class="img-fluid"></a>
-                            <div class="price">$99.00</div>
-                            <div class="category">
-                                <h3>Arithmetic</h3>
-                            </div>
-                        </figure>
-                        <div class="course-1-content pb-4">
-                            <h2>How To Create Mobile Apps Using Ionic</h2>
-                            <div class="rating text-center mb-3">
-                                <span class="icon-star2 text-warning"></span>
-                                <span class="icon-star2 text-warning"></span>
-                                <span class="icon-star2 text-warning"></span>
-                                <span class="icon-star2 text-warning"></span>
-                                <span class="icon-star2 text-warning"></span>
-                            </div>
-                            <p class="desc mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique accusantium ipsam.</p>
-                            <p><a href="courses-single.html" class="btn btn-primary rounded-0 px-4">Enroll In This Course</a></p>
-                        </div>
-                    </div>
-
-                    <div class="course-1-item">
-                        <figure class="thumnail">
-                            <a href="course-single.html"><img src="{{ asset('_homepage/images/course_4.jpg') }}" alt="Image" class="img-fluid"></a>
-                            <div class="price">$99.00</div>
-                            <div class="category">
-                                <h3>Mobile Application</h3>
-                            </div>
-                        </figure>
-                        <div class="course-1-content pb-4">
-                            <h2>How To Create Mobile Apps Using Ionic</h2>
-                            <div class="rating text-center mb-3">
-                                <span class="icon-star2 text-warning"></span>
-                                <span class="icon-star2 text-warning"></span>
-                                <span class="icon-star2 text-warning"></span>
-                                <span class="icon-star2 text-warning"></span>
-                                <span class="icon-star2 text-warning"></span>
-                            </div>
-                            <p class="desc mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique accusantium ipsam.</p>
-                            <p><a href="course-single.html" class="btn btn-primary rounded-0 px-4">Enroll In This Course</a></p>
-                        </div>
-                    </div>
-
-                    <div class="course-1-item">
-                        <figure class="thumnail">
-                            <a href="course-single.html"><img src="{{ asset('_homepage/images/course_5.jpg') }}" alt="Image" class="img-fluid"></a>
-                            <div class="price">$99.00</div>
-                            <div class="category">
-                                <h3>Web Design</h3>
-                            </div>
-                        </figure>
-                        <div class="course-1-content pb-4">
-                            <h2>How To Create Mobile Apps Using Ionic</h2>
-                            <div class="rating text-center mb-3">
-                                <span class="icon-star2 text-warning"></span>
-                                <span class="icon-star2 text-warning"></span>
-                                <span class="icon-star2 text-warning"></span>
-                                <span class="icon-star2 text-warning"></span>
-                                <span class="icon-star2 text-warning"></span>
-                            </div>
-                            <p class="desc mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique accusantium ipsam.</p>
-                            <p><a href="course-single.html" class="btn btn-primary rounded-0 px-4">Enroll In This Course</a></p>
-                        </div>
-                    </div>
-
-                    <div class="course-1-item">
-                        <figure class="thumnail">
-                            <a href="course-single.html"><img src="{{ asset('_homepage/images/course_6.jpg') }}" alt="Image" class="img-fluid"></a>
-                            <div class="price">$99.00</div>
-                            <div class="category">
-                                <h3>Mobile Application</h3>
                             </div>
                         </figure>
                         <div class="course-1-content pb-4">
@@ -387,31 +304,31 @@ Dashboard
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="post-entry-big">
-                            <a href="news-single.html" class="img-link"><img src="{{ asset('_homepage/images/blog_large_1.jpg') }}" alt="Image" class="img-fluid"></a>
+                            <a href="{{ route('homepage.post.detail', $post->slug) }}" class="img-link"><img src="{{ $post->getFirstMediaUrl('posts', 'thumb') }}" alt="Image" class="img-fluid"></a>
                             <div class="post-content">
                                 <div class="post-meta">
-                                    <a href="#">June 6, 2019</a>
-                                    <span class="mx-1">/</span>
-                                    <a href="#">Admission</a>, <a href="#">Updates</a>
+                                    <span class="mx-1">{{ $post->created_at }}</span>
+                                    <!-- <span class="mx-1">/</span> -->
+                                    <!-- <a href="#">Admission</a>, <a href="#">Updates</a> -->
                                 </div>
-                                <h3 class="post-heading"><a href="news-single.html">Campus Camping and Learning Session</a></h3>
+                                <h3 class="post-heading"><a href="{{ route('homepage.post.detail', $post->slug) }}">{{shrinkTitle($post->title)}}</a></h3>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6">
+                        @foreach($other_posts as $other_post)
                         <div class="post-entry-big horizontal d-flex mb-4">
-                            <a href="news-single.html" class="img-link mr-4"><img src="{{ asset('_homepage/images/blog_1.jpg') }}" alt="Image" class="img-fluid"></a>
+                            <a href="{{ route('homepage.post.detail', $other_post->slug) }}" class="img-link mr-4"><img src="{{ $other_post->getFirstMediaUrl('posts', 'preview') }}" alt="Image" class="img-fluid"></a>
                             <div class="post-content">
                                 <div class="post-meta">
-                                    <a href="#">June 6, 2019</a>
-                                    <span class="mx-1">/</span>
-                                    <a href="#">Admission</a>, <a href="#">Updates</a>
+                                    <span class="mx-1">{{ $other_post->created_at }}</span>
                                 </div>
-                                <h3 class="post-heading"><a href="news-single.html">Campus Camping and Learning Session</a></h3>
+                                <h3 class="post-heading"><a href="{{ route('homepage.post.detail', $other_post->slug) }}">{{shrinkTitle($other_post->title)}}</a></h3>
                             </div>
                         </div>
+                        @endforeach
 
-                        <div class="post-entry-big horizontal d-flex mb-4">
+                        <!-- <div class="post-entry-big horizontal d-flex mb-4">
                             <a href="news-single.html" class="img-link mr-4"><img src="{{ asset('_homepage/images/blog_2.jpg') }}" alt="Image" class="img-fluid"></a>
                             <div class="post-content">
                                 <div class="post-meta">
@@ -433,7 +350,7 @@ Dashboard
                                 </div>
                                 <h3 class="post-heading"><a href="news-single.html">Campus Camping and Learning Session</a></h3>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -442,18 +359,12 @@ Dashboard
                     <h2 class="text-black">Campus Videos</h2>
                     <a href="#">View All Videos</a>
                 </div>
-                <a href="https://vimeo.com/45830194" class="video-1 mb-4" data-fancybox="" data-ratio="2">
-                    <span class="play">
-                        <span class="icon-play"></span>
-                    </span>
-                    <img src="images/course_5.jpg" alt="Image" class="img-fluid">
+                @foreach($videos as $video)
+                <!-- <a href="https://vimeo.com/45830194" class="video-1 mb-4" data-fancybox="" data-ratio="2"> -->
+                {!! convertYoutube($video->link_media) !!}
+                <!-- <img src="{{ asset('_homepage/images/course_5.jpg') }}" alt="Image" class="img-fluid"> -->
                 </a>
-                <a href="https://vimeo.com/45830194" class="video-1 mb-4" data-fancybox="" data-ratio="2">
-                    <span class="play">
-                        <span class="icon-play"></span>
-                    </span>
-                    <img src="images/course_5.jpg" alt="Image" class="img-fluid">
-                </a>
+                @endforeach
             </div>
         </div>
     </div>

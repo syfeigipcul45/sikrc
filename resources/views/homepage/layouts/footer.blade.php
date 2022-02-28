@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <div class="col-lg-3">
+        <!-- <div class="col-lg-3">
             <p class="mb-4"><img src="images/logo.png" alt="Image" class="img-fluid"></p>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae nemo minima qui dolor, iusto iure.</p>
             <p><a href="#">Learn More</a></p>
@@ -36,7 +36,7 @@
                 <li><a href="#">Share Your Story</a></li>
                 <li><a href="#">Our Supporters</a></li>
             </ul>
-        </div>
+        </div> -->
     </div>
 
     <div class="row">
@@ -44,9 +44,7 @@
             <div class="copyright">
                 <p>
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    Copyright &copy;<script>
-                        document.write(new Date().getFullYear());
-                    </script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                    Copyright &copy;<?php echo date('Y') ?> KPHP Kendilo <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                 </p>
             </div>

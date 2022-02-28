@@ -33,8 +33,20 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
+// homepage
 Route::get('/', [HomeController::class, 'index'])->name('home');
+// profil
+Route::get('/profil/{slug}', [HomeController::class, 'getProfil'])->name('homepage.profil.detail');
+// posts
+Route::get('/berita/', [HomeController::class, 'getPosts'])->name('homepage.post.post');
+Route::get('/berita/{slug}', [HomeController::class, 'getDetailPost'])->name('homepage.post.detail');
+// pengajar
+Route::get('/pengajar', [HomeController::class, 'getPengajar'])->name('homepage.pengajar.index');
+// posts
+Route::get('/fasilitas/', [HomeController::class, 'getFasilitas'])->name('homepage.fasilitas.index');
+Route::get('/fasilitas/{slug}', [HomeController::class, 'getDetailFasilitas'])->name('homepage.fasilitas.detail');
 
+// dashboard
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', [DashboardController::class, 'index'])->name('beranda');
 

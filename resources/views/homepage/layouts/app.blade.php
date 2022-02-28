@@ -31,6 +31,11 @@
     <link href="{{ asset('_homepage/css/jquery.mb.YTPlayer.min.css') }}" media="all" rel="stylesheet" type="text/css">
 
     <link rel="stylesheet" href="{{ asset('_homepage/css/style.css') }}">
+    <style>
+        .container-menu {
+            max-width: fit-content;
+        }
+    </style>
 
     @yield('extra-css')
 
