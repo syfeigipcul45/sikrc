@@ -55,11 +55,15 @@ class JadwalPelatihanController extends Controller
             $validator = Validator::make($request->all(), [
                 'tema_id' => 'required',
                 'lokasi_pelatihan' => 'required',
-                'waktu_pelatihan' => 'required'
+                'waktu_pelatihan' => 'required',
+                'jam_mulai'     => 'required',
+                'jam_berakhir'  => 'required'
             ], [
                 'tema_id.required' => 'Tema pelatihan harus diisi!',
                 'lokasi_pelatihan.required' => 'Lokasi pelatihan harus diisi!',
-                'waktu_pelatihan.required' => 'Waktu pelatihan harus diisi!'
+                'waktu_pelatihan.required' => 'Waktu pelatihan harus diisi!',
+                'jam_mulai.required'    => 'Jam mulai harus diisi!',
+                'jam_berakhir.required'    => 'Jam berakhir harus diisi!',
             ]);
 
             if ($validator->fails()) {
@@ -70,6 +74,8 @@ class JadwalPelatihanController extends Controller
                 "tema_id" => $request->tema_id,
                 "lokasi_pelatihan" => $request->lokasi_pelatihan,
                 "waktu_pelatihan" => $request->waktu_pelatihan,
+                "jam_mulai"     => $request->jam_mulai,
+                "jam_berakhir"     => $request->jam_berakhir
             ];
             // dd($data);
 
@@ -121,11 +127,15 @@ class JadwalPelatihanController extends Controller
             $validator = Validator::make($request->all(), [
                 'tema_id' => 'required',
                 'lokasi_pelatihan' => 'required',
-                'waktu_pelatihan' => 'required'
+                'waktu_pelatihan' => 'required',
+                'jam_mulai'     => 'required',
+                'jam_berakhir'  => 'required'
             ], [
                 'tema_id.required' => 'Tema pelatihan harus diisi!',
                 'lokasi_pelatihan.required' => 'Lokasi pelatihan harus diisi!',
-                'waktu_pelatihan.required' => 'Waktu pelatihan harus diisi!'
+                'waktu_pelatihan.required' => 'Waktu pelatihan harus diisi!',
+                'jam_mulai.required'    => 'Jam mulai harus diisi!',
+                'jam_berakhir.required'    => 'Jam berakhir harus diisi!',
             ]);
 
             if ($validator->fails()) {
@@ -136,6 +146,8 @@ class JadwalPelatihanController extends Controller
                 "tema_id" => $request->tema_id,
                 "lokasi_pelatihan" => $request->lokasi_pelatihan,
                 "waktu_pelatihan" => $request->waktu_pelatihan,
+                "jam_mulai"     => $request->jam_mulai,
+                "jam_berakhir"     => $request->jam_berakhir
             ];
             // dd($data);
 

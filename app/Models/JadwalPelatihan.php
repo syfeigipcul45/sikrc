@@ -12,7 +12,9 @@ class JadwalPelatihan extends Model
     protected $fillable = [
         'tema_id',
         'lokasi_pelatihan',
-        'waktu_pelatihan'
+        'waktu_pelatihan',
+        'jam_mulai',
+        'jam_berakhir'
     ];
 
     public function temaPelatihan()

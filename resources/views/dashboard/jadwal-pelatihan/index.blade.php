@@ -58,7 +58,7 @@ Management Jadwal Pelatihan
                         <td>{{ ++$key }}</td>
                         <td>{{ $item->temaPelatihan->name }}</td>
                         <td>{{ $item->lokasi_pelatihan }}</td>
-                        <td>{{ changeDate($item->waktu_pelatihan)}}</td>
+                        <td>{{ changeDate($item->waktu_pelatihan).' ('.($item->jam_mulai.' - '.$item->jam_berakhir.' WITA)') }}</td>
                         <td class="text-center">
                             <!-- <a href="{{ route('dashboard.jadwal_pelatihan.show', $item->id) }}" class="btn btn-info btn-circle btn-sm">
                                 <i class="fas fa-eye"></i>

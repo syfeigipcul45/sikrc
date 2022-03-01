@@ -14,6 +14,13 @@ Tambah Jadwal Pelatihan
 </style>
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<!-- 
+<link href="{{ asset('_dashboard/css/wickedpicker.min.css') }}" rel="stylesheet" />
+<script src="{{ asset('_dashboard/js/wickedpicker.min.js') }}"></script> -->
+
+<link href="{{ asset('_dashboard/css/bootstrap-material-datetimepicker.css') }}" rel="stylesheet" />
+<script type="text/javascript" src="http://momentjs.com/downloads/moment-with-locales.min.js"></script>
+<script src="{{ asset('_dashboard/js/bootstrap-material-datetimepicker.js') }}"></script>
 @endsection
 
 @section('content')
@@ -72,6 +79,26 @@ Tambah Jadwal Pelatihan
                     <div class="form-group">
                         <input type="date" class="form-control" name="waktu_pelatihan" value="{{ old('waktu_pelatihan') }}" />
                         @error('waktu_pelatihan')
+                        <small class="form-text error-input">{{ $message }}</small>
+                        @enderror
+                    </div>
+                </div>
+            </div>
+
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Jam Pelatihan</h6>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Mulai</label>
+                        <input type="text" class="form-control" id="jam_mulai" name="jam_mulai" data-dtp="dtp_eFWas" value="{{ old('jam_mulai') }}" />
+                        @error('jam_mulai')
+                        <small class="form-text error-input">{{ $message }}</small>
+                        @enderror
+                        <label>Berakhir</label>
+                        <input type="text" class="form-control" id="jam_berakhir" name="jam_berakhir" data-dtp="dtp_eFWas" value="{{ old('jam_berakhir') }}" />
+                        @error('jam_berakhir')
                         <small class="form-text error-input">{{ $message }}</small>
                         @enderror
                     </div>
@@ -203,6 +230,18 @@ Tambah Jadwal Pelatihan
 
     $(document).ready(function() {
         $('.js-example-basic-single').select2();
+    });
+
+    $('#jam_mulai').bootstrapMaterialDatePicker({
+        date: false,
+        shortTime: false,
+        format: 'HH:mm'
+    });
+
+    $('#jam_berakhir').bootstrapMaterialDatePicker({
+        date: false,
+        shortTime: false,
+        format: 'HH:mm'
     });
 </script>
 @endsection

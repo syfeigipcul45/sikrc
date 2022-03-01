@@ -12,6 +12,10 @@ Edit Jadwal Pelatihan
         color: #d44950;
     }
 </style>
+
+<link href="{{ asset('_dashboard/css/bootstrap-material-datetimepicker.css') }}" rel="stylesheet" />
+<script type="text/javascript" src="http://momentjs.com/downloads/moment-with-locales.min.js"></script>
+<script src="{{ asset('_dashboard/js/bootstrap-material-datetimepicker.js') }}"></script>
 @endsection
 
 @section('content')
@@ -65,6 +69,26 @@ Edit Jadwal Pelatihan
                     <div class="form-group">
                         <input type="date" class="form-control" name="waktu_pelatihan" value="{{ old('waktu_pelatihan', $jadwal->waktu_pelatihan) }}" />
                         @error('waktu_pelatihan')
+                        <small class="form-text error-input">{{ $message }}</small>
+                        @enderror
+                    </div>
+                </div>
+            </div>
+
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Jam Pelatihan</h6>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Mulai</label>
+                        <input type="text" class="form-control" id="jam_mulai" name="jam_mulai" data-dtp="dtp_eFWas" value="{{ old('jam_mulai', $jadwal->jam_mulai) }}" />
+                        @error('jam_mulai')
+                        <small class="form-text error-input">{{ $message }}</small>
+                        @enderror
+                        <label>Berakhir</label>
+                        <input type="text" class="form-control" id="jam_berakhir" name="jam_berakhir" data-dtp="dtp_eFWas" value="{{ old('jam_berakhir', $jadwal->jam_berakhir) }}" />
+                        @error('jam_berakhir')
                         <small class="form-text error-input">{{ $message }}</small>
                         @enderror
                     </div>
@@ -193,6 +217,18 @@ Edit Jadwal Pelatihan
         skin: useDarkMode ? 'oxide-dark' : 'oxide',
         content_css: useDarkMode ? 'dark' : 'default',
         content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+    });
+
+    $('#jam_mulai').bootstrapMaterialDatePicker({
+        date: false,
+        shortTime: false,
+        format: 'HH:mm'
+    });
+
+    $('#jam_berakhir').bootstrapMaterialDatePicker({
+        date: false,
+        shortTime: false,
+        format: 'HH:mm'
     });
 </script>
 @endsection
