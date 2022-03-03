@@ -5,11 +5,16 @@ namespace App\Http\Controllers\Homepage;
 use App\Http\Controllers\Controller;
 use App\Models\Fasilitas;
 use App\Models\HeroImage;
+use App\Models\JadwalPelatihan;
+use App\Models\Kontak;
+use App\Models\MateriPelatihan;
 use App\Models\MediaGalleries;
 use App\Models\Pengajar;
 use App\Models\Post;
 use App\Models\Profil;
 use App\Models\TemaPelatihan;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
@@ -64,4 +69,66 @@ class HomeController extends Controller
         }
         return view('homepage.fasilitas.detail_fasilitas', $data);
     }
+
+    public function getJadwalPelatihan()
+    {
+        $data['jadwal_pelatihans'] = JadwalPelatihan::orderBy('waktu_pelatihan', 'desc')->get();
+        return view('homepage.pelatihan.jadwal_pelatihan', $data);
+    }
+
+    public function getTemaPelatihan()
+    {
+        $data['tema'] = TemaPelatihan::orderBy('name', 'asc')->get();
+        return view('homepage.pelatihan.materi_pelatihan', $data);
+    }
+
+    public function getMateriPelatihan($slug)
+    {
+        $data['tema'] = TemaPelatihan::where('slug', $slug)->first();
+        $data['presentasi'] = MateriPelatihan::where('tema_id', $data['tema']->id)->where('type', 'presentasi')->orderby('created_at', 'desc')->get();
+        $data['gambar'] = MateriPelatihan::where('tema_id', $data['tema']->id)->where('type', 'gambar')->orderby('created_at', 'desc')->get();
+        $data['video'] = MateriPelatihan::where('tema_id', $data['tema']->id)->where('type', 'video')->orderby('created_at', 'desc')->get();
+        return view('homepage.pelatihan.show_materi', $data);
+    }
+
+    public function getPhoto()
+    {
+        $data['photos'] = MediaGalleries::where('type', 'photo')->latest()->get();
+        return view('homepage.media.photo', $data);
+    }
+
+    public function getDetailPhoto(Request $request)
+    {
+        $id = $request->id;
+        $data['photo'] = MediaGalleries::where(['id' => $id, 'type' => 'photo'])->first();
+        return view('homepage.media.modal_photo', $data);
+    }
+
+    public function getVideo()
+    {
+        $data['videos'] = MediaGalleries::where('type', 'video')->latest()->get();
+        return view('homepage.media.video', $data);
+    }
+
+    public function getKontak()
+    {
+        return view('homepage.kontak.index');
+    }
+
+    public function storeKontak(Request $request)
+    {
+        $data = [
+            'name' => $request->name,
+            'subjek' => $request->subjek,
+            'email' => $request->email,
+            'no_hp' => $request->no_hp,
+            'pesan' => $request->pesan
+        ];
+
+        Kontak::create($data);
+
+        Session::flash('success', 'Pesan telah terkirim');
+        return redirect()->back();
+    }
+
 }

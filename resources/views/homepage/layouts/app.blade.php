@@ -12,6 +12,7 @@
     <link href="{{ asset('img/favicon.png') }}" rel="icon">
     @endif
 
+    <link href="{{ asset('_dashboard/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('_homepage/fonts/icomoon/style.css') }}">
 

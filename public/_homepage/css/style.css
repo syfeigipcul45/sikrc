@@ -93,7 +93,7 @@ h1, h2, h3, h4, h5,
 
 @media (min-width: 768px) {
   .site-section {
-    padding: 5em 0;
+    padding: 2.5em 0;
   }
 }
 
@@ -888,7 +888,7 @@ h1, h2, h3, h4, h5,
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding: 4rem 0;
+  padding: 1rem 0;
 }
 
 .section-bg.style-1 {

@@ -45,6 +45,17 @@ Route::get('/pengajar', [HomeController::class, 'getPengajar'])->name('homepage.
 // posts
 Route::get('/fasilitas/', [HomeController::class, 'getFasilitas'])->name('homepage.fasilitas.index');
 Route::get('/fasilitas/{slug}', [HomeController::class, 'getDetailFasilitas'])->name('homepage.fasilitas.detail');
+// pelatihan
+Route::get('/pelatihan/jadwal-pelatihan', [HomeController::class, 'getJadwalPelatihan'])->name('homepage.pelatihan.jadwal_pelatihan');
+Route::get('/pelatihan/materi-pelatihan', [HomeController::class, 'getTemaPelatihan'])->name('homepage.pelatihan.materi_pelatihan');
+Route::get('/pelatihan/materi-pelatihan/{slug}', [HomeController::class, 'getMateriPelatihan'])->name('homepage.pelatihan.show_materi');
+// media
+Route::get('/media/galeri-foto', [HomeController::class, 'getPhoto'])->name('homepage.media.photo');
+Route::get('/media/galeri-foto/detail', [HomeController::class, 'getDetailPhoto'])->name('homepage.media.photo_detail');
+Route::get('/media/galeri-video', [HomeController::class, 'getVideo'])->name('homepage.media.video');
+// kontak
+Route::get('/kontak', [HomeController::class, 'getKontak'])->name('homepage.kontak.index');
+Route::post('/kontak', [HomeController::class, 'storeKontak'])->name('homepage.kontak.store');
 
 // dashboard
 Route::group(['middleware' => ['auth']], function () {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\TemaPelatihan;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -67,6 +68,7 @@ class TemaPelatihanController extends Controller
 
             $data = [
                 "name" => $request->name,
+                "slug" => Str::slug($request->name, '-'),
                 "description" => $request->description
             ];
             $tema =TemaPelatihan::create($data);
@@ -132,6 +134,7 @@ class TemaPelatihanController extends Controller
 
             $updateData = [
                 'name' => $request->name,
+                "slug" => Str::slug($request->name, '-'),
                 'description' => $request->description
             ];
 

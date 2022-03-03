@@ -37,6 +37,19 @@ if (! function_exists('convertYoutube')) {
     }
 }
 
+if (! function_exists('convertYoutubeHomepage')) {
+    /**
+     * @param string $text
+     */
+    function convertYoutubeHomepage($link) {
+        return preg_replace(
+            "/\s*[a-zA-Z\/\/:\.]*youtu(be.com\/watch\?v=|.be\/)([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i",
+            "<iframe src=\"//www.youtube.com/embed/$2\" allowfullscreen></iframe>",
+            $link
+        );
+    }
+}
+
 if (! function_exists('getYoutubeEmbedUrl')) {
     /**
      * @param string $text

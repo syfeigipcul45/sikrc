@@ -1,7 +1,7 @@
 <div class="container container-menu">
     <div class="d-flex align-items-center">
         <div class="site-logo">
-            <a href="index.html" class="d-block">
+            <a href="{{ route('home') }}" class="d-block">
                 <img src="{{ getOption()->logo }}" style="height: 70px;" alt="Image" class="img-fluid">
             </a>
         </div>
@@ -28,28 +28,28 @@
                     <li class="{{ Request::is('fasilitas*') ? 'active' : '' }}">
                         <a href="{{ route('homepage.fasilitas.index') }}" class="nav-link text-left">Fasilitas</a>
                     </li>
-                    <li class="has-children">
+                    <li class="has-children {{ Request::is('pelatihan*') ? 'active' : '' }}">
                         <a href="#" class="nav-link text-left">Pelatihan</a>
                         <ul class="dropdown">
-                            <li><a href="">Jadwal Pelatihan</a></li>
-                            <li><a href="">Materi Pelatihan</a></li>
+                            <li><a href="{{ route('homepage.pelatihan.jadwal_pelatihan') }}">Jadwal Pelatihan</a></li>
+                            <li><a href="{{ route('homepage.pelatihan.materi_pelatihan') }}">Materi Pelatihan</a></li>
                         </ul>
                     </li>
                     <li>
                         <a href="" class="nav-link text-left">Alumni KRC</a>
                     </li>
-                    <li class="has-children">
+                    <li class="has-children {{ Request::is('media*') ? 'active' : '' }}">
                         <a href="#" class="nav-link text-left">Media</a>
                         <ul class="dropdown">
-                            <li><a href="">Foto</a></li>
-                            <li><a href="">Video</a></li>
+                            <li><a href="{{ route('homepage.media.photo') }}">Foto</a></li>
+                            <li><a href="{{ route('homepage.media.video') }}">Video</a></li>
                         </ul>
                     </li>
                     <li>
                         <a href="" class="nav-link text-left">Promosi</a>
                     </li>
-                    <li>
-                        <a href="" class="nav-link text-left">Kontak</a>
+                    <li class="{{ Request::is('kontak*') ? 'active' : '' }}">
+                        <a href="{{ route('homepage.kontak.index') }}" class="nav-link text-left">Kontak</a>
                     </li>
                 </ul>
             </nav>
