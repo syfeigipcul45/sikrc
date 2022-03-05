@@ -27,6 +27,20 @@ if (! function_exists('convertToRupiah')) {
     }
 }
 
+if (! function_exists('convertWhatsappNumber')) {
+    function convertWhatsappNumber($whatsapp) {
+        $whatsappNumber = null;
+        if(substr($whatsapp, 0, 2) == '08') {
+            $whatsappNumber = '628' . substr($whatsapp, 2);
+        } elseif(substr($whatsapp, 0, 3) == '+62') {
+            $whatsappNumber = '62' . substr($whatsapp, 3);
+        } else {
+            $whatsappNumber = $whatsapp;
+        }
+        return $whatsappNumber;
+    }
+}
+
 if (! function_exists('getOption')) {
     function getOption() {
         $result = Option::first();

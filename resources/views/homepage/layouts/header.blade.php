@@ -45,8 +45,12 @@
                             <li><a href="{{ route('homepage.media.video') }}">Video</a></li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="" class="nav-link text-left">Promosi</a>
+                    <li class="has-children {{ Request::is('promosi*') ? 'active' : '' }}">
+                        <a href="#" class="nav-link text-left">Promosi</a>
+                        <ul class="dropdown">
+                            <li><a href="{{ route('homepage.promosi.produk') }}">Produk</a></li>
+                            <li><a href="">Kerja Sama</a></li>
+                        </ul>
                     </li>
                     <li class="{{ Request::is('kontak*') ? 'active' : '' }}">
                         <a href="{{ route('homepage.kontak.index') }}" class="nav-link text-left">Kontak</a>

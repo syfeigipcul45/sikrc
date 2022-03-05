@@ -32,6 +32,7 @@
     <link href="{{ asset('_homepage/css/jquery.mb.YTPlayer.min.css') }}" media="all" rel="stylesheet" type="text/css">
 
     <link rel="stylesheet" href="{{ asset('_homepage/css/style.css') }}">
+    <script src="{{ asset('_homepage/js/jquery-3.3.1.min.js') }}"></script>
     <style>
         .container-menu {
             max-width: fit-content;
@@ -97,7 +98,7 @@
         </svg>
     </div>
 
-    <script src="{{ asset('_homepage/js/jquery-3.3.1.min.js') }}"></script>
+    
     <script src="{{ asset('_homepage/js/jquery-migrate-3.0.1.min.js') }}"></script>
     <script src="{{ asset('_homepage/js/jquery-ui.js') }}"></script>
     <script src="{{ asset('_homepage/js/popper.min.js') }}"></script>

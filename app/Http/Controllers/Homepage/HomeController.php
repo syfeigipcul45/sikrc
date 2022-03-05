@@ -11,6 +11,7 @@ use App\Models\MateriPelatihan;
 use App\Models\MediaGalleries;
 use App\Models\Pengajar;
 use App\Models\Post;
+use App\Models\Product;
 use App\Models\Profil;
 use App\Models\TemaPelatihan;
 use Illuminate\Http\Request;
@@ -129,6 +130,18 @@ class HomeController extends Controller
 
         Session::flash('success', 'Pesan telah terkirim');
         return redirect()->back();
+    }
+
+    public function getProduk()
+    {
+        $data['produk'] = Product::orderBy('name', 'asc')->paginate(8);
+        return view('homepage.promosi.produk', $data);
+    }
+
+    public function getDetailProduk($slug)
+    {
+        $data['produk'] = Product::where('slug', $slug)->first();
+        return view('homepage.promosi.detail_produk', $data);
     }
 
 }

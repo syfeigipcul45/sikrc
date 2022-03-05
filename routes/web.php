@@ -58,6 +58,9 @@ Route::get('/media/galeri-video', [HomeController::class, 'getVideo'])->name('ho
 // kontak
 Route::get('/kontak', [HomeController::class, 'getKontak'])->name('homepage.kontak.index');
 Route::post('/kontak', [HomeController::class, 'storeKontak'])->name('homepage.kontak.store');
+// promosi
+Route::get('/promosi/produk',[HomeController::class, 'getProduk'])->name('homepage.promosi.produk');
+Route::get('/promosi/produk/{slug}',[HomeController::class, 'getDetailProduk'])->name('homepage.promosi.detail_produk');
 
 // dashboard
 Route::group(['middleware' => ['auth']], function () {
