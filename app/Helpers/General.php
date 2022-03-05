@@ -10,6 +10,11 @@ function changeDate($date)
     return Carbon::parse($date)->translatedFormat('l, d F Y');
 }
 
+function getTanggal($date)
+{
+    return Carbon::parse($date)->translatedFormat('d F Y');
+}
+
 if (! function_exists('getOption')) {
     function getOption() {
         $result = Option::first();

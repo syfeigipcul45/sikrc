@@ -8,27 +8,31 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Pengajar extends Model implements HasMedia
+class AlumniKrc extends Model implements HasMedia
 {
     use HasFactory;
     use InteractsWithMedia;
 
     protected $fillable = [
-        'name',
-        'description',
-        'parent_menu'
+        'name', 
+        'tempat_lahir', 
+        'tanggal_lahir',
+        'alamat', 
+        'instansi', 
+        'no_hp',
+        'tema_id'
     ];
 
     public function registerMediaConversions(Media $media = null): void
     {
-        $this->addMediaConversion('thumb')
+        $this->addMediaConversion('avatar')
             ->width(240)
             ->height(300)
             ->sharpen(10);
     }
 
-    public function kategoriPengajar()
+    public function temaPelatihan()
     {
-        return $this->belongsTo(KategoriPengajar::class, 'parent_menu');
+        return $this->belongsTo(TemaPelatihan::class, 'tema_id');
     }
 }

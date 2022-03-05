@@ -30,13 +30,18 @@ Login
 
         <div class="row justify-content-center">
             <div class="col-md-5">
+                @if (Session::has('message'))
+                <div class="alert alert-success" role="alert">
+                    {{ Session::get('message') }}
+                </div>
+                @endif
+                @if (\Session::has('error'))
+                <div class="invalid-feedback text-center mt-3 d-block">
+                    {!! \Session::get('error') !!}
+                </div>
+                @endif
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
-                    @if (session('status'))
-                    <div class="alert alert-error" role="alert">
-                        {{ session('status') }}
-                    </div>
-                    @endif
                     <div class="row">
                         <div class="col-md-12 form-group">
                             <label for="username">Username</label>

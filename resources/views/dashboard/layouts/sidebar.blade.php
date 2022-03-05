@@ -70,8 +70,8 @@
     </div>
 </li>
 
-<li class="nav-item {{ Request::is('management-facility*') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('dashboard.fasilitas.index') }}">
+<li class="nav-item {{ Request::is('management-alumni*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('dashboard.alumni.index') }}">
         <i class="fas fa-fw fa-building"></i>
         <span>Alumni KRC</span>
     </a>

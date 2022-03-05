@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\AlumniKrcController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\FasilitasController;
 use App\Http\Controllers\Dashboard\HeroImageController;
@@ -168,4 +169,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/management-images/{id}/edit', [HeroImageController::class, 'edit'])->name('dashboard.hero_images.edit');
     Route::post('/management-images/{id}/update', [HeroImageController::class, 'update'])->name('dashboard.hero_images.update');
     Route::post('/management-images/{id}', [HeroImageController::class, 'destroy'])->name('dashboard.hero_images.destroy');
+
+    Route::get('/management-alumni', [AlumniKrcController::class, 'index'])->name('dashboard.alumni.index');
+    Route::get('/management-alumni/create', [AlumniKrcController::class, 'create'])->name('dashboard.alumni.create');
+    Route::post('/management-alumni', [AlumniKrcController::class, 'store'])->name('dashboard.alumni.store');
+    Route::get('/management-alumni/{id}/edit', [AlumniKrcController::class, 'edit'])->name('dashboard.alumni.edit');
+    Route::get('/management-alumni/{id}/show', [AlumniKrcController::class, 'show'])->name('dashboard.alumni.show');
+    Route::post('/management-alumni/{id}/update', [AlumniKrcController::class, 'update'])->name('dashboard.alumni.update');
+    Route::post('/management-alumni/{id}', [AlumniKrcController::class, 'destroy'])->name('dashboard.alumni.destroy');
 });
