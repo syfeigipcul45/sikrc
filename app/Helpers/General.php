@@ -15,6 +15,18 @@ function getTanggal($date)
     return Carbon::parse($date)->translatedFormat('d F Y');
 }
 
+function deleteSeparator($str) {
+    $delete = str_replace(',', '', $str);
+    return $delete;
+}
+
+if (! function_exists('convertToRupiah')) {
+    function convertToRupiah($value) {
+        $rupiah_result = "Rp " . number_format($value);
+        return $rupiah_result;
+    }
+}
+
 if (! function_exists('getOption')) {
     function getOption() {
         $result = Option::first();

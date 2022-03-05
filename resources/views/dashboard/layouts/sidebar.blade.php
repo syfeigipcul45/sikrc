@@ -90,11 +90,17 @@
     </div>
 </li>
 
-<li class="nav-item {{ Request::is('management-facility*') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('dashboard.fasilitas.index') }}">
-        <i class="fas fa-fw fa-building"></i>
+<li class="nav-item {{ Request::is('management-promosi*') ? 'active' : '' }}">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProduk" aria-expanded="true" aria-controls="collapseProduk">
+        <i class="fas fa-fw fa-photo-video"></i>
         <span>Promosi</span>
     </a>
+    <div id="collapseProduk" class="collapse {{ Request::is('management-promosi*') ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="{{ route('dashboard.produk.index') }}">Produk</a>
+            <a class="collapse-item" href="">Kerja Sama</a>
+        </div>
+    </div>
 </li>
 
 <!-- Divider -->

@@ -11,6 +11,7 @@ use App\Http\Controllers\Dashboard\MediaGalleriesController;
 use App\Http\Controllers\Dashboard\OptionController;
 use App\Http\Controllers\Dashboard\PengajarController;
 use App\Http\Controllers\Dashboard\PostController;
+use App\Http\Controllers\Dashboard\ProductController;
 use App\Http\Controllers\Dashboard\ProfilController;
 use App\Http\Controllers\Dashboard\TemaPelatihanController;
 use App\Http\Controllers\Homepage\HomeController;
@@ -177,4 +178,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/management-alumni/{id}/show', [AlumniKrcController::class, 'show'])->name('dashboard.alumni.show');
     Route::post('/management-alumni/{id}/update', [AlumniKrcController::class, 'update'])->name('dashboard.alumni.update');
     Route::post('/management-alumni/{id}', [AlumniKrcController::class, 'destroy'])->name('dashboard.alumni.destroy');
+
+    Route::prefix('management-promosi')->group(function () {
+        Route::get('/produk', [ProductController::class, 'index'])->name('dashboard.produk.index');
+        Route::get('/produk/create', [ProductController::class, 'create'])->name('dashboard.produk.create');
+        Route::post('/produk', [ProductController::class, 'store'])->name('dashboard.produk.store');
+        Route::get('/produk/{id}/edit', [ProductController::class, 'edit'])->name('dashboard.produk.edit');
+        Route::get('/produk/{id}/show', [ProductController::class, 'show'])->name('dashboard.produk.show');
+        Route::post('/produk/{id}/update', [ProductController::class, 'update'])->name('dashboard.produk.update');
+        Route::post('/produk/{id}', [ProductController::class, 'destroy'])->name('dashboard.produk.destroy');
+    });
 });
