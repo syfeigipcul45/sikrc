@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Fasilitas;
 use App\Models\HeroImage;
 use App\Models\JadwalPelatihan;
+use App\Models\KerjaSama;
 use App\Models\Kontak;
 use App\Models\MateriPelatihan;
 use App\Models\MediaGalleries;
@@ -132,9 +133,18 @@ class HomeController extends Controller
         return redirect()->back();
     }
 
-    public function getProduk()
+    public function getProduk(Request $request)
     {
-        $data['produk'] = Product::orderBy('name', 'asc')->paginate(8);
+        $data['produk'] = [];
+        if (!empty($request->keyword)) {
+            $data['produk'] = Product::where(function ($query) use ($request) {
+                $query->where('name', "LIKE", "%" . $request->keyword . "%");
+                $query->orWhere('price', "LIKE", "%" . $request->keyword . "%");
+                $query->orWhere('stock', "LIKE", "%" . $request->keyword . "%");
+            })->paginate(8);
+        } else {
+            $data['produk'] = Product::orderBy('name', 'asc')->paginate(8);
+        }
         return view('homepage.promosi.produk', $data);
     }
 
@@ -142,6 +152,23 @@ class HomeController extends Controller
     {
         $data['produk'] = Product::where('slug', $slug)->first();
         return view('homepage.promosi.detail_produk', $data);
+    }
+
+    public function getKerjaSama()
+    {
+        $data['kerja_sama'] = KerjaSama::orderBy('name','asc')->paginate(6);
+        return view('homepage.promosi.kerja_sama', $data);
+    }
+
+    public function getDetailKerjaSama($slug)
+    {
+        $data['total'] = 0;
+        $data['kerja_sama'] = KerjaSama::where('slug', $slug)->first();
+        $data['other_kerja_sama'] = KerjaSama::where('slug', '!=', $slug)->latest()->limit(4)->get();
+        foreach ($data['kerja_sama']->getMedia('kerja-sama') as $image) {
+            $data['total']++;
+        }
+        return view('homepage.promosi.detail_kerja_sama', $data);
     }
 
 }

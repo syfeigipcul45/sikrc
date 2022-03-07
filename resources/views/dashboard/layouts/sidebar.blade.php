@@ -92,13 +92,13 @@
 
 <li class="nav-item {{ Request::is('management-promosi*') ? 'active' : '' }}">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProduk" aria-expanded="true" aria-controls="collapseProduk">
-        <i class="fas fa-fw fa-photo-video"></i>
+        <i class="fas fa-fw fa-handshake"></i>
         <span>Promosi</span>
     </a>
     <div id="collapseProduk" class="collapse {{ Request::is('management-promosi*') ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="{{ route('dashboard.produk.index') }}">Produk</a>
-            <a class="collapse-item" href="">Kerja Sama</a>
+            <a class="collapse-item" href="{{ route('dashboard.kerja_sama.index') }}">Kerja Sama</a>
         </div>
     </div>
 </li>

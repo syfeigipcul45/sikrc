@@ -8,11 +8,11 @@ Produk
 <style>
     .card-deck {
         margin: 0 -15px;
-        justify-content: space-between;
+        justify-content: center;
     }
 
     .card-deck .card {
-        margin: 0 0 1rem;
+        margin: 0 5px 1rem;
     }
 
     @media (min-width: 576px) and (max-width: 767.98px) {
@@ -62,7 +62,7 @@ Produk
 
 <div class="site-section">
     <div class="container">
-        <form action="" method="GET">
+        <form action="{{ route('homepage.promosi.produk') }}" method="GET">
             <div class="row mb-4">
                 <div class="d-flex col-md-5">
                     <input type="text" name="keyword" placeholder="Cari berdasarkan nama, harga ..." class="form-control shadow-none no-focus" />

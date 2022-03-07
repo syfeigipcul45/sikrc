@@ -1,7 +1,7 @@
 @extends('homepage.layouts.app')
 
 @section('title')
-Fasilitas
+Kerja Sama
 @endsection
 
 @section('extra-css')
@@ -62,7 +62,7 @@ Fasilitas
     <div class="container">
         <div class="row align-items-end">
             <div class="col-lg-12">
-                <h2 class="mb-0" style="color: white;">Fasilitas</h2>
+                <h2 class="mb-0" style="color: white;">Kerja Sama</h2>
                 <p style="color: white;"></p>
             </div>
         </div>
@@ -74,21 +74,21 @@ Fasilitas
     <div class="container">
         <a href="{{ route('home') }}">Home</a>
         <span class="mx-3 icon-keyboard_arrow_right"></span>
-        <span class="current">Fasilitas</span>
+        <span class="current">Kerja Sama</span>
     </div>
 </div>
 
 <div class="site-section">
     <div class="container">
         <div class="row">
-            @foreach($fasilitas as $item)
+            @foreach($kerja_sama as $item)
             <div class="col-md-4 col-lg-4 col-xl-4">
                 <div class="card card-elegant">
-                    <img class="card-img-top" src="{{ $item->getFirstMediaUrl('fasilitas', 'thumb') }}" width="100%" alt="Card image cap">
+                    <img class="card-img-top" src="{{ $item->getFirstMediaUrl('kerja-sama', 'thumb') }}" width="100%" alt="Card image cap">
                     <div class="card-block">
                         <h5 class="card-title text-uppercase">{{ $item->name }}</h5>
                         <div class="card-text">{!! shrinkText($item->description) !!}</div>
-                        <a href="{{ route('homepage.fasilitas.detail', $item->slug) }}" class="btn btn-link text-uppercase">Lihat Detail</a>
+                        <a href="{{ route('homepage.promosi.detail_kerja_sama', $item->slug) }}" class="btn btn-link text-uppercase">Lihat Detail</a>
                     </div>
                 </div>
             </div>
@@ -96,7 +96,7 @@ Fasilitas
         </div>
     </div>
     <div class="d-flex justify-content-center">
-        {{ $fasilitas->links('pagination::bootstrap-4') }}
+        {{ $kerja_sama->links('pagination::bootstrap-4') }}
     </div>
 </div>
 </div>

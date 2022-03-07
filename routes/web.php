@@ -6,6 +6,7 @@ use App\Http\Controllers\Dashboard\FasilitasController;
 use App\Http\Controllers\Dashboard\HeroImageController;
 use App\Http\Controllers\Dashboard\JadwalPelatihanController;
 use App\Http\Controllers\Dashboard\KategoriPengajarController;
+use App\Http\Controllers\Dashboard\KerjaSamaController;
 use App\Http\Controllers\Dashboard\MateriPelatihanController;
 use App\Http\Controllers\Dashboard\MediaGalleriesController;
 use App\Http\Controllers\Dashboard\OptionController;
@@ -15,6 +16,7 @@ use App\Http\Controllers\Dashboard\ProductController;
 use App\Http\Controllers\Dashboard\ProfilController;
 use App\Http\Controllers\Dashboard\TemaPelatihanController;
 use App\Http\Controllers\Homepage\HomeController;
+use App\Models\KerjaSama;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -61,6 +63,8 @@ Route::post('/kontak', [HomeController::class, 'storeKontak'])->name('homepage.k
 // promosi
 Route::get('/promosi/produk',[HomeController::class, 'getProduk'])->name('homepage.promosi.produk');
 Route::get('/promosi/produk/{slug}',[HomeController::class, 'getDetailProduk'])->name('homepage.promosi.detail_produk');
+Route::get('/promosi/kerja-sama',[HomeController::class, 'getKerjaSama'])->name('homepage.promosi.kerja_sama');
+Route::get('/promosi/kerja-sama/{slug}',[HomeController::class, 'getDetailKerjaSama'])->name('homepage.promosi.detail_kerja_sama');
 
 // dashboard
 Route::group(['middleware' => ['auth']], function () {
@@ -190,5 +194,13 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/produk/{id}/show', [ProductController::class, 'show'])->name('dashboard.produk.show');
         Route::post('/produk/{id}/update', [ProductController::class, 'update'])->name('dashboard.produk.update');
         Route::post('/produk/{id}', [ProductController::class, 'destroy'])->name('dashboard.produk.destroy');
+
+        Route::get('/kerja-sama', [KerjaSamaController::class, 'index'])->name('dashboard.kerja_sama.index');
+        Route::get('/kerja-sama/create', [KerjaSamaController::class, 'create'])->name('dashboard.kerja_sama.create');
+        Route::post('/kerja-sama', [KerjaSamaController::class, 'store'])->name('dashboard.kerja_sama.store');
+        Route::get('/kerja-sama/{id}/edit', [KerjaSamaController::class, 'edit'])->name('dashboard.kerja_sama.edit');
+        Route::get('/kerja-sama/{id}/show', [KerjaSamaController::class, 'show'])->name('dashboard.kerja_sama.show');
+        Route::post('/kerja-sama/{id}/update', [KerjaSamaController::class, 'update'])->name('dashboard.kerja_sama.update');
+        Route::post('/kerja-sama/{id}', [KerjaSamaController::class, 'destroy'])->name('dashboard.kerja_sama.destroy');
     });
 });
