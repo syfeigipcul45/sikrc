@@ -35,8 +35,8 @@
                             <li><a href="{{ route('homepage.pelatihan.materi_pelatihan') }}">Materi Pelatihan</a></li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="" class="nav-link text-left">Alumni KRC</a>
+                    <li class="{{ Request::is('alumni-krc*') ? 'active' : '' }}">
+                        <a href="{{ route('homepage.alumni.index') }}" class="nav-link text-left">Alumni KRC</a>
                     </li>
                     <li class="has-children {{ Request::is('media*') ? 'active' : '' }}">
                         <a href="#" class="nav-link text-left">Media</a>

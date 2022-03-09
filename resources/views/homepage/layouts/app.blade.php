@@ -87,7 +87,7 @@
 
         @yield('content')
 
-        <div class="footer">
+        <div class="footer section-bg style-1" style="background-image: url('_homepage/images/semifoot.jpg');">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3">

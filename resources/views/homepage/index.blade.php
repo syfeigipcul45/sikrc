@@ -144,16 +144,13 @@ Home
 
             </div>
         </div>
-
-
-
     </div>
 </div>
 
 
 
 
-<div class="section-bg style-1" style="background-image: url('{{ asset('_homepage/images/about_1.jpg') }}');">
+<div class="section-bg style-1" style="background-image: url('_homepage/images/back_2.jpg');">
     <div class="container">
         <div class="row">
             <div class="col-lg-4">
@@ -268,7 +265,7 @@ Home
 </div>
 
 
-<div class="section-bg style-1" style="background-image: url('{{ asset('_homepage/images/hero_1.jpg') }}');">
+<div class="section-bg style-1" style="background-image: url('_homepage/images/back_1.jpg');">
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
@@ -370,7 +367,7 @@ Home
     </div>
 </div>
 
-<div class="site-section ftco-subscribe-1" style="background-image: url('{{ asset('_homepage/images/bg_1.jpg') }}')">
+<!-- <div class="site-section ftco-subscribe-1" style="background-image: url('{{ asset('_homepage/images/bg_1.jpg') }}')">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-7">
@@ -385,5 +382,5 @@ Home
             </div>
         </div>
     </div>
-</div>
+</div> -->
 @endsection

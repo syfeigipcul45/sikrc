@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Homepage;
 
 use App\Http\Controllers\Controller;
+use App\Models\AlumniKrc;
 use App\Models\Fasilitas;
 use App\Models\HeroImage;
 use App\Models\JadwalPelatihan;
@@ -97,6 +98,13 @@ class HomeController extends Controller
         $data['gambar'] = MateriPelatihan::where('tema_id', $data['tema']->id)->where('type', 'gambar')->orderby('created_at', 'desc')->get();
         $data['video'] = MateriPelatihan::where('tema_id', $data['tema']->id)->where('type', 'video')->orderby('created_at', 'desc')->get();
         return view('homepage.pelatihan.show_materi', $data);
+    }
+
+    public function getAlumni()
+    {
+        $data['alumnis'] = AlumniKrc::where('name', 'asc')->get();
+        $data['row'] = AlumniKrc::count();
+        return view('homepage.alumni-krc.index', $data);
     }
 
     public function getPhoto()

@@ -47,25 +47,27 @@ Route::get('/berita/{slug}', [HomeController::class, 'getDetailPost'])->name('ho
 // pengajar
 Route::get('/pengajar', [HomeController::class, 'getPengajar'])->name('homepage.pengajar.index');
 Route::get('/pengajar/{id}/detail-pengajar', [HomeController::class, 'getDetailPengajar'])->name('homepage.pengajar.detail');
-// posts
+// fasilitas
 Route::get('/fasilitas/', [HomeController::class, 'getFasilitas'])->name('homepage.fasilitas.index');
 Route::get('/fasilitas/{slug}', [HomeController::class, 'getDetailFasilitas'])->name('homepage.fasilitas.detail');
 // pelatihan
 Route::get('/pelatihan/jadwal-pelatihan', [HomeController::class, 'getJadwalPelatihan'])->name('homepage.pelatihan.jadwal_pelatihan');
 Route::get('/pelatihan/materi-pelatihan', [HomeController::class, 'getTemaPelatihan'])->name('homepage.pelatihan.materi_pelatihan');
 Route::get('/pelatihan/materi-pelatihan/{slug}', [HomeController::class, 'getMateriPelatihan'])->name('homepage.pelatihan.show_materi');
+// alumni krc
+Route::get('alumni-krc', [HomeController::class, 'getAlumni'])->name('homepage.alumni.index');
 // media
 Route::get('/media/galeri-foto', [HomeController::class, 'getPhoto'])->name('homepage.media.photo');
 Route::get('/media/galeri-foto/detail', [HomeController::class, 'getDetailPhoto'])->name('homepage.media.photo_detail');
 Route::get('/media/galeri-video', [HomeController::class, 'getVideo'])->name('homepage.media.video');
-// kontak
-Route::get('/kontak', [HomeController::class, 'getKontak'])->name('homepage.kontak.index');
-Route::post('/kontak', [HomeController::class, 'storeKontak'])->name('homepage.kontak.store');
 // promosi
 Route::get('/promosi/produk',[HomeController::class, 'getProduk'])->name('homepage.promosi.produk');
 Route::get('/promosi/produk/{slug}',[HomeController::class, 'getDetailProduk'])->name('homepage.promosi.detail_produk');
 Route::get('/promosi/kerja-sama',[HomeController::class, 'getKerjaSama'])->name('homepage.promosi.kerja_sama');
 Route::get('/promosi/kerja-sama/{slug}',[HomeController::class, 'getDetailKerjaSama'])->name('homepage.promosi.detail_kerja_sama');
+// kontak
+Route::get('/kontak', [HomeController::class, 'getKontak'])->name('homepage.kontak.index');
+Route::post('/kontak', [HomeController::class, 'storeKontak'])->name('homepage.kontak.store');
 
 // dashboard
 Route::group(['middleware' => ['auth']], function () {
