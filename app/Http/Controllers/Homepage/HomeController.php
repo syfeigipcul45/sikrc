@@ -55,6 +55,12 @@ class HomeController extends Controller
         return view('homepage.pengajar.index', $data);
     }
 
+    public function getDetailPengajar($id)
+    {
+        $data['pengajar'] = Pengajar::find($id);
+        return view('homepage.pengajar.detail_pengajar', $data);
+    }
+
     public function getFasilitas()
     {
         $data['fasilitas'] = Fasilitas::orderBy('name', 'asc')->paginate(6);

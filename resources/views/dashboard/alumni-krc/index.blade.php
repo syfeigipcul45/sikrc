@@ -61,7 +61,7 @@ Management Alumni KRC
                     <tr>
                         <td>{{ ++$key }}</td>
                         <td>
-                            <img src="{{ $item->getFirstMediaUrl('avatars', 'avatar')}} " alt="" class="img-fluid h-40" />
+                            <img src="{{ $item->getFirstMediaUrl('avatars', 'avatar')}} " alt="" height="80px" width="80px" class="img-profile rounded-circle" />
                         </td>
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->tempat_lahir.', '.getTanggal($item->tanggal_lahir) }}</td>

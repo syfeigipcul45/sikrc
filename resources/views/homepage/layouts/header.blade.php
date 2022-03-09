@@ -59,7 +59,7 @@
             </nav>
 
         </div>
-        <div class="ml-auto">
+        <!-- <div class="ml-auto">
             <div class="social-wrap">
                 <a href="{{ getOption()->facebook }}" target="_blank"><span class="icon-facebook"></span></a>
                 <a href="{{ getOption()->instagram }}" target="_blank"><span class="icon-instagram"></span></a>
@@ -67,7 +67,7 @@
 
                 <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a>
             </div>
-        </div>
+        </div> -->
 
     </div>
 </div>

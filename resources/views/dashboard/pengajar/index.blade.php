@@ -59,7 +59,7 @@ Management Pengajar
                     <tr>
                         <td>{{ ++$key }}</td>
                         <td>
-                            <img src="{{ $item->getFirstMediaUrl('pengajars', 'thumb')}} " alt="" class="img-fluid h-40" />
+                            <img src="{{ $item->getFirstMediaUrl('pengajars', 'thumb')}} " alt="" height="80px" width="80px" class="img-profile rounded-circle" />
                         </td>
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->description }}</td>

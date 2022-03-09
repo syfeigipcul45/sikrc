@@ -11,7 +11,7 @@ Pengajar
         position: relative;
         overflow: hidden;
         border-radius: 8px;
-        cursor: pointer
+        /* cursor: pointer */
     }
 
     .card:before {
@@ -47,6 +47,20 @@ Pengajar
     .fonts {
         font-size: 11px
     }
+
+    .img-gp-profil {
+        background-color: rgb(197, 197, 197);
+        width: 175px;
+        height: 175px;
+        border-radius: 50%;
+        margin-left: auto;
+        margin-right: auto;
+        overflow: hidden;
+    }
+
+    .img-gp-profil img {
+        width: 100%;
+    }
 </style>
 @endsection
 
@@ -78,16 +92,14 @@ Pengajar
             @foreach($pengajars as $pengajar)
             <div class="col-md-4">
                 <div class="card p-3 py-4">
-                    <div class="text-center"> 
-                        <img src="{{ $pengajar->getFirstMediaUrl('pengajars','thumb') }}" width="100" class="rounded-circle"> 
+                    <div class="img-gp-profil mb-3">
+                        <img src="{{ $pengajar->getFirstMediaUrl('pengajars','thumb') }}" alt="">
                     </div>
-                    <div class="text-center mt-3"> 
-                        <span class="bg-secondary p-1 px-4 rounded text-white">{{ $pengajar->name }}</span>
-                        <h5 class="mt-2 mb-0"></h5> 
+                    <div class="text-center mt-3">
+                        <a href="{{ route('homepage.pengajar.detail', $pengajar->id)}}"><span class="bg-secondary p-1 px-4 rounded text-white">{{ $pengajar->name }}</span></a>
+                        <h5 class="mt-2 mb-0"></h5>
                         <span>{{ $pengajar->kategoriPengajar->kategori_pengajar }}</span>
-                        <div class="px-4 mt-1">
-                            <p class="fonts">{{ $pengajar->description }} </p>
-                        </div>
+
                     </div>
                 </div>
             </div>

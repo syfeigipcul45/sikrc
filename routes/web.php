@@ -46,6 +46,7 @@ Route::get('/berita/', [HomeController::class, 'getPosts'])->name('homepage.post
 Route::get('/berita/{slug}', [HomeController::class, 'getDetailPost'])->name('homepage.post.detail');
 // pengajar
 Route::get('/pengajar', [HomeController::class, 'getPengajar'])->name('homepage.pengajar.index');
+Route::get('/pengajar/{id}/detail-pengajar', [HomeController::class, 'getDetailPengajar'])->name('homepage.pengajar.detail');
 // posts
 Route::get('/fasilitas/', [HomeController::class, 'getFasilitas'])->name('homepage.fasilitas.index');
 Route::get('/fasilitas/{slug}', [HomeController::class, 'getDetailFasilitas'])->name('homepage.fasilitas.detail');

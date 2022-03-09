@@ -37,6 +37,13 @@
         .container-menu {
             max-width: fit-content;
         }
+
+        .footer-down {
+            padding: 2rem 0;
+            background: #183661;
+            font-size: 14px;
+            color: #fff;
+        }
     </style>
 
     @yield('extra-css')
@@ -80,8 +87,42 @@
 
         @yield('content')
 
-
         <div class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <p class="mb-4"><img src="{{ getOption()->logo}}" style="height: 7rem;" alt="Image" class="img-fluid"></p>
+                        <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae nemo minima qui dolor, iusto iure.</p>
+                        <p><a href="#">Learn More</a></p> -->
+                    </div>
+                    <div class="col-lg-3">
+                        <h3 class="footer-heading"><span>Kontak</span></h3>
+                        <p class="mt-3"><i class="fa fa-fw fa-phone mr-1 text-primary" aria-hidden="true"></i> {{ getOption()->phone }}<br>
+                            <i class="fa fa-fw fa-envelope mr-1 text-primary" aria-hidden="true"></i> {{ getOption()->email }}
+                        </p>
+                    </div>
+                    <div class="col-lg-3">
+                        <h3 class="footer-heading"><span>Alamat</span></h3>
+                        <p class="mb-4">
+                            {{ getOption()->address }}
+                        </p>
+                    </div>
+                    <div class="col-lg-3 text-center">
+                        <div class="ml-auto">
+                            <div class="social-wrap">
+                                <a href="{{ getOption()->facebook }}" target="_blank"><span class="icon-facebook"></span></a>
+                                <a href="{{ getOption()->instagram }}" target="_blank"><span class="icon-instagram"></span></a>
+                                <a href="{{ getOption()->youtube }}" target="_blank"><span class="icon-youtube"></span></a>
+                                <a href="mailto:{{ getOption()->email }}"><span class="icon-envelope-o"></span></a>
+                                <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-down">
             @include('homepage.layouts.footer')
         </div>
 
@@ -98,7 +139,7 @@
         </svg>
     </div>
 
-    
+
     <script src="{{ asset('_homepage/js/jquery-migrate-3.0.1.min.js') }}"></script>
     <script src="{{ asset('_homepage/js/jquery-ui.js') }}"></script>
     <script src="{{ asset('_homepage/js/popper.min.js') }}"></script>
