@@ -5,382 +5,293 @@ Home
 @endsection
 
 @section('content')
-<!-- Hero Images -->
-<div class="hero-slide owl-carousel site-blocks-cover">
-    @foreach($hero_images as $hero_image)
-    <div class="intro-section" style="background-image: url('{{ $hero_image->getFirstMediaUrl("hero-image", "cover") }}');">
+
+<div class="page-hero bg-image overlay-dark" style="background-image: url('_homepage/assets/img/bg_image_1.jpg');">
+    <div class="hero-section">
+        <div class="container text-center wow zoomIn">
+            <span class="subhead">Let's make your life happier</span>
+            <h1 class="display-4">Healthy Living</h1>
+            <a href="#" class="btn btn-primary">Let's Consult</a>
+        </div>
+    </div>
+</div>
+
+<div class="bg-light">
+    <div class="page-section py-3 mt-md-n5 custom-index">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-4 py-3 py-md-0">
+                    <div class="card-service wow fadeInUp">
+                        <div class="circle-shape bg-secondary text-white">
+                            <span class="mai-chatbubbles-outline"></span>
+                        </div>
+                        <p><span>Chat</span> with a doctors</p>
+                    </div>
+                </div>
+                <div class="col-md-4 py-3 py-md-0">
+                    <div class="card-service wow fadeInUp">
+                        <div class="circle-shape bg-primary text-white">
+                            <span class="mai-shield-checkmark"></span>
+                        </div>
+                        <p><span>One</span>-Health Protection</p>
+                    </div>
+                </div>
+                <div class="col-md-4 py-3 py-md-0">
+                    <div class="card-service wow fadeInUp">
+                        <div class="circle-shape bg-accent text-white">
+                            <span class="mai-basket"></span>
+                        </div>
+                        <p><span>One</span>-Health Pharmacy</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- .page-section -->
+
+    <div class="page-section pb-0">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-12 mx-auto text-center" data-aos="fade-up">
-                    <h1>{{ $hero_image->title }}</h1>
+                <div class="col-lg-6 py-3 wow fadeInUp">
+                    <h1>
+                        Welcome to Your Health <br />
+                        Center
+                    </h1>
+                    <p class="text-grey mb-4">
+                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                        diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                        aliquyam erat, sed diam voluptua. At vero eos et accusam et
+                        justo duo dolores et ea rebum. Accusantium aperiam earum ipsa
+                        eius, inventore nemo labore eaque porro consequatur ex
+                        aspernatur. Explicabo, excepturi accusantium! Placeat voluptates
+                        esse ut optio facilis!
+                    </p>
+                    <a href="about.html" class="btn btn-primary">Learn More</a>
                 </div>
-            </div>
-        </div>
-    </div>
-    @endforeach
-
-</div>
-
-<div></div>
-
-<div class="site-section">
-    <div class="container">
-        <div class="row mb-5 justify-content-center text-center">
-            <div class="col-lg-4 mb-5">
-                <h2 class="section-title-underline mb-5">
-                    <span>Why Academics Works</span>
-                </h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
-
-                <div class="feature-1 border">
-                    <div class="icon-wrapper bg-primary">
-                        <span class="flaticon-mortarboard text-white"></span>
-                    </div>
-                    <div class="feature-1-content">
-                        <h2>Personalize Learning</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit morbi hendrerit elit</p>
-                        <p><a href="#" class="btn btn-primary px-4 rounded-0">Learn More</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
-                <div class="feature-1 border">
-                    <div class="icon-wrapper bg-primary">
-                        <span class="flaticon-school-material text-white"></span>
-                    </div>
-                    <div class="feature-1-content">
-                        <h2>Trusted Courses</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit morbi hendrerit elit</p>
-                        <p><a href="#" class="btn btn-primary px-4 rounded-0">Learn More</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
-                <div class="feature-1 border">
-                    <div class="icon-wrapper bg-primary">
-                        <span class="flaticon-library text-white"></span>
-                    </div>
-                    <div class="feature-1-content">
-                        <h2>Tools for Students</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit morbi hendrerit elit</p>
-                        <p><a href="#" class="btn btn-primary px-4 rounded-0">Learn More</a></p>
+                <div class="col-lg-6 wow fadeInRight" data-wow-delay="400ms">
+                    <div class="img-place custom-img-1">
+                        <img src="{{ asset('_homepage/assets/img/bg-doctor.png') }}" alt="" />
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <!-- .bg-light -->
 </div>
+<!-- .bg-light -->
 
-
-<div class="site-section">
+<div class="page-section">
     <div class="container">
+        <h1 class="text-center mb-5 wow fadeInUp">Our Doctors</h1>
 
-
-        <div class="row mb-5 justify-content-center text-center">
-            <div class="col-lg-6 mb-5">
-                <h2 class="section-title-underline mb-3">
-                    <span>Tema Pelatihan</span>
-                </h2>
-                <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia, id?</p> -->
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-12">
-                <div class="owl-slide-3 owl-carousel">
-                    @foreach($tema_pelatihans as $tema)
-                    <div class="course-1-item">
-                        <figure class="thumnail">
-                            @if($tema->getFirstMediaUrl('tema-pelatihan', 'thumb'))
-                            <a href=""><img src="{{ $tema->getFirstMediaUrl('tema-pelatihan', 'thumb') }}" alt="Image" class="img-fluid"></a>
-                            @else
-                            <a href=""><img src="{{asset('img/placeholder.png') }}" alt="Image" class="img-fluid"></a>
-                            @endif
-                            <div class="category">
-                                <h3>{{ $tema->name }}</h3>
-                            </div>
-                        </figure>
-                        <div class="course-1-content pb-4">
-                            <!-- <h2>How To Create Mobile Apps Using Ionic</h2>
-                            <div class="rating text-center mb-3">
-                                <span class="icon-star2 text-warning"></span>
-                                <span class="icon-star2 text-warning"></span>
-                                <span class="icon-star2 text-warning"></span>
-                                <span class="icon-star2 text-warning"></span>
-                                <span class="icon-star2 text-warning"></span>
-                            </div> -->
-                            <p class="desc mb-4">{!!shrinkText($tema->description)!!}</p>
-                            <p><a href="" class="btn btn-primary rounded-0 px-4">Lihat Detail</a></p>
+        <div class="owl-carousel wow fadeInUp" id="doctorSlideshow">
+            <div class="item">
+                <div class="card-doctor">
+                    <div class="header">
+                        <img src="{{ asset('_homepage/assets/img/doctors/doctor_1.jpg') }}" alt="" />
+                        <div class="meta">
+                            <a href="#"><span class="mai-call"></span></a>
+                            <a href="#"><span class="mai-logo-whatsapp"></span></a>
                         </div>
                     </div>
-                    @endforeach
-
-                    <div class="course-1-item">
-                        <figure class="thumnail">
-                            <a href="course-single.html"><img src="{{ asset('_homepage/images/course_2.jpg') }}" alt="Image" class="img-fluid"></a>
-                            <div class="price">$99.00</div>
-                            <div class="category">
-                                <h3>Web Design</h3>
-                            </div>
-                        </figure>
-                        <div class="course-1-content pb-4">
-                            <h2>How To Create Mobile Apps Using Ionic</h2>
-                            <div class="rating text-center mb-3">
-                                <span class="icon-star2 text-warning"></span>
-                                <span class="icon-star2 text-warning"></span>
-                                <span class="icon-star2 text-warning"></span>
-                                <span class="icon-star2 text-warning"></span>
-                                <span class="icon-star2 text-warning"></span>
-                            </div>
-                            <p class="desc mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique accusantium ipsam.</p>
-                            <p><a href="course-single.html" class="btn btn-primary rounded-0 px-4">Enroll In This Course</a></p>
+                    <div class="body">
+                        <p class="text-xl mb-0">Dr. Stein Albert</p>
+                        <span class="text-sm text-grey">Cardiology</span>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="card-doctor">
+                    <div class="header">
+                        <img src="{{ asset('_homepage/assets/img/doctors/doctor_2.jpg') }}" alt="" />
+                        <div class="meta">
+                            <a href="#"><span class="mai-call"></span></a>
+                            <a href="#"><span class="mai-logo-whatsapp"></span></a>
                         </div>
                     </div>
-
+                    <div class="body">
+                        <p class="text-xl mb-0">Dr. Alexa Melvin</p>
+                        <span class="text-sm text-grey">Dental</span>
+                    </div>
                 </div>
-
+            </div>
+            <div class="item">
+                <div class="card-doctor">
+                    <div class="header">
+                        <img src="{{ asset('_homepage/assets/img/doctors/doctor_3.jpg') }}" alt="" />
+                        <div class="meta">
+                            <a href="#"><span class="mai-call"></span></a>
+                            <a href="#"><span class="mai-logo-whatsapp"></span></a>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <p class="text-xl mb-0">Dr. Rebecca Steffany</p>
+                        <span class="text-sm text-grey">General Health</span>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="card-doctor">
+                    <div class="header">
+                        <img src="{{ asset('_homepage/assets/img/doctors/doctor_3.jpg') }}" alt="" />
+                        <div class="meta">
+                            <a href="#"><span class="mai-call"></span></a>
+                            <a href="#"><span class="mai-logo-whatsapp"></span></a>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <p class="text-xl mb-0">Dr. Rebecca Steffany</p>
+                        <span class="text-sm text-grey">General Health</span>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="card-doctor">
+                    <div class="header">
+                        <img src="{{ asset('_homepage/assets/img/doctors/doctor_3.jpg') }}" alt="" />
+                        <div class="meta">
+                            <a href="#"><span class="mai-call"></span></a>
+                            <a href="#"><span class="mai-logo-whatsapp"></span></a>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <p class="text-xl mb-0">Dr. Rebecca Steffany</p>
+                        <span class="text-sm text-grey">General Health</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-
-
-
-<div class="section-bg style-1" style="background-image: url('_homepage/images/back_2.jpg');">
+<div class="page-section bg-light">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-4">
-                <h2 class="section-title-underline style-2">
-                    <span>About Our University</span>
-                </h2>
-            </div>
-            <div class="col-lg-8">
-                <p class="lead">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem nesciunt quaerat ad reiciendis perferendis voluptate fugiat sunt fuga error totam.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus assumenda omnis tempora ullam alias amet eveniet voluptas, incidunt quasi aut officiis porro ad, expedita saepe necessitatibus rem debitis architecto dolore? Nam omnis sapiente placeat blanditiis voluptas dignissimos, itaque fugit a laudantium adipisci dolorem enim ipsum cum molestias? Quod quae molestias modi fugiat quisquam. Eligendi recusandae officiis debitis quas beatae aliquam?</p>
-                <p><a href="#">Read more</a></p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- // 05 - Block -->
-<div class="site-section">
-    <div class="container">
-        <div class="row mb-5">
-            <div class="col-lg-4">
-                <h2 class="section-title-underline">
-                    <span>Testimonials</span>
-                </h2>
-            </div>
-        </div>
-
-
-        <div class="owl-slide owl-carousel">
-
-            <div class="ftco-testimonial-1">
-                <div class="ftco-testimonial-vcard d-flex align-items-center mb-4">
-                    <img src="{{ asset('_homepage/images/person_1.jpg') }}" alt="Image" class="img-fluid mr-3">
-                    <div>
-                        <h3>Allison Holmes</h3>
-                        <span>Designer</span>
+        <h1 class="text-center wow fadeInUp">Latest News</h1>
+        <div class="row mt-5">
+            <div class="col-lg-4 py-2 wow zoomIn">
+                <div class="card-blog">
+                    <div class="header">
+                        <div class="post-category">
+                            <a href="#">Covid19</a>
+                        </div>
+                        <a href="blog-details.html" class="post-thumb">
+                            <img src="{{ asset('_homepage/assets/img/blog/blog_1.jpg') }}" alt="" />
+                        </a>
                     </div>
-                </div>
-                <div>
-                    <p>&ldquo;Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, mollitia. Possimus mollitia nobis libero quidem aut tempore dolore iure maiores, perferendis, provident numquam illum nisi amet necessitatibus. A, provident aperiam!&rdquo;</p>
-                </div>
-            </div>
-
-            <div class="ftco-testimonial-1">
-                <div class="ftco-testimonial-vcard d-flex align-items-center mb-4">
-                    <img src="{{ asset('_homepage/images/person_2.jpg') }}" alt="Image" class="img-fluid mr-3">
-                    <div>
-                        <h3>Allison Holmes</h3>
-                        <span>Designer</span>
-                    </div>
-                </div>
-                <div>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, mollitia. Possimus mollitia nobis libero quidem aut tempore dolore iure maiores, perferendis, provident numquam illum nisi amet necessitatibus. A, provident aperiam!</p>
-                </div>
-            </div>
-
-            <div class="ftco-testimonial-1">
-                <div class="ftco-testimonial-vcard d-flex align-items-center mb-4">
-                    <img src="{{ asset('_homepage/images/person_4.jpg') }}" alt="Image" class="img-fluid mr-3">
-                    <div>
-                        <h3>Allison Holmes</h3>
-                        <span>Designer</span>
-                    </div>
-                </div>
-                <div>
-                    <p>&ldquo;Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, mollitia. Possimus mollitia nobis libero quidem aut tempore dolore iure maiores, perferendis, provident numquam illum nisi amet necessitatibus. A, provident aperiam!&rdquo;</p>
-                </div>
-            </div>
-
-            <div class="ftco-testimonial-1">
-                <div class="ftco-testimonial-vcard d-flex align-items-center mb-4">
-                    <img src="{{ asset('_homepage/images/person_3.jpg') }}" alt="Image" class="img-fluid mr-3">
-                    <div>
-                        <h3>Allison Holmes</h3>
-                        <span>Designer</span>
-                    </div>
-                </div>
-                <div>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, mollitia. Possimus mollitia nobis libero quidem aut tempore dolore iure maiores, perferendis, provident numquam illum nisi amet necessitatibus. A, provident aperiam!</p>
-                </div>
-            </div>
-
-            <div class="ftco-testimonial-1">
-                <div class="ftco-testimonial-vcard d-flex align-items-center mb-4">
-                    <img src="{{ asset('_homepage/images/person_2.jpg') }}" alt="Image" class="img-fluid mr-3">
-                    <div>
-                        <h3>Allison Holmes</h3>
-                        <span>Designer</span>
-                    </div>
-                </div>
-                <div>
-                    <p>&ldquo;Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, mollitia. Possimus mollitia nobis libero quidem aut tempore dolore iure maiores, perferendis, provident numquam illum nisi amet necessitatibus. A, provident aperiam!&rdquo;</p>
-                </div>
-            </div>
-
-            <div class="ftco-testimonial-1">
-                <div class="ftco-testimonial-vcard d-flex align-items-center mb-4">
-                    <img src="{{ asset('_homepage/images/person_4.jpg') }}" alt="Image" class="img-fluid mr-3">
-                    <div>
-                        <h3>Allison Holmes</h3>
-                        <span>Designer</span>
-                    </div>
-                </div>
-                <div>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, mollitia. Possimus mollitia nobis libero quidem aut tempore dolore iure maiores, perferendis, provident numquam illum nisi amet necessitatibus. A, provident aperiam!</p>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-</div>
-
-
-<div class="section-bg style-1" style="background-image: url('_homepage/images/back_1.jpg');">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
-                <span class="icon flaticon-mortarboard"></span>
-                <h3>Our Philosphy</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis recusandae, iure repellat quis delectus ea? Dolore, amet reprehenderit.</p>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
-                <span class="icon flaticon-school-material"></span>
-                <h3>Academics Principle</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis recusandae, iure repellat quis delectus ea?
-                    Dolore, amet reprehenderit.</p>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
-                <span class="icon flaticon-library"></span>
-                <h3>Key of Success</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis recusandae, iure repellat quis delectus ea?
-                    Dolore, amet reprehenderit.</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="news-updates">
-    <div class="container">
-
-        <div class="row">
-            <div class="col-lg-9">
-                <div class="section-heading">
-                    <h2 class="text-black">News &amp; Updates</h2>
-                    <a href="#">Read All News</a>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="post-entry-big">
-                            <a href="{{ route('homepage.post.detail', $post->slug) }}" class="img-link"><img src="{{ $post->getFirstMediaUrl('posts', 'thumb') }}" alt="Image" class="img-fluid"></a>
-                            <div class="post-content">
-                                <div class="post-meta">
-                                    <span class="mx-1">{{ $post->created_at }}</span>
-                                    <!-- <span class="mx-1">/</span> -->
-                                    <!-- <a href="#">Admission</a>, <a href="#">Updates</a> -->
+                    <div class="body">
+                        <h5 class="post-title">
+                            <a href="blog-details.html">List of Countries without Coronavirus case</a>
+                        </h5>
+                        <div class="site-info">
+                            <div class="avatar mr-2">
+                                <div class="avatar-img">
+                                    <img src="{{ asset('_homepage/assets/img/person/person_1.jpg') }}" alt="" />
                                 </div>
-                                <h3 class="post-heading"><a href="{{ route('homepage.post.detail', $post->slug) }}">{{shrinkTitle($post->title)}}</a></h3>
+                                <span>Roger Adams</span>
                             </div>
+                            <span class="mai-time"></span> 1 week ago
                         </div>
-                    </div>
-                    <div class="col-lg-6">
-                        @foreach($other_posts as $other_post)
-                        <div class="post-entry-big horizontal d-flex mb-4">
-                            <a href="{{ route('homepage.post.detail', $other_post->slug) }}" class="img-link mr-4"><img src="{{ $other_post->getFirstMediaUrl('posts', 'preview') }}" alt="Image" class="img-fluid"></a>
-                            <div class="post-content">
-                                <div class="post-meta">
-                                    <span class="mx-1">{{ $other_post->created_at }}</span>
-                                </div>
-                                <h3 class="post-heading"><a href="{{ route('homepage.post.detail', $other_post->slug) }}">{{shrinkTitle($other_post->title)}}</a></h3>
-                            </div>
-                        </div>
-                        @endforeach
-
-                        <!-- <div class="post-entry-big horizontal d-flex mb-4">
-                            <a href="news-single.html" class="img-link mr-4"><img src="{{ asset('_homepage/images/blog_2.jpg') }}" alt="Image" class="img-fluid"></a>
-                            <div class="post-content">
-                                <div class="post-meta">
-                                    <a href="#">June 6, 2019</a>
-                                    <span class="mx-1">/</span>
-                                    <a href="#">Admission</a>, <a href="#">Updates</a>
-                                </div>
-                                <h3 class="post-heading"><a href="news-single.html">Campus Camping and Learning Session</a></h3>
-                            </div>
-                        </div>
-
-                        <div class="post-entry-big horizontal d-flex mb-4">
-                            <a href="news-single.html" class="img-link mr-4"><img src="{{ asset('_homepage/images/blog_1.jpg') }}" alt="Image" class="img-fluid"></a>
-                            <div class="post-content">
-                                <div class="post-meta">
-                                    <a href="#">June 6, 2019</a>
-                                    <span class="mx-1">/</span>
-                                    <a href="#">Admission</a>, <a href="#">Updates</a>
-                                </div>
-                                <h3 class="post-heading"><a href="news-single.html">Campus Camping and Learning Session</a></h3>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3">
-                <div class="section-heading">
-                    <h2 class="text-black">Campus Videos</h2>
-                    <a href="#">View All Videos</a>
+            <div class="col-lg-4 py-2 wow zoomIn">
+                <div class="card-blog">
+                    <div class="header">
+                        <div class="post-category">
+                            <a href="#">Covid19</a>
+                        </div>
+                        <a href="blog-details.html" class="post-thumb">
+                            <img src="{{ asset('_homepage/assets/img/blog/blog_2.jpg') }}" alt="" />
+                        </a>
+                    </div>
+                    <div class="body">
+                        <h5 class="post-title">
+                            <a href="blog-details.html">Recovery Room: News beyond the pandemic</a>
+                        </h5>
+                        <div class="site-info">
+                            <div class="avatar mr-2">
+                                <div class="avatar-img">
+                                    <img src="{{ asset('_homepage/assets/img/person/person_1.jpg') }}" alt="" />
+                                </div>
+                                <span>Roger Adams</span>
+                            </div>
+                            <span class="mai-time"></span> 4 weeks ago
+                        </div>
+                    </div>
                 </div>
-                @foreach($videos as $video)
-                <!-- <a href="https://vimeo.com/45830194" class="video-1 mb-4" data-fancybox="" data-ratio="2"> -->
-                {!! convertYoutube($video->link_media) !!}
-                <!-- <img src="{{ asset('_homepage/images/course_5.jpg') }}" alt="Image" class="img-fluid"> -->
-                </a>
-                @endforeach
+            </div>
+            <div class="col-lg-4 py-2 wow zoomIn">
+                <div class="card-blog">
+                    <div class="header">
+                        <div class="post-category">
+                            <a href="#">Covid19</a>
+                        </div>
+                        <a href="blog-details.html" class="post-thumb">
+                            <img src="{{ asset('_homepage/assets/img/blog/blog_3.jpg') }}" alt="" />
+                        </a>
+                    </div>
+                    <div class="body">
+                        <h5 class="post-title">
+                            <a href="blog-details.html">What is the impact of eating too much sugar?</a>
+                        </h5>
+                        <div class="site-info">
+                            <div class="avatar mr-2">
+                                <div class="avatar-img">
+                                    <img src="{{ asset('_homepage/assets/img/person/person_2.jpg') }}" alt="" />
+                                </div>
+                                <span>Diego Simmons</span>
+                            </div>
+                            <span class="mai-time"></span> 2 months ago
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 text-center mt-4 wow zoomIn">
+                <a href="blog.html" class="btn btn-primary">Read More</a>
             </div>
         </div>
     </div>
 </div>
+<!-- .page-section -->
 
-<!-- <div class="site-section ftco-subscribe-1" style="background-image: url('{{ asset('_homepage/images/bg_1.jpg') }}')">
+<div class="page-section">
     <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-7">
-                <h2>Subscribe to us!</h2>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,</p>
+        <h1 class="text-center wow fadeInUp">Make an Appointment</h1>
+
+        <form class="main-form">
+            <div class="row mt-5">
+                <div class="col-12 col-sm-6 py-2 wow fadeInLeft">
+                    <input type="text" class="form-control" placeholder="Full name" />
+                </div>
+                <div class="col-12 col-sm-6 py-2 wow fadeInRight">
+                    <input type="text" class="form-control" placeholder="Email address.." />
+                </div>
+                <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
+                    <input type="date" class="form-control" />
+                </div>
+                <div class="col-12 col-sm-6 py-2 wow fadeInRight" data-wow-delay="300ms">
+                    <select name="departement" id="departement" class="custom-select">
+                        <option value="general">General Health</option>
+                        <option value="cardiology">Cardiology</option>
+                        <option value="dental">Dental</option>
+                        <option value="neurology">Neurology</option>
+                        <option value="orthopaedics">Orthopaedics</option>
+                    </select>
+                </div>
+                <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
+                    <input type="text" class="form-control" placeholder="Number.." />
+                </div>
+                <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
+                    <textarea name="message" id="message" class="form-control" rows="6" placeholder="Enter message.."></textarea>
+                </div>
             </div>
-            <div class="col-lg-5">
-                <form action="" class="d-flex">
-                    <input type="text" class="rounded form-control mr-2 py-3" placeholder="Enter your email">
-                    <button class="btn btn-primary rounded py-3 px-4" type="submit">Send</button>
-                </form>
-            </div>
-        </div>
+
+            <button type="submit" class="btn btn-primary mt-3 wow zoomIn">
+                Submit Request
+            </button>
+        </form>
     </div>
-</div> -->
+</div>
+<!-- .page-section -->
 @endsection

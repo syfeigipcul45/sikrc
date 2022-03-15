@@ -1,73 +1,65 @@
-<div class="container container-menu">
-    <div class="d-flex align-items-center">
-        <div class="site-logo">
-            <a href="{{ route('home') }}" class="d-block">
-                <img src="{{ getOption()->logo }}" style="height: 70px;" alt="Image" class="img-fluid">
-            </a>
+<nav class="navbar navbar-expand-lg navbar-light shadow-sm">
+    <div class="container">
+        <a class="navbar-brand" href="{{ route('home') }}">
+            <img src="{{ getOption()->logo }}" style="height: 70px;" alt="Image" class="img-fluid">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupport" aria-controls="navbarSupport" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupport">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item {{ Request::is('/') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('home') }}">Home</a>
+                </li>
+                <li class="nav-item dropdown {{ Request::is('profil*') ? 'active' : '' }}">
+                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profil</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        @foreach(getProfil() as $profil)
+                        <a class="dropdown-item" href="{{ route('homepage.profil.detail', $profil->slug) }}">{{ $profil->name }}</a>
+                        @endforeach
+                    </div>
+                </li>
+                <li class="nav-item {{ Request::is('berita*') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('homepage.post.post') }}">Berita</a>
+                </li>
+                <li class="nav-item {{ Request::is('pengajar*') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('homepage.pengajar.index') }}">Pengajar</a>
+                </li>
+                <li class="nav-item {{ Request::is('fasilitas*') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('homepage.fasilitas.index') }}">Fasilitas</a>
+                </li>
+                <li class="nav-item dropdown {{ Request::is('pelatihan*') ? 'active' : '' }}">
+                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pelatihan</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="{{ route('homepage.pelatihan.jadwal_pelatihan') }}">Jadwal Pelatihan</a>
+                        <a class="dropdown-item" href="{{ route('homepage.pelatihan.materi_pelatihan') }}">Materi Pelatihan</a>
+                    </div>
+                </li>
+                <li class="nav-item {{ Request::is('alumni-krc*') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('homepage.alumni.index') }}">Alumni KRC</a>
+                </li>
+                <li class="nav-item dropdown {{ Request::is('media*') ? 'active' : '' }}">
+                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Media</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="{{ route('homepage.media.photo') }}">Galeri Foto</a>
+                        <a class="dropdown-item" href="{{ route('homepage.media.video') }}">Galeri Video</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown {{ Request::is('promosi*') ? 'active' : '' }}">
+                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Promosi</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="{{ route('homepage.promosi.produk') }}">Produk</a>
+                        <a class="dropdown-item" href="{{ route('homepage.promosi.kerja_sama') }}">Kerja Sama</a>
+                    </div>
+                </li>
+                <li class="nav-item {{ Request::is('produk*') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('homepage.kontak.index') }}">Kontak</a>
+                </li>
+            </ul>
         </div>
-        <div class="mr-auto">
-            <nav class="site-navigation position-relative text-right" role="navigation">
-                <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                    <li class="{{ Request::is('/') ? 'active' : '' }}">
-                        <a href="{{ route('home') }}" class="nav-link text-left">Home</a>
-                    </li>
-                    <li class="has-children {{ Request::is('profil*') ? 'active' : '' }}">
-                        <a href="#" class="nav-link text-left">Profil</a>
-                        <ul class="dropdown">
-                            @foreach(getProfil() as $profil)
-                            <li><a href="{{ route('homepage.profil.detail', $profil->slug) }}">{{ $profil->name }}</a></li>
-                            @endforeach
-                        </ul>
-                    </li>
-                    <li class="{{ Request::is('berita*') ? 'active' : '' }}">
-                        <a href="{{ route('homepage.post.post') }}" class="nav-link text-left">Berita</a>
-                    </li>
-                    <li class="{{ Request::is('pengajar*') ? 'active' : '' }}">
-                        <a href="{{ route('homepage.pengajar.index') }}" class="nav-link text-left">Pengajar</a>
-                    </li>
-                    <li class="{{ Request::is('fasilitas*') ? 'active' : '' }}">
-                        <a href="{{ route('homepage.fasilitas.index') }}" class="nav-link text-left">Fasilitas</a>
-                    </li>
-                    <li class="has-children {{ Request::is('pelatihan*') ? 'active' : '' }}">
-                        <a href="#" class="nav-link text-left">Pelatihan</a>
-                        <ul class="dropdown">
-                            <li><a href="{{ route('homepage.pelatihan.jadwal_pelatihan') }}">Jadwal Pelatihan</a></li>
-                            <li><a href="{{ route('homepage.pelatihan.materi_pelatihan') }}">Materi Pelatihan</a></li>
-                        </ul>
-                    </li>
-                    <li class="{{ Request::is('alumni-krc*') ? 'active' : '' }}">
-                        <a href="{{ route('homepage.alumni.index') }}" class="nav-link text-left">Alumni KRC</a>
-                    </li>
-                    <li class="has-children {{ Request::is('media*') ? 'active' : '' }}">
-                        <a href="#" class="nav-link text-left">Media</a>
-                        <ul class="dropdown">
-                            <li><a href="{{ route('homepage.media.photo') }}">Foto</a></li>
-                            <li><a href="{{ route('homepage.media.video') }}">Video</a></li>
-                        </ul>
-                    </li>
-                    <li class="has-children {{ Request::is('promosi*') ? 'active' : '' }}">
-                        <a href="#" class="nav-link text-left">Promosi</a>
-                        <ul class="dropdown">
-                            <li><a href="{{ route('homepage.promosi.produk') }}">Produk</a></li>
-                            <li><a href="{{ route('homepage.promosi.kerja_sama') }}">Kerja Sama</a></li>
-                        </ul>
-                    </li>
-                    <li class="{{ Request::is('kontak*') ? 'active' : '' }}">
-                        <a href="{{ route('homepage.kontak.index') }}" class="nav-link text-left">Kontak</a>
-                    </li>
-                </ul>
-            </nav>
-
-        </div>
-        <!-- <div class="ml-auto">
-            <div class="social-wrap">
-                <a href="{{ getOption()->facebook }}" target="_blank"><span class="icon-facebook"></span></a>
-                <a href="{{ getOption()->instagram }}" target="_blank"><span class="icon-instagram"></span></a>
-                <a href="{{ getOption()->youtube }}" target="_blank"><span class="icon-youtube"></span></a>
-
-                <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a>
-            </div>
-        </div> -->
-
+        <!-- .navbar-collapse -->
     </div>
-</div>
+    <!-- .container -->
+</nav>

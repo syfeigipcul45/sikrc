@@ -21,7 +21,7 @@ Tambah Hero Images
     <!-- Content Row -->
     <div class="row">
         <div class="col-xl-8 col-lg-7">
-    
+
             <!-- Area Chart -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
@@ -57,7 +57,8 @@ Tambah Hero Images
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Deskripsi</label>
-                                <textarea class="form-control" name="description">{{ old('description') }}</textarea>
+                                <textarea class="form-control" name="description" onkeyup="countChars(this);">{{ old('description') }}</textarea>
+                                <p id="charNum">0 karakter</p>
                                 @error('description')
                                 <small class="form-text error-input">{{ $message }}</small>
                                 @enderror
@@ -71,7 +72,7 @@ Tambah Hero Images
                     </button>
                 </div>
             </div>
-    
+
         </div>
     </div>
 </form>
@@ -83,11 +84,11 @@ Tambah Hero Images
         selector: 'textarea#content-news',
         plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
         toolbar_mode: 'floating',
-        height : "480"
+        height: "480"
     });
 
     $('#status').change(function() {
-        if($('#status').is(':checked')) {
+        if ($('#status').is(':checked')) {
             $('#status-value').val(1);
         } else {
             $('#status-value').val(0);
@@ -107,6 +108,17 @@ Tambah Hero Images
                 $('#image-preview').fadeIn(650);
             }
             reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    function countChars(obj) {
+        var maxLength = 200;
+        var strLength = obj.value.length;
+
+        if (strLength > maxLength) {
+            document.getElementById("charNum").innerHTML = '<span style="color: red;">' + strLength + ' dari ' + maxLength + ' karakter</span>';
+        } else {
+            document.getElementById("charNum").innerHTML = strLength + ' dari ' + maxLength + ' karakter';
         }
     }
 </script>

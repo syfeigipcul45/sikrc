@@ -6,33 +6,30 @@
 
 @section('content')
 
-<div class="section-bg style-1">
+<div class="page-section pt-5">
     <div class="container">
-        <div class="row align-items-end">
+        <div class="row">
+            <div class="col-lg-8">
+                <nav aria-label="Breadcrumb">
+                    <ol class="breadcrumb bg-transparent py-0 mb-5">
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#">Profil</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ $profil->name }}</li>
+                    </ol>
+                </nav>
+            </div>
+        </div> <!-- .row -->
+
+        <div class="row">
             <div class="col-lg-12">
-                <h2 class="mb-0" style="color: white;">{{ $profil->name }}</h2>
+                <article class="blog-details">
+                    <h2 class="post-title h1">{{ $profil->name }}</h2>
+                    <div class="post-content">
+                        {!! $profil->content !!}
+                    </div>
+                </article> <!-- .blog-details -->
             </div>
-        </div>
-    </div>
-</div>
-
-
-<div class="custom-breadcrumns border-bottom">
-    <div class="container">
-        <a href="{{ route('home') }}">Home</a>
-        <span class="mx-3 icon-keyboard_arrow_right"></span>
-        <span class="current">Profil</span>
-    </div>
-</div>
-
-<div class="site-section">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-9 mb-4">
-                {!! $profil->content !!}
-            </div>
-
-        </div>
-    </div>
-</div>
+        </div> <!-- .row -->
+    </div> <!-- .container -->
+</div> <!-- .page-section -->
 @endsection

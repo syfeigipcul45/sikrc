@@ -54,12 +54,13 @@ class HeroImageController extends Controller
             $validator = Validator::make($request->all(), [
                 'thumbnail' => 'required|max:5000',
                 'title' => 'required',
-                'description' => 'required'
+                'description' => 'required|max:200'
             ], [
                 'thumbnail.required' => 'Gambar harus diisi!',
                 'thumbnail.max' => 'Ukuran gambar maskimal 5MB',
                 'title.required' => 'Judul harus diisi!',
-                'description.required' => 'Deskripsi harus diisi!'
+                'description.required' => 'Deskripsi harus diisi!',
+                'description.max' => 'Karakter maksimal 200 karakter'
             ]);
 
             if($validator->fails()) {

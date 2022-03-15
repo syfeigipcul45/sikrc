@@ -32,8 +32,8 @@ class HeroImage extends Model implements HasMedia
             ->sharpen(10);
 
         $this->addMediaConversion('cover')
-            ->width(1900)
-            ->height(1267);
+            ->width(1440)
+            ->height(872);
     }
 
 }
