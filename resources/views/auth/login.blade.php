@@ -4,31 +4,23 @@
 Login
 @endsection
 @section('content')
-<div class="site-section ftco-subscribe-1 site-blocks-cover pb-4" style="background-image: url('_homepage/images/bg_1.jpg')">
+<div class="page-banner overlay-dark bg-image" style="background-image: url(<?= asset('_homepage/assets/img/bg_login.jpg') ?>);">
+    <div class="banner-section">
+        <div class="container text-center wow fadeInUp">
+            <nav aria-label="Breadcrumb">
+                <ol class="breadcrumb breadcrumb-dark bg-transparent justify-content-center py-0 mb-2">
+                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Login</li>
+                </ol>
+            </nav>
+            <h1 class="font-weight-normal">Login</h1>
+        </div> <!-- .container -->
+    </div> <!-- .banner-section -->
+</div> <!-- .page-banner -->
+
+<div class="page-section">
     <div class="container">
-        <div class="row align-items-end justify-content-center text-center">
-            <div class="col-lg-7">
-                <h2 class="mb-0">Login</h2>
-                <p></p>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div class="custom-breadcrumns border-bottom">
-    <div class="container">
-        <a href="index.html">Home</a>
-        <span class="mx-3 icon-keyboard_arrow_right"></span>
-        <span class="current">Login</span>
-    </div>
-</div>
-
-<div class="site-section">
-    <div class="container">
-
-
-        <div class="row justify-content-center">
+    <div class="row justify-content-center">
             <div class="col-md-5">
                 @if (Session::has('message'))
                 <div class="alert alert-success" role="alert">
@@ -61,9 +53,10 @@ Login
                     </div>
                 </form>
             </div>
-        </div>
-    </div>
-</div>
+        </div> <!-- .row -->
+    </div> <!-- .container -->
+</div> <!-- .page-section -->
+
 <!-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

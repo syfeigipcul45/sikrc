@@ -110,71 +110,64 @@ Detail Produk
 
 @section('content')
 
-<div class="section-bg style-1">
+<div class="page-section pt-5">
     <div class="container">
-        <div class="row align-items-end">
+        <div class="row">
             <div class="col-lg-12">
-                <h2 class="mb-0" style="color: white;">{{ $produk->name }}</h2>
-                <p style="color: white;"></p>
+                <nav aria-label="Breadcrumb">
+                    <ol class="breadcrumb bg-transparent py-0 mb-5">
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('homepage.promosi.produk') }}">Promosi</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ $produk->name }}</li>
+                    </ol>
+                </nav>
             </div>
-        </div>
-    </div>
-</div>
+        </div> <!-- .row -->
 
-
-<div class="custom-breadcrumns border-bottom">
-    <div class="container">
-        <a href="{{ route('home') }}">Home</a>
-        <span class="mx-3 icon-keyboard_arrow_right"></span>
-        <span class="current">Detail Produk</span>
-    </div>
-</div>
-
-<div class="site-section">
-    <div class="container">
-        <!-- default start -->
-        <section id="default" class="padding-top0">
-            <div class="row">
-                <div class="col-md-5">
-                    <div class="xzoom-container">
-                        <img class="xzoom" id="xzoom-default" width="400" src="{{ $produk->getFirstMediaUrl('produk', 'cover')}}" />
-                        <div class="xzoom-thumbs">
-                            @foreach($produk->getMedia('produk') as $image)
-                            <a href="{{ $image->getUrl('cover') }}">
-                                <img class="xzoom-gallery" width="80" src="{{ $image->getUrl('cover') }}">
-                            </a>
-                            @endforeach
+        <div class="row">
+            <!-- default start -->
+            <section id="default" class="padding-top0">
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="xzoom-container">
+                            <img class="xzoom" id="xzoom-default" width="400" src="{{ $produk->getFirstMediaUrl('produk', 'cover')}}" />
+                            <div class="xzoom-thumbs" style="margin-top: 10px;">
+                                @foreach($produk->getMedia('produk') as $image)
+                                <a href="{{ $image->getUrl('cover') }}">
+                                    <img class="xzoom-gallery" width="80" src="{{ $image->getUrl('cover') }}">
+                                </a>
+                                @endforeach
+                            </div>
+                            <hr>
                         </div>
+                    </div>
+                    <div class="col-md-7">
+                        <h2>{{ $produk->name }}</h2>
+                        <h4>Deskripsi Produk</h4>
+                        <p>{!! $produk->description !!}</p>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <strong>Harga</strong>
+                            </div>
+                            <div class="col-md-10">
+                                :&nbsp;{{ convertToRupiah($produk->price) }}
+                            </div>
+                            <div class="col-md-2">
+                                <strong>Jumlah</strong>
+                            </div>
+                            <div class="col-md-10">
+                                :&nbsp;{{ $produk->stock }}
+                            </div>
+                        </div>
+                        <a href="https://wa.me/{{ convertWhatsappNumber(getOption()->whatsapp) }}?text=Saya ingin membeli {{$produk->name}}" target="_blank" class="btn btn-primary mt-5 w-25">Pesan</a>
                         <hr>
                     </div>
                 </div>
-                <div class="col-md-7">
-                    <h2>{{ $produk->name }}</h2>
-                    <h4>Deskripsi Produk</h4>
-                    <p>{!! $produk->description !!}</p>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <strong>Harga</strong>
-                        </div>
-                        <div class="col-md-10">
-                            :&nbsp;{{ convertToRupiah($produk->price) }}
-                        </div>
-                        <div class="col-md-2">
-                            <strong>Jumlah</strong>
-                        </div>
-                        <div class="col-md-10">
-                            :&nbsp;{{ $produk->stock }}
-                        </div>
-                    </div>
-                    <a href="https://wa.me/{{ convertWhatsappNumber(getOption()->whatsapp) }}?text=Saya ingin membeli {{$produk->name}}" target="_blank" class="btn btn-primary mt-5 w-25">Pesan</a>
-                    <hr>
-                </div>
-            </div>
-        </section>
-        <!-- default end -->
-    </div>
-</div>
-</div>
+            </section>
+            <!-- default end -->
+        </div> <!-- .row -->
+    </div> <!-- .container -->
+</div> <!-- .page-section -->
 @endsection
 
 @section('extra-js')

@@ -136,71 +136,71 @@ Detail Fasilitas
 
 @section('content')
 
-<div class="section-bg style-1">
+<div class="page-section pt-5">
     <div class="container">
-        <div class="row align-items-end">
+        <div class="row">
             <div class="col-lg-12">
-                <h2 class="mb-0" style="color: white;">{{ $fasilitas->name }}</h2>
+                <nav aria-label="Breadcrumb">
+                    <ol class="breadcrumb bg-transparent py-0 mb-5">
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('homepage.fasilitas.index') }}">Fasilitas</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ $fasilitas->name }}</li>
+                    </ol>
+                </nav>
             </div>
-        </div>
-    </div>
-</div>
+        </div> <!-- .row -->
 
-
-<div class="custom-breadcrumns border-bottom">
-    <div class="container">
-        <a href="{{ route('home') }}">Home</a>
-        <span class="mx-3 icon-keyboard_arrow_right"></span>
-        <span class="current">Fasilitas</span>
-    </div>
-</div>
-
-<div class="site-section">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8 mb-4">
-                <p>
-                    @if($fasilitas->getFirstMediaUrl('fasilitas', 'cover'))
-                <div class="carousel-container">
-                    @php $no=1; @endphp
-                    @foreach($fasilitas->getMedia('fasilitas') as $image)
-                    <div class="mySlides animate">
-                        <img src="{{ $image->getUrl('cover') }}" alt="slide" />
-                        <div class="number">{{$no++}} / {{$total}}</div>
-                    </div>
-                    @endforeach
-                    <!-- Next and previous buttons -->
-                    <a class="prev" onclick="prevSlide()">&#10094;</a>
-                    <a class="next" onclick="nextSlide()">&#10095;</a>
-
-                    <!-- The dots/circles -->
-                    <div class="dots-container">
+        <div class="row">
+            <div class="col-lg-8">
+                <article class="blog-details">
+                    <p>
+                        @if($fasilitas->getFirstMediaUrl('fasilitas', 'cover'))
+                    <div class="carousel-container">
                         @php $no=1; @endphp
                         @foreach($fasilitas->getMedia('fasilitas') as $image)
-                        <span class="dots" onclick="currentSlide($no++)"></span>
+                        <div class="mySlides animate">
+                            <img src="{{ $image->getUrl('cover') }}" alt="slide" />
+                            <div class="number">{{$no++}} / {{$total}}</div>
+                        </div>
+                        @endforeach
+                        <!-- Next and previous buttons -->
+                        <a class="prev" onclick="prevSlide()">&#10094;</a>
+                        <a class="next" onclick="nextSlide()">&#10095;</a>
+
+                        <!-- The dots/circles -->
+                        <div class="dots-container">
+                            @php $no=1; @endphp
+                            @foreach($fasilitas->getMedia('fasilitas') as $image)
+                            <span class="dots" onclick="currentSlide($no++)"></span>
+                            @endforeach
+                        </div>
+                    </div>
+                    @else
+                    @endif
+                    </p>
+                    {!! $fasilitas->description !!}
+                </article> <!-- .blog-details -->
+            </div>
+            <div class="col-lg-4">
+                <div class="sidebar">
+                    <div class="sidebar-block">
+                        <h3 class="sidebar-title">Fasilitas Lain</h3>
+                        @foreach($other_fasilitas as $other)
+                        <div class="post-entry-big horizontal d-flex mb-4">
+                            <a href="{{ route('homepage.fasilitas.detail', $other->slug) }}" class="img-link mr-4">
+                                <img src="{{ $other->getFirstMediaUrl('fasilitas', 'preview') }}" alt="Image" class="img-fluid">
+                            </a>
+                            <div class="post-content">
+                                <h6 class="post-heading"><a href="{{ route('homepage.fasilitas.detail', $other->slug) }}">{{shrinkTitle($other->name)}}</a></h6>
+                            </div>
+                        </div>
                         @endforeach
                     </div>
                 </div>
-                @else
-                @endif
-                </p>
-                {!! $fasilitas->description !!}
             </div>
-            <div class="col-md-4">
-                @foreach($other_fasilitas as $other)
-                <div class="post-entry-big horizontal d-flex mb-4">
-                    <a href="{{ route('homepage.fasilitas.detail', $other->slug) }}" class="img-link mr-4">
-                        <img src="{{ $other->getFirstMediaUrl('fasilitas', 'preview') }}" alt="Image" class="img-fluid">
-                    </a>
-                    <div class="post-content">
-                        <h6 class="post-heading"><a href="{{ route('homepage.fasilitas.detail', $other->slug) }}">{{shrinkTitle($other->name)}}</a></h6>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-        </div>
-    </div>
-</div>
+        </div> <!-- .row -->
+    </div> <!-- .container -->
+</div> <!-- .page-section -->
 @endsection
 
 @section('extra-js')

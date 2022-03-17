@@ -17,6 +17,7 @@
     <link href="{{ asset('img/favicon.png') }}" rel="icon">
     @endif
 
+    <link href="{{ asset('_dashboard/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="{{ asset('_homepage/assets/css/maicons.css') }}" />
 
     <link rel="stylesheet" href="{{ asset('_homepage/assets/css/bootstrap.css') }}" />

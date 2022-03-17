@@ -131,8 +131,7 @@ Media Foto
             transform: scale(1) rotateY(0deg);
         }
     }
-</style>
-<style>
+
     .thumb {
         margin-bottom: 15px;
         position: relative;
@@ -188,7 +187,7 @@ Media Foto
         border-bottom: .10rem solid #C7C7C5;
         color: #AAA7A0;
         font-size: .8rem;
-        /* padding-bottom: 2.5rem; */
+        padding-bottom: 2.5rem;
         margin: 0 auto 2.4rem;
         max-width: 17rem;
     }
@@ -197,50 +196,85 @@ Media Foto
 
 @section('content')
 
-<div class="section-bg style-1">
+<div class="page-banner overlay-dark bg-image" style="background-image: url(<?= asset('_homepage/assets/img/bg_image_1.jpg') ?>);">
+    <div class="banner-section">
+        <div class="container text-center wow fadeInUp">
+            <nav aria-label="Breadcrumb">
+                <ol class="breadcrumb breadcrumb-dark bg-transparent justify-content-center py-0 mb-2">
+                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Media</a></li>
+                    <li class="breadcrumb-item" aria-current="page">Galeri Foto</li>
+                </ol>
+            </nav>
+            <h1 class="font-weight-normal">Galeri Foto</h1>
+        </div> <!-- .container -->
+    </div> <!-- .banner-section -->
+</div> <!-- .page-banner -->
+
+<div class="page-section">
     <div class="container">
-        <div class="row align-items-end">
-            <div class="col-lg-12">
-                <h2 class="mb-0" style="color: white;">Galeri Foto</h2>
-                <p style="color: white;"></p>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div class="custom-breadcrumns border-bottom">
-    <div class="container">
-        <a href="{{ route('home') }}">Home</a>
-        <span class="mx-3 icon-keyboard_arrow_right"></span>
-        <span class="current">Galeri Foto</span>
-    </div>
-</div>
-
-<div class="site-section">
-    <section class="container">
         <div class="row">
-            @foreach($photos as $photo)
-            <div class="col-lg-4 col-md-4 col-xs-6 thumb">
-                <a href="#" data-toggle="modal" data-target="#photoModal" data-id="{{$photo->id}}">
-                    <figure>
-                        <img class="img-fluid img-thumbnail" src="{{ $photo->getFirstMediaUrl('media-photo','cover') }}" alt="Random Image">
-                        <!-- <i class="fa fa-camera"></i> -->
-                    </figure>
+            <div class="col-lg-12">
+                <div class="row">
+                    @foreach($photos as $photo)
+                    <div class="col-lg-4 col-md-4 col-xs-6 thumb">
+                        <a href="#" data-toggle="modal" data-target="#photoModal_{{$photo->id}}" data-id="{{$photo->id}}">
+                            <figure>
+                                <img class="img-fluid img-thumbnail" src="{{ $photo->getFirstMediaUrl('media-photo','cover') }}" alt="Random Image">
+                                <!-- <i class="fa fa-camera"></i> -->
+                            </figure>
 
 
-                    <span class="card-text">{{ $photo->caption }}</span>
-                </a>
+                            <span class="card-text">{{ $photo->caption }}</span>
+                        </a>
+                    </div>
+                    <div class="modal fade" id="photoModal_{{$photo->id}}" tabindex="-1" role="dialog" aria-labelledby="photoModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document" id="photo-data">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-12 mb-4">
+                                            <p>
+                                                @if(getPhoto($photo->id)->getFirstMediaUrl('media-photo', 'thumb'))
+                                            <div class="carousel-container">
+                                                @foreach(getPhoto($photo->id)->getMedia('media-photo') as $image)
+                                                <div class="mySlides animate">
+                                                    <img src="{{ $image->getUrl('cover') }}" alt="slide" />
+                                                </div>
+                                                @endforeach
+                                                <!-- Next and previous buttons -->
+                                                <a class="prev" onclick="prevSlide()">&#10094;</a>
+                                                <a class="next" onclick="nextSlide()">&#10095;</a>
+
+                                                <!-- The dots/circles -->
+                                                <div class="dots-container">
+                                                    @php $no=1; @endphp
+                                                    @foreach(getPhoto($photo->id)->getMedia('media-photo') as $image)
+                                                    <span class="dots" onclick="currentSlide($no++)"></span>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                            @else
+                                            @endif
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+
+                    <div class="col-12 my-5">
+                        <div class="d-flex justify-content-center">
+                            {{ $photos->links('pagination::bootstrap-4') }}
+                        </div>
+                    </div>
+                </div> <!-- .row -->
             </div>
-            @endforeach
-        </div>
-    </section>
-</div>
-
-<div class="modal fade" id="photoModal" tabindex="-1" role="dialog" aria-labelledby="photoModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document" id="photo-data">
-    </div>
-</div>
+        </div> <!-- .row -->
+    </div> <!-- .container -->
+</div> <!-- .page-section -->
 @endsection
 
 @section('extra-js')
@@ -264,5 +298,64 @@ Media Foto
             });
         });
     });
+
+    let slideIndex = 0;
+    showSlides();
+
+    // Next-previous control
+    function nextSlide() {
+        slideIndex++;
+        showSlides();
+        timer = _timer; // reset timer
+    }
+
+    function prevSlide() {
+        slideIndex--;
+        showSlides();
+        timer = _timer;
+    }
+
+    // Thumbnail image controlls
+    function currentSlide(n) {
+        slideIndex = n - 1;
+        showSlides();
+        timer = _timer;
+    }
+
+    function showSlides() {
+        let slides = document.querySelectorAll(".mySlides");
+        let dots = document.querySelectorAll(".dots");
+
+        if (slideIndex > slides.length - 1) slideIndex = 0;
+        if (slideIndex < 0) slideIndex = slides.length - 1;
+
+        // hide all slides
+        slides.forEach((slide) => {
+            slide.style.display = "none";
+        });
+
+        // show one slide base on index number
+        slides[slideIndex].style.display = "block";
+
+        dots.forEach((dot) => {
+            dot.classList.remove("active");
+        });
+
+        dots[slideIndex].classList.add("active");
+    }
+
+    // autoplay slides --------
+    let timer = 7; // sec
+    const _timer = timer;
+
+    // this function runs every 1 second
+    setInterval(() => {
+        timer--;
+
+        if (timer < 1) {
+            nextSlide();
+            timer = _timer; // reset timer
+        }
+    }, 1000); // 1sec
 </script>
 @endsection

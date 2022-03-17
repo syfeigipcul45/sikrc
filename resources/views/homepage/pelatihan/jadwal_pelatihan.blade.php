@@ -9,57 +9,55 @@ Jadwal Pelatihan
 @endsection
 
 @section('content')
+<div class="page-banner overlay-dark bg-image" style="background-image: url(<?= asset('_homepage/assets/img/bg_image_1.jpg') ?>);">
+    <div class="banner-section">
+        <div class="container text-center wow fadeInUp">
+            <nav aria-label="Breadcrumb">
+                <ol class="breadcrumb breadcrumb-dark bg-transparent justify-content-center py-0 mb-2">
+                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Pelatihan</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Jadwal Pelatihan</li>
+                </ol>
+            </nav>
+            <h1 class="font-weight-normal">Jadwal Pelatihan</h1>
+        </div> <!-- .container -->
+    </div> <!-- .banner-section -->
+</div> <!-- .page-banner -->
 
-<div class="section-bg style-1">
+<div class="page-section bg-light">
     <div class="container">
-        <div class="row align-items-end">
+        <div class="row justify-content-center">
             <div class="col-lg-12">
-                <h2 class="mb-0" style="color: white;">Jadwal Pelatihan</h2>
-                <p style="color: white;"></p>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div class="custom-breadcrumns border-bottom">
-    <div class="container">
-        <a href="{{ route('home') }}">Home</a>
-        <span class="mx-3 icon-keyboard_arrow_right"></span>
-        <span class="current">Jadwal Pelatihan</span>
-    </div>
-</div>
-
-<div class="site-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="table-responsive">
-                    <table id="example" class="table" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Tema Pelatihan</th>
-                                <th>Lokasi Pelatihan</th>
-                                <th>Waktu Pelatihan</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($jadwal_pelatihans as $key => $jadwal_pelatihan)
-                            <tr>
-                                <td>{{ ++$key }}.</td>
-                                <td>{{ $jadwal_pelatihan->temaPelatihan->name }}</td>
-                                <td>{{ $jadwal_pelatihan->lokasi_pelatihan }}</td>
-                                <td>{{ changeDate($jadwal_pelatihan->waktu_pelatihan).' ('.($jadwal_pelatihan->jam_mulai.' - '.$jadwal_pelatihan->jam_berakhir.' WITA)') }}</td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="table-responsive">
+                            <table id="example" class="table" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Tema Pelatihan</th>
+                                        <th>Lokasi Pelatihan</th>
+                                        <th>Waktu Pelatihan</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($jadwal_pelatihans as $key => $jadwal_pelatihan)
+                                    <tr>
+                                        <td>{{ ++$key }}.</td>
+                                        <td>{{ $jadwal_pelatihan->temaPelatihan->name }}</td>
+                                        <td>{{ $jadwal_pelatihan->lokasi_pelatihan }}</td>
+                                        <td>{{ changeDate($jadwal_pelatihan->waktu_pelatihan).' ('.($jadwal_pelatihan->jam_mulai.' - '.$jadwal_pelatihan->jam_berakhir.' WITA)') }}</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </div> <!-- .container -->
+</div> <!-- .page-section -->
 @endsection
 
 @section('extra-js')

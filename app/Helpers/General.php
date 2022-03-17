@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\MediaGalleries;
 use App\Models\Option;
 use App\Models\Profil;
 use Carbon\Carbon;
@@ -51,6 +52,13 @@ if (! function_exists('getOption')) {
 if (! function_exists('getProfil')) {
     function getProfil() {
         $result = Profil::orderBy('order', 'asc')->get();
+        return $result;
+    }
+}
+
+if (! function_exists('getPhoto')) {
+    function getPhoto($id) {
+        $result = MediaGalleries::where(['id' => $id, 'type' => 'photo'])->first();
         return $result;
     }
 }

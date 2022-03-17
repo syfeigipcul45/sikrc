@@ -38,7 +38,7 @@ Fasilitas
         color: #AAA7A0;
         font-size: .8rem;
         padding-bottom: 2.5rem;
-        margin: 0 auto 2.4rem;
+        margin: auto 2.4rem;
         max-width: 17rem;
     }
 
@@ -57,47 +57,46 @@ Fasilitas
 @endsection
 
 @section('content')
+<div class="page-banner overlay-dark bg-image" style="background-image: url(<?= asset('_homepage/assets/img/bg_image_1.jpg') ?>);">
+    <div class="banner-section">
+        <div class="container text-center wow fadeInUp">
+            <nav aria-label="Breadcrumb">
+                <ol class="breadcrumb breadcrumb-dark bg-transparent justify-content-center py-0 mb-2">
+                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Fasilitas</li>
+                </ol>
+            </nav>
+            <h1 class="font-weight-normal">Fasilitas</h1>
+        </div> <!-- .container -->
+    </div> <!-- .banner-section -->
+</div> <!-- .page-banner -->
 
-<div class="section-bg style-1">
+<div class="page-section bg-light">
     <div class="container">
-        <div class="row align-items-end">
+        <div class="row justify-content-center">
             <div class="col-lg-12">
-                <h2 class="mb-0" style="color: white;">Fasilitas</h2>
-                <p style="color: white;"></p>
-            </div>
-        </div>
-    </div>
-</div>
 
-
-<div class="custom-breadcrumns border-bottom">
-    <div class="container">
-        <a href="{{ route('home') }}">Home</a>
-        <span class="mx-3 icon-keyboard_arrow_right"></span>
-        <span class="current">Fasilitas</span>
-    </div>
-</div>
-
-<div class="site-section">
-    <div class="container">
-        <div class="row">
-            @foreach($fasilitas as $item)
-            <div class="col-md-4 col-lg-4 col-xl-4">
-                <div class="card card-elegant">
-                    <img class="card-img-top" src="{{ $item->getFirstMediaUrl('fasilitas', 'thumb') }}" width="100%" alt="Card image cap">
-                    <div class="card-block">
-                        <h5 class="card-title text-uppercase">{{ $item->name }}</h5>
-                        <div class="card-text">{!! shrinkText($item->description) !!}</div>
-                        <a href="{{ route('homepage.fasilitas.detail', $item->slug) }}" class="btn btn-link text-uppercase">Lihat Detail</a>
+                <div class="row">
+                    @foreach($fasilitas as $item)
+                    <div class="col-md-4 col-lg-4 col-xl-4">
+                        <div class="card card-elegant">
+                            <img class="card-img-top" src="{{ $item->getFirstMediaUrl('fasilitas', 'thumb') }}" width="100%" alt="Card image cap">
+                            <div class="card-block">
+                                <h5 class="card-title text-uppercase">{{ $item->name }}</h5>
+                                <div class="card-text">{!! shrinkText($item->description) !!}</div>
+                                <a href="{{ route('homepage.fasilitas.detail', $item->slug) }}" class="btn btn-link text-uppercase">Lihat Detail</a>
+                            </div>
+                        </div>
                     </div>
+                    @endforeach
                 </div>
+                <div class="d-flex justify-content-center">
+                    {{ $fasilitas->links('pagination::bootstrap-4') }}
+                </div>
+
             </div>
-            @endforeach
         </div>
-    </div>
-    <div class="d-flex justify-content-center">
-        {{ $fasilitas->links('pagination::bootstrap-4') }}
-    </div>
-</div>
-</div>
+    </div> <!-- .container -->
+</div> <!-- .page-section -->
+
 @endsection

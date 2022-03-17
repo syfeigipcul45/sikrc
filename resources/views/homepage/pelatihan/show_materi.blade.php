@@ -10,27 +10,22 @@ Materi Pelatihan
 
 @section('content')
 
-<div class="section-bg style-1">
-    <div class="container">
-        <div class="row align-items-end">
-            <div class="col-lg-12">
-                <h2 class="mb-0" style="color: white;">Materi Pelatihan</h2>
-                <p style="color: white;"></p>
-            </div>
-        </div>
-    </div>
-</div>
+<div class="page-banner overlay-dark bg-image" style="background-image: url(<?= asset('_homepage/assets/img/bg_image_1.jpg') ?>);">
+    <div class="banner-section">
+        <div class="container text-center wow fadeInUp">
+            <nav aria-label="Breadcrumb">
+                <ol class="breadcrumb breadcrumb-dark bg-transparent justify-content-center py-0 mb-2">
+                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Pelatihan</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Materi Pelatihan</li>
+                </ol>
+            </nav>
+            <h1 class="font-weight-normal">Materi Pelatihan</h1>
+        </div> <!-- .container -->
+    </div> <!-- .banner-section -->
+</div> <!-- .page-banner -->
 
-
-<div class="custom-breadcrumns border-bottom">
-    <div class="container">
-        <a href="{{ route('home') }}">Home</a>
-        <span class="mx-3 icon-keyboard_arrow_right"></span>
-        <span class="current">Materi Pelatihan</span>
-    </div>
-</div>
-
-<div class="site-section">
+<div class="page-section bg-light">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -194,8 +189,8 @@ Materi Pelatihan
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </div> <!-- .container -->
+</div> <!-- .page-section -->
 @endsection
 
 @section('extra-js')

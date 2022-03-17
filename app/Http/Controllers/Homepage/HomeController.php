@@ -16,6 +16,7 @@ use App\Models\Post;
 use App\Models\Product;
 use App\Models\Profil;
 use App\Models\TemaPelatihan;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -25,9 +26,9 @@ class HomeController extends Controller
     {
         $data['hero_images'] = HeroImage::all();
         $data['tema_pelatihans'] = TemaPelatihan::orderBy('hit', 'desc')->limit(5)->get();
-        $data['post'] = Post::latest()->first();
-        $data['other_posts'] = Post::where('id', '!=', $data['post']->id)->latest()->limit(3)->get();
-        $data['videos'] = MediaGalleries::where('type', 'video')->limit(3)->latest()->get();
+        $data['posts'] = Post::latest()->limit(3)->get();
+        $data['pengajars'] = Pengajar::all();
+        $data['testimonials'] = Testimonial::where('is_published', '1')->get();
         return view('homepage.index', $data);
     }
 
@@ -39,7 +40,7 @@ class HomeController extends Controller
 
     public function getPosts()
     {
-        $data['posts'] = Post::latest()->paginate(3);
+        $data['posts'] = Post::latest()->paginate(6);
         return view('homepage.posts.posts', $data);
     }
 
@@ -52,7 +53,7 @@ class HomeController extends Controller
 
     public function getPengajar()
     {
-        $data['pengajars'] = Pengajar::orderBy('name', 'asc')->paginate(6);
+        $data['pengajars'] = Pengajar::orderBy('name', 'asc')->paginate(9);
         return view('homepage.pengajar.index', $data);
     }
 
@@ -102,14 +103,14 @@ class HomeController extends Controller
 
     public function getAlumni()
     {
-        $data['alumnis'] = AlumniKrc::where('name', 'asc')->get();
+        $data['alumnis'] = AlumniKrc::where('name', 'asc')->paginate(9);
         $data['row'] = AlumniKrc::count();
         return view('homepage.alumni-krc.index', $data);
     }
 
     public function getPhoto()
     {
-        $data['photos'] = MediaGalleries::where('type', 'photo')->latest()->get();
+        $data['photos'] = MediaGalleries::where('type', 'photo')->latest()->paginate(9);
         return view('homepage.media.photo', $data);
     }
 
@@ -122,13 +123,14 @@ class HomeController extends Controller
 
     public function getVideo()
     {
-        $data['videos'] = MediaGalleries::where('type', 'video')->latest()->get();
+        $data['videos'] = MediaGalleries::where('type', 'video')->latest()->paginate(9);
         return view('homepage.media.video', $data);
     }
 
     public function getKontak()
     {
-        return view('homepage.kontak.index');
+        $data['tema_pelatihans'] = TemaPelatihan::orderBy('name', 'asc')->get();
+        return view('homepage.kontak.index', $data);
     }
 
     public function storeKontak(Request $request)
@@ -147,6 +149,22 @@ class HomeController extends Controller
         return redirect()->back();
     }
 
+    public function storeTestimonial(Request $request)
+    {
+        $data = [
+            'name' => $request->name,
+            'tema_id' => $request->tema_id,
+            'email' => $request->email,
+            'no_hp' => $request->no_hp,
+            'pesan' => $request->pesan
+        ];
+
+        Testimonial::create($data);
+
+        Session::flash('success', 'Pesan telah terkirim');
+        return redirect()->back();
+    }
+
     public function getProduk(Request $request)
     {
         $data['produk'] = [];
@@ -155,9 +173,9 @@ class HomeController extends Controller
                 $query->where('name', "LIKE", "%" . $request->keyword . "%");
                 $query->orWhere('price', "LIKE", "%" . $request->keyword . "%");
                 $query->orWhere('stock', "LIKE", "%" . $request->keyword . "%");
-            })->paginate(8);
+            })->paginate(12);
         } else {
-            $data['produk'] = Product::orderBy('name', 'asc')->paginate(8);
+            $data['produk'] = Product::orderBy('name', 'asc')->paginate(12);
         }
         return view('homepage.promosi.produk', $data);
     }

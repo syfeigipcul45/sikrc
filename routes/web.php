@@ -15,8 +15,8 @@ use App\Http\Controllers\Dashboard\PostController;
 use App\Http\Controllers\Dashboard\ProductController;
 use App\Http\Controllers\Dashboard\ProfilController;
 use App\Http\Controllers\Dashboard\TemaPelatihanController;
+use App\Http\Controllers\Dashboard\TestimonialController;
 use App\Http\Controllers\Homepage\HomeController;
-use App\Models\KerjaSama;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -67,7 +67,7 @@ Route::get('/promosi/kerja-sama',[HomeController::class, 'getKerjaSama'])->name(
 Route::get('/promosi/kerja-sama/{slug}',[HomeController::class, 'getDetailKerjaSama'])->name('homepage.promosi.detail_kerja_sama');
 // kontak
 Route::get('/kontak', [HomeController::class, 'getKontak'])->name('homepage.kontak.index');
-Route::post('/kontak', [HomeController::class, 'storeKontak'])->name('homepage.kontak.store');
+Route::post('/kontak', [HomeController::class, 'storeTestimonial'])->name('homepage.kontak.store');
 
 // dashboard
 Route::group(['middleware' => ['auth']], function () {
@@ -206,4 +206,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/kerja-sama/{id}/update', [KerjaSamaController::class, 'update'])->name('dashboard.kerja_sama.update');
         Route::post('/kerja-sama/{id}', [KerjaSamaController::class, 'destroy'])->name('dashboard.kerja_sama.destroy');
     });
+
+    Route::get('/management-testimonial', [TestimonialController::class, 'index'])->name('dashboard.testimonial.index');
+    Route::post('/management-testimonial/{id}/update', [TestimonialController::class, 'update'])->name('dashboard.testimonial.update');
+    Route::get('/management-testimonial/{id}/show', [TestimonialController::class, 'show'])->name('dashboard.testimonial.show');
 });

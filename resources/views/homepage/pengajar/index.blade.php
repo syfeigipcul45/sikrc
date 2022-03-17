@@ -66,48 +66,48 @@ Pengajar
 
 @section('content')
 
-<div class="section-bg style-1">
+<div class="page-banner overlay-dark bg-image" style="background-image: url(<?= asset('_homepage/assets/img/bg_image_1.jpg') ?>);">
+    <div class="banner-section">
+        <div class="container text-center wow fadeInUp">
+            <nav aria-label="Breadcrumb">
+                <ol class="breadcrumb breadcrumb-dark bg-transparent justify-content-center py-0 mb-2">
+                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Pengajar</li>
+                </ol>
+            </nav>
+            <h1 class="font-weight-normal">Tenaga Pengajar</h1>
+        </div> <!-- .container -->
+    </div> <!-- .banner-section -->
+</div> <!-- .page-banner -->
+
+<div class="page-section bg-light">
     <div class="container">
-        <div class="row align-items-end">
+        <div class="row justify-content-center">
             <div class="col-lg-12">
-                <h2 class="mb-0" style="color: white;">Pengajar</h2>
-                <p style="color: white;"></p>
-            </div>
-        </div>
-    </div>
-</div>
 
+                <div class="row d-flex justify-content-center">
+                    @foreach($pengajars as $pengajar)
+                    <div class="col-md-4">
+                        <div class="card p-3 py-4">
+                            <div class="img-gp-profil mb-3">
+                                <img src="{{ $pengajar->getFirstMediaUrl('pengajars','thumb') }}" alt="">
+                            </div>
+                            <div class="text-center mt-3">
+                                <a href="{{ route('homepage.pengajar.detail', $pengajar->id)}}"><span class="bg-secondary p-1 px-4 rounded text-white">{{ $pengajar->name }}</span></a>
+                                <h5 class="mt-2 mb-0"></h5>
+                                <span>{{ $pengajar->kategoriPengajar->kategori_pengajar }}</span>
 
-<div class="custom-breadcrumns border-bottom">
-    <div class="container">
-        <a href="{{ route('home') }}">Home</a>
-        <span class="mx-3 icon-keyboard_arrow_right"></span>
-        <span class="current">Pengajar</span>
-    </div>
-</div>
-
-<div class="site-section">
-    <div class="container mt-5">
-        <div class="row d-flex justify-content-center">
-            @foreach($pengajars as $pengajar)
-            <div class="col-md-4">
-                <div class="card p-3 py-4">
-                    <div class="img-gp-profil mb-3">
-                        <img src="{{ $pengajar->getFirstMediaUrl('pengajars','thumb') }}" alt="">
+                            </div>
+                        </div>
                     </div>
-                    <div class="text-center mt-3">
-                        <a href="{{ route('homepage.pengajar.detail', $pengajar->id)}}"><span class="bg-secondary p-1 px-4 rounded text-white">{{ $pengajar->name }}</span></a>
-                        <h5 class="mt-2 mb-0"></h5>
-                        <span>{{ $pengajar->kategoriPengajar->kategori_pengajar }}</span>
-
-                    </div>
+                    @endforeach
                 </div>
+                <div class="d-flex justify-content-center">
+                    {{ $pengajars->links('pagination::bootstrap-4') }}
+                </div>
+
             </div>
-            @endforeach
         </div>
-        <div class="d-flex justify-content-center">
-            {{ $pengajars->links('pagination::bootstrap-4') }}
-        </div>
-    </div>
-</div>
+    </div> <!-- .container -->
+</div> <!-- .page-section -->
 @endsection

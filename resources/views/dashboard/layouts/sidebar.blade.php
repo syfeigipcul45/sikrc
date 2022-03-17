@@ -110,6 +110,13 @@
     Pengaturan
 </div>
 
+<li class="nav-item {{ Request::is('management-testimonial*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('dashboard.testimonial.index') }}">
+        <i class="fas fa-fw fa-comment-dots"></i>
+        <span>Testimonial</span>
+    </a>
+</li>
+
 <li class="nav-item {{ Request::is('management-images*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('dashboard.hero_images.index') }}">
         <i class="fas fa-fw fa-images"></i>

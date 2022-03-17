@@ -47,7 +47,7 @@ class Post extends Model implements HasMedia
     public function getCreatedAtAttribute()
     {
         return Carbon::parse($this->attributes['created_at'])
-            ->translatedFormat('d F Y H:i:s');
+            ->translatedFormat('d F Y');
     }
 
 }

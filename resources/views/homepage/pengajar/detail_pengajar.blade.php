@@ -23,29 +23,19 @@ Detail Pengajar
 @endsection
 
 @section('content')
-
-<div class="section-bg style-1">
+<div class="page-section pt-5">
     <div class="container">
-        <div class="row align-items-end">
+        <div class="row">
             <div class="col-lg-12">
-                <h2 class="mb-0" style="color: white;">{{ $pengajar->name }}</h2>
-                <p style="color: white;"></p>
+                <nav aria-label="Breadcrumb">
+                    <ol class="breadcrumb bg-transparent py-0 mb-5">
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Pengajar</li>
+                    </ol>
+                </nav>
             </div>
-        </div>
-    </div>
-</div>
+        </div> <!-- .row -->
 
-
-<div class="custom-breadcrumns border-bottom">
-    <div class="container">
-        <a href="{{ route('home') }}">Home</a>
-        <span class="mx-3 icon-keyboard_arrow_right"></span>
-        <span class="current">Pengajar</span>
-    </div>
-</div>
-
-<div class="site-section">
-    <div class="container mt-5">
         <div class="row d-flex justify-content-center">
             <div class="col-md-8 py-4">
                 <div class="img-gp-profil mb-3">
@@ -60,7 +50,7 @@ Detail Pengajar
                     </p>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
+        </div> <!-- .row -->
+    </div> <!-- .container -->
+</div> <!-- .page-section -->
 @endsection
