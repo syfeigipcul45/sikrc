@@ -25,7 +25,7 @@ Berita
         <div class="row">
             <div class="col-lg-8">
                 <div class="row">
-                    @foreach($posts as $post)
+                    @forelse($posts as $post)
                     <div class="col-sm-6 py-3">
                         <div class="card-blog">
                             <div class="header">
@@ -51,7 +51,9 @@ Berita
                             </div>
                         </div>
                     </div>
-                    @endforeach
+                    @empty
+                    <div class="text-center">Data tidak ditemukan</div>
+                    @endforelse
 
                     <div class="col-12 my-5">
                         <div class="d-flex justify-content-center">
@@ -64,9 +66,9 @@ Berita
                 <div class="sidebar">
                     <div class="sidebar-block">
                         <h3 class="sidebar-title">Search</h3>
-                        <form action="#" class="search-form">
+                        <form action="{{ route('homepage.post.post') }}" class="search-form">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Type a keyword and hit enter">
+                                <input type="text" class="form-control" name="keyword" placeholder="Type a keyword and hit enter">
                                 <button type="submit" class="btn"><span class="icon mai-search"></span></button>
                             </div>
                         </form>

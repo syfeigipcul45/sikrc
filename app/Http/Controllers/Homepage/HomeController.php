@@ -38,9 +38,16 @@ class HomeController extends Controller
         return view('homepage.profil.detail_profil', $data);
     }
 
-    public function getPosts()
+    public function getPosts(Request $request)
     {
-        $data['posts'] = Post::latest()->paginate(6);
+        $data['posts'] = [];
+        if (!empty($request->keyword)) {
+            $data['posts'] = Post::where(function ($query) use ($request) {
+                $query->where('title', "LIKE", "%" . $request->keyword . "%");
+            })->paginate(6);
+        } else {
+            $data['posts'] = Post::latest()->paginate(6);
+        }        
         return view('homepage.posts.posts', $data);
     }
 

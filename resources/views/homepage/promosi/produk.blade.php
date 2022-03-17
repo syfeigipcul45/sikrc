@@ -66,7 +66,7 @@ Produk
             </div>
         </form>
         <div class="card-deck">
-            @foreach($produk as $key => $item)
+            @forelse($produk as $key => $item)
             <div class="card cursor-pointer" data-aos="fade-up" data-aos-delay="100">
                 <img class="card-img-top" src="{{ $item->getFirstMediaUrl('produk', 'thumb') }}" alt="Card image cap">
                 <div class="card-body">
@@ -88,7 +88,9 @@ Produk
                     </div>
                 </div>
             </div>
-            @endforeach
+            @empty
+                    <div class="text-center">Data tidak ditemukan</div>
+                    @endforelse
         </div>
     </div>
     <div class="d-flex justify-content-center">
