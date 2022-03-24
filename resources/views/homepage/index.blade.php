@@ -160,7 +160,7 @@ Home
 @section('content')
 <div id="carouselExample" class="carousel slide w-100">
     <div class="carousel-inner" style="height: 872px;">
-        @php $no=1; $active = ''; @endphp
+        @php $no=0; $active = ''; @endphp
         @foreach($hero_images as $key => $hero_image)
         @if($no === $key)
         @php $active = 'active'; @endphp
@@ -172,7 +172,7 @@ Home
             <div class="carousel-caption d-none d-md-block">
                 <div class="container text-center wow zoomIn">
                     <!-- <span class="subhead">{{ $hero_image->description }}</span> -->
-                    <h1 class="display-4">{{ $hero_image->title }}</h1>
+                    <!-- <h1 class="display-4">{{ $hero_image->title }}</h1> -->
                 </div>
             </div>
         </div>
@@ -341,7 +341,7 @@ Home
                 <div class="card card-comment col-md-12 mt-2">
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="10000">
                         <div class="w-100 carousel-inner mb-5" role="listbox">
-                            @php $no=1; $active = ''; @endphp
+                            @php $no=0; $active = ''; @endphp
                             @foreach($testimonials as $key => $testimonial)
                             @if($no === $key)
                             @php $active = 'active'; @endphp

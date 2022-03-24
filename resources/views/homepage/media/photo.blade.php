@@ -196,7 +196,7 @@ Media Foto
 
 @section('content')
 
-<div class="page-banner overlay-dark bg-image" style="background-image: url(<?= asset('_homepage/assets/img/bg_image_1.jpg') ?>);">
+<div class="page-banner overlay-dark bg-image" style="background-image: url(<?= getOption()->getFirstMediaUrl('banner', 'cover') ?>);">
     <div class="banner-section">
         <div class="container text-center wow fadeInUp">
             <nav aria-label="Breadcrumb">
@@ -231,6 +231,12 @@ Media Foto
                     <div class="modal fade" id="photoModal_{{$photo->id}}" tabindex="-1" role="dialog" aria-labelledby="photoModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg" role="document" id="photo-data">
                             <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">{{ getPhoto($photo->id)->caption }}</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
                                 <div class="modal-body">
                                     <div class="row justify-content-center">
                                         <div class="col-md-12 mb-4">

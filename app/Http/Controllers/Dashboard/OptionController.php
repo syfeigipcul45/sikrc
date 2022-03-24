@@ -59,7 +59,8 @@ class OptionController extends Controller
                 'twitter' => 'required',
                 'facebook' => 'required',
                 'instagram' => 'required',
-                'youtube' => 'required'
+                'youtube' => 'required',
+                'banner' => 'required'
             ], [
                 'logo.required' => 'Logo harus diisi!',
                 'logo.max' => 'Logo harus di bawah atau sama dengan 2MB',
@@ -72,7 +73,8 @@ class OptionController extends Controller
                 'twitter.required' => 'Twitter harus diisi!',
                 'facebook.required' => 'Facebook harus diisi!',
                 'instagram.required' => 'Instagram harus diisi!',
-                'youtube.required' => 'Youtube harus diisi!'
+                'youtube.required' => 'Youtube harus diisi!',
+                'banner.required' => 'Banner utama harus diisi'
             ]);
 
             if($validator->fails()) {
@@ -106,6 +108,13 @@ class OptionController extends Controller
                 }
 
                 $saveData = Option::create($data);
+                if ($request->hasFile('banner') && $request->file('banner')->isValid()) {
+                    $saveData->addMediaFromRequest('banner')->toMediaCollection('banner');
+                }
+
+                if ($request->hasFile('banner_login') && $request->file('banner_login')->isValid()) {
+                    $saveData->addMediaFromRequest('banner_login')->toMediaCollection('banner-login');
+                }
                 return redirect()->route('dashboard.settings.index');
             } else {
                 $data = [
@@ -131,7 +140,18 @@ class OptionController extends Controller
                     $data['favicon'] = url('/') . '/storage/' . $path;
                 }
 
-                $updateData = Option::where('id', $option->first()->id)->first();
+                $updateData = Option::where('id', $option->first()->id)->first();                
+
+                if ($request->hasFile('banner') && $request->file('banner')->isValid()) {
+                    $updateData->clearMediaCollection('banner');
+                    $updateData->addMedia($request->banner)->toMediaCollection('banner');
+                } 
+
+                if ($request->hasFile('banner_login') && $request->file('banner_login')->isValid()) {
+                    $updateData->clearMediaCollection('banner-login');
+                    $updateData->addMedia($request->banner_login)->toMediaCollection('banner-login');
+                } 
+
                 $updateData->update($data);
                 Session::flash('success', 'Data Berhasil Diubah');
                 return redirect()->route('dashboard.settings.index');

@@ -11,7 +11,7 @@ Kontak
 
 @section('content')
 
-<div class="page-banner overlay-dark bg-image" style="background-image: url(<?= asset('_homepage/assets/img/bg_image_1.jpg') ?>);">
+<div class="page-banner overlay-dark bg-image" style="background-image: url(<?= getOption()->getFirstMediaUrl('banner', 'cover') ?>);">
     <div class="banner-section">
         <div class="container text-center wow fadeInUp">
             <nav aria-label="Breadcrumb">

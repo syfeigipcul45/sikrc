@@ -20,23 +20,24 @@ Pengaturan Umum
 
 @section('content')
 
-<div class="row">
+<form action="{{ route('dashboard.settings.store') }}" method="POST" enctype="multipart/form-data">
+    @csrf
 
-    <div class="col-lg-8">
+    <div class="row">
 
-        <!-- Circle Buttons -->
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Pengaturan Umum</h6>
-            </div>
-            <div class="card-body">
-                @if (session('success'))
-                <div class="alert alert-success" role="alert">
-                    {{ session('success') }}
+        <div class="col-lg-7">
+
+            <!-- Circle Buttons -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Pengaturan Umum</h6>
                 </div>
-                @endif
-                <form action="{{ route('dashboard.settings.store') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
+                <div class="card-body">
+                    @if (session('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('success') }}
+                    </div>
+                    @endif
                     <div class="row mb-4">
                         <div class="col-lg-6">
                             Logo Utama
@@ -205,13 +206,52 @@ Pengaturan Umum
                         {!! \Session::get('error') !!}
                     </div>
                     @endif
-                </form>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-lg-5">
+
+            <!-- Circle Buttons -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Background Banner</h6>
+                </div>
+                <div class="card-body">
+                    <div>
+                        <strong>Banner Utama</strong>
+                        <div class="card my-2">
+                            <label for="imageUpload" class="mb-0 cursor-pointer">
+                                @if($option->getFirstMediaUrl('banner', 'cover'))
+                                <img id="image-preview" class="card-img-top" src="{{ $option->getFirstMediaUrl('banner', 'cover')}}" alt="Card image cap">
+                                <input type="hidden" name="banner" value="{{ $option->getFirstMediaUrl('banner', 'cover')}}" />
+                                @else
+                                <img id="image-preview" class="card-img-top" src="https://www.pngkey.com/png/detail/233-2332677_image-500580-placeholder-transparent.png" alt="Card image cap">
+                                @endif
+                            </label>
+                            <input type='file' id="imageUpload" name="banner" accept=".png, .jpg, .jpeg" hidden />
+                        </div>
+                    </div>
+                    <div>
+                        <strong>Banner Login</strong>
+                        <div class="card my-2">
+                            <label for="imageBannerLogin" class="mb-0 cursor-pointer">
+                                @if($option->getFirstMediaUrl('banner-login', 'cover'))
+                                <img id="banner-login" class="card-img-top" src="{{ $option->getFirstMediaUrl('banner-login', 'cover')}}" alt="Card image cap">
+                                <input type="hidden" name="banner_login" value="{{ $option->getFirstMediaUrl('banner-login', 'cover')}}" />
+                                @else
+                                <img id="banner-login" class="card-img-top" src="https://www.pngkey.com/png/detail/233-2332677_image-500580-placeholder-transparent.png" alt="Card image cap">
+                                @endif
+                            </label>
+                            <input type='file' id="imageBannerLogin" name="banner_login" accept=".png, .jpg, .jpeg" hidden />
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
     </div>
-
-</div>
+</form>
 @endsection
 
 @section('extra-js')
@@ -241,5 +281,37 @@ Pengaturan Umum
             reader.readAsDataURL(input.files[0]);
         }
     }
+
+    $("#imageUpload").change(function() {
+        readURL(this);
+    });
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#image-preview').attr('src', e.target.result);
+                $('#image-preview').hide();
+                $('#image-preview').fadeIn(300);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }    
+
+    $("#imageBannerLogin").change(function() {
+        readURLBannerLogin(this);
+    });
+
+    function readURLBannerLogin(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#banner-login').attr('src', e.target.result);
+                $('#banner-login').hide();
+                $('#banner-login').fadeIn(300);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    } 
 </script>
 @endsection
