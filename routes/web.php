@@ -16,6 +16,7 @@ use App\Http\Controllers\Dashboard\ProductController;
 use App\Http\Controllers\Dashboard\ProfilController;
 use App\Http\Controllers\Dashboard\TemaPelatihanController;
 use App\Http\Controllers\Dashboard\TestimonialController;
+use App\Http\Controllers\Dashboard\UsersController;
 use App\Http\Controllers\Homepage\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -210,4 +211,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/management-testimonial', [TestimonialController::class, 'index'])->name('dashboard.testimonial.index');
     Route::post('/management-testimonial/{id}/update', [TestimonialController::class, 'update'])->name('dashboard.testimonial.update');
     Route::get('/management-testimonial/{id}/show', [TestimonialController::class, 'show'])->name('dashboard.testimonial.show');
+
+    Route::prefix('management-users')->group(function () {
+        Route::get('/', [UsersController::class, 'index'])->name('dashboard.users.index');
+        Route::get('/create', [UsersController::class, 'create'])->name('dashboard.users.create');
+        Route::post('/', [UsersController::class, 'store'])->name('dashboard.users.store');
+        Route::get('/{id}/edit', [UsersController::class, 'edit'])->name('dashboard.users.edit');
+        Route::post('/{id}/update', [UsersController::class, 'update'])->name('dashboard.users.update');
+        Route::post('/{id}', [UsersController::class, 'destroy'])->name('dashboard.users.destroy');
+    });
 });

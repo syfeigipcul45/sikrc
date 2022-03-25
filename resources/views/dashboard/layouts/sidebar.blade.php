@@ -8,7 +8,7 @@
 
 <!-- Nav Item - Dashboard -->
 <li class="nav-item {{ Request::is('home*') ? 'active' : '' }}">
-    <a class="nav-link" href="">
+    <a class="nav-link" href="{{ route('beranda') }}">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span>
     </a>
@@ -109,6 +109,15 @@
 <div class="sidebar-heading">
     Pengaturan
 </div>
+
+@hasrole('superadmin')
+<li class="nav-item {{ Request::is('management-users*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('dashboard.users.index') }}">
+        <i class="fas fa-fw fa-users"></i>
+        <span>Users</span>
+    </a>
+</li>
+@endhasrole
 
 <li class="nav-item {{ Request::is('management-testimonial*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('dashboard.testimonial.index') }}">
