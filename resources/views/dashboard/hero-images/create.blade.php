@@ -58,7 +58,7 @@ Tambah Hero Images
                             <div class="form-group">
                                 <label>Deskripsi</label>
                                 <textarea class="form-control" name="description" onkeyup="countChars(this);">{{ old('description') }}</textarea>
-                                <p id="charNum">0 karakter</p>
+                                <p id="charNum">0 dari 200 karakter</p>
                                 @error('description')
                                 <small class="form-text error-input">{{ $message }}</small>
                                 @enderror

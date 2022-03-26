@@ -63,7 +63,8 @@ Edit Hero Images
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Deskripsi</label>
-                                <textarea class="form-control" name="description">{{ old('description', $hero_image->description) }}</textarea>
+                                <textarea class="form-control" name="description" id="description" onkeyup="countChars(this);">{{ old('description', $hero_image->description) }}</textarea>
+                                <p id="charNum"></p>
                                 @error('description')
                                 <small class="form-text error-input">{{ $message }}</small>
                                 @enderror
@@ -115,5 +116,21 @@ Edit Hero Images
             reader.readAsDataURL(input.files[0]);
         }
     }
+
+    function countChars(obj) {
+        var maxLength = 200;
+        var strLength = obj.value.length;
+
+        if (strLength > maxLength) {
+            document.getElementById("charNum").innerHTML = '<span style="color: red;">' + strLength + ' dari ' + maxLength + ' karakter</span>';
+        } else {
+            document.getElementById("charNum").innerHTML = strLength + ' dari ' + maxLength + ' karakter';
+        }
+    }
+
+    $(document).ready(function() {
+        var len = $('#description').val().length;
+        document.getElementById("charNum").innerHTML = len + ' dari 200 karakter';
+    });
 </script>
 @endsection

@@ -24,10 +24,10 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $data['hero_images'] = HeroImage::all();
+        $data['hero_images'] = HeroImage::orderBy('order', 'asc')->get();
         $data['tema_pelatihans'] = TemaPelatihan::orderBy('hit', 'desc')->limit(5)->get();
         $data['posts'] = Post::latest()->limit(3)->get();
-        $data['pengajars'] = Pengajar::all();
+        $data['pengajars'] = Pengajar::orderBy('order', 'asc')->get();
         $data['testimonials'] = Testimonial::where('is_published', '1')->get();
         return view('homepage.index', $data);
     }
@@ -60,7 +60,7 @@ class HomeController extends Controller
 
     public function getPengajar()
     {
-        $data['pengajars'] = Pengajar::orderBy('name', 'asc')->paginate(9);
+        $data['pengajars'] = Pengajar::orderBy('order', 'asc')->paginate(9);
         return view('homepage.pengajar.index', $data);
     }
 
@@ -72,7 +72,7 @@ class HomeController extends Controller
 
     public function getFasilitas()
     {
-        $data['fasilitas'] = Fasilitas::orderBy('name', 'asc')->paginate(6);
+        $data['fasilitas'] = Fasilitas::orderBy('order', 'asc')->paginate(6);
         return view('homepage.fasilitas.index', $data);
     }
 
@@ -110,7 +110,7 @@ class HomeController extends Controller
 
     public function getAlumni()
     {
-        $data['alumnis'] = AlumniKrc::where('name', 'asc')->paginate(9);
+        $data['alumnis'] = AlumniKrc::orderBy('name', 'asc')->paginate(9);
         $data['row'] = AlumniKrc::count();
         return view('homepage.alumni-krc.index', $data);
     }

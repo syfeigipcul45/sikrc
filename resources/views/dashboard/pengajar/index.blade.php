@@ -41,6 +41,8 @@ Management Pengajar
                         <th>Nama Pengajar</th>
                         <th>Deskripsi</th>
                         <th>Kategori Pengajar</th>
+                        <th>Urutan</th>
+                        <th>Ubah Urutan</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -51,6 +53,8 @@ Management Pengajar
                         <th>Nama Pengajar</th>
                         <th>Deskripsi</th>
                         <th>Kategori Pengajar</th>
+                        <th>Urutan</th>
+                        <th>Ubah Urutan</th>
                         <th>Aksi</th>
                     </tr>
                 </tfoot>
@@ -64,6 +68,19 @@ Management Pengajar
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->description }}</td>
                         <td>{{ $item->kategoriPengajar->kategori_pengajar }}</td>
+                        <td>{{ $item->order }}</td>
+                        <td>
+                            <div class="btn-group">
+                                <form action="{{route('dashboard.instructur.increase', $item->id)}}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-sm btn-info"><i class="fa fa-arrow-up"></i></button>
+                                </form>
+                                <form action="{{route('dashboard.instructur.decrease', $item->id)}}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-arrow-down"></i></button>
+                                </form>
+                            </div>
+                        </td>
                         <td class="text-center">
                             <a href="{{ route('dashboard.instructur.show', $item->id) }}" class="btn btn-info btn-circle btn-sm">
                                 <i class="fas fa-eye"></i>

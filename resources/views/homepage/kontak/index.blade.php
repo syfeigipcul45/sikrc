@@ -60,7 +60,7 @@ Kontak
                 <div class="col-12 py-2 wow fadeInUp">
                     <label for="message">Message</label>
                     <textarea name="pesan" id="message" class="form-control" rows="8" placeholder="Pesan.." onkeyup="countChars(this);" required></textarea>
-                    <p id="charNum">0 karakter</p>
+                    <p id="charNum">0 dari 250 karakter</p>
                     @error('pesan')
                     <small class="form-text error-input" style="color: red;">{{ $message }}</small>
                     @enderror

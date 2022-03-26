@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\HeroImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class HeroImageController extends Controller
@@ -28,7 +27,7 @@ class HeroImageController extends Controller
      */
     public function index()
     {
-        $data['hero_images'] = HeroImage::all();
+        $data['hero_images'] = HeroImage::orderBy('order', 'asc')->get();
         return view('dashboard.hero-images.index', $data);
     }
 
@@ -166,5 +165,29 @@ class HeroImageController extends Controller
         Session::flash('success', 'Data Berhasil Dihapus');
 
         return redirect()->back();
+    }
+
+    public function increase($id)
+    {
+        $hero = HeroImage::find($id);
+
+        if ($hero->order > 1) {
+            $hero->order = $hero->order - 1;
+            $hero->save();
+            Session::flash('success', 'Urutan Berhasil Naik');
+        } else {
+            Session::flash('error', 'Urutan Mencapai Batas Naik');
+        }
+
+        return redirect(route('dashboard.hero_images.index'));
+    }
+
+    public function decrease($id)
+    {
+        $hero = HeroImage::find($id);
+        $hero->order = $hero->order + 1;
+        $hero->save();
+        Session::flash('success', 'Urutan Berhasil Turun');
+        return redirect(route('dashboard.hero_images.index'));
     }
 }

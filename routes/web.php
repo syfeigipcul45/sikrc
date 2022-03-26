@@ -107,6 +107,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/management-instructur/{id}/show', [PengajarController::class, 'show'])->name('dashboard.instructur.show');
     Route::post('/management-instructur/{id}/update', [PengajarController::class, 'update'])->name('dashboard.instructur.update');
     Route::post('/management-instructur/{id}', [PengajarController::class, 'destroy'])->name('dashboard.instructur.destroy');
+    Route::post('/management-instructur/{id}/increase', [PengajarController::class, 'increase'])->name('dashboard.instructur.increase');
+    Route::post('/management-instructur/{id}/decrease', [PengajarController::class, 'decrease'])->name('dashboard.instructur.decrease');
 
     Route::get('/management-facility', [FasilitasController::class, 'index'])->name('dashboard.fasilitas.index');
     Route::get('/management-facility/create', [FasilitasController::class, 'create'])->name('dashboard.fasilitas.create');
@@ -115,6 +117,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/management-facility/{id}/show', [FasilitasController::class, 'show'])->name('dashboard.fasilitas.show');
     Route::post('/management-facility/{id}/update', [FasilitasController::class, 'update'])->name('dashboard.fasilitas.update');
     Route::post('/management-facility/{id}', [FasilitasController::class, 'destroy'])->name('dashboard.fasilitas.destroy');
+    Route::post('/management-facility/{id}/increase', [FasilitasController::class, 'increase'])->name('dashboard.fasilitas.increase');
+    Route::post('/management-facility/{id}/decrease', [FasilitasController::class, 'decrease'])->name('dashboard.fasilitas.decrease');
 
     Route::prefix('management-training')->group(function () {
         Route::get('/tema', [TemaPelatihanController::class, 'index'])->name('dashboard.tema_pelatihan.index');
@@ -181,6 +185,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/management-images/{id}/edit', [HeroImageController::class, 'edit'])->name('dashboard.hero_images.edit');
     Route::post('/management-images/{id}/update', [HeroImageController::class, 'update'])->name('dashboard.hero_images.update');
     Route::post('/management-images/{id}', [HeroImageController::class, 'destroy'])->name('dashboard.hero_images.destroy');
+    Route::post('/management-images/{id}/increase', [HeroImageController::class, 'increase'])->name('dashboard.hero_images.increase');
+    Route::post('/management-images/{id}/decrease', [HeroImageController::class, 'decrease'])->name('dashboard.hero_images.decrease');
 
     Route::get('/management-alumni', [AlumniKrcController::class, 'index'])->name('dashboard.alumni.index');
     Route::get('/management-alumni/create', [AlumniKrcController::class, 'create'])->name('dashboard.alumni.create');

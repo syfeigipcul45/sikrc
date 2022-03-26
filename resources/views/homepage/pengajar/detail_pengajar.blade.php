@@ -1,7 +1,7 @@
 @extends('homepage.layouts.app')
 
 @section('title')
-Detail Pengajar
+{{ $pengajar->name }}
 @endsection
 
 @section('extra-css')

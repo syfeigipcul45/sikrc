@@ -40,6 +40,8 @@ Management Fasilitas
                         <th>Foto Fasilitas</th>
                         <th>Fasilitas</th>
                         <th>Deskripsi</th>
+                        <th>Urutan</th>
+                        <th>Ubah Urutan</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -49,6 +51,8 @@ Management Fasilitas
                         <th>Foto Fasilitas</th>
                         <th>Fasilitas</th>
                         <th>Deskripsi</th>
+                        <th>Urutan</th>
+                        <th>Ubah Urutan</th>
                         <th>Aksi</th>
                     </tr>
                 </tfoot>
@@ -61,6 +65,19 @@ Management Fasilitas
                         </td>
                         <td>{{ $item->name }}</td>
                         <td>{{ Str::limit(strip_tags($item->description,'/<([a-z][a-z0-9]*)[^>]*?(\/?)>/si'), 50) }}</td>
+                        <td>{{ $item->order }}</td>
+                        <td>
+                            <div class="btn-group">
+                                <form action="{{route('dashboard.fasilitas.increase', $item->id)}}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-sm btn-info"><i class="fa fa-arrow-up"></i></button>
+                                </form>
+                                <form action="{{route('dashboard.fasilitas.decrease', $item->id)}}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-arrow-down"></i></button>
+                                </form>
+                            </div>
+                        </td>
                         <td class="text-center">
                             <a href="{{ route('dashboard.fasilitas.show', $item->id) }}" class="btn btn-info btn-circle btn-sm">
                                 <i class="fas fa-eye"></i>

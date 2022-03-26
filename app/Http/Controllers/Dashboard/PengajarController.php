@@ -23,7 +23,7 @@ class PengajarController extends Controller
 
     public function index()
     {
-        $data['pengajars'] = Pengajar::orderby('parent_menu', 'asc')
+        $data['pengajars'] = Pengajar::orderby('order', 'asc')
             ->orderby('name', 'asc')->get();
         return view('dashboard.pengajar.index', $data);
     }
@@ -132,5 +132,29 @@ class PengajarController extends Controller
         Session::flash('success', 'Data Berhasil Dihapus');
 
         return redirect()->back();
+    }
+
+    public function increase($id)
+    {
+        $pengajar = Pengajar::find($id);
+
+        if ($pengajar->order > 1) {
+            $pengajar->order = $pengajar->order - 1;
+            $pengajar->save();
+            Session::flash('success', 'Urutan Berhasil Naik');
+        } else {
+            Session::flash('error', 'Urutan Mencapai Batas Naik');
+        }
+
+        return redirect(route('dashboard.instructur.index'));
+    }
+
+    public function decrease($id)
+    {
+        $pengajar = Pengajar::find($id);
+        $pengajar->order = $pengajar->order + 1;
+        $pengajar->save();
+        Session::flash('success', 'Urutan Berhasil Turun');
+        return redirect(route('dashboard.instructur.index'));
     }
 }

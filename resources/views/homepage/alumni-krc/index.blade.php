@@ -90,67 +90,16 @@ Alumni KRC
                     <div class="col-lg-3 col-md-6 col-6 d-flex mb-3 p-md-2 p-1">
                         <div class="card p-3 py-4">
                             <div class="img-gp-profil mb-3">
-                                <img src="{{ $alumni->getFirstMediaUrl('alumnis','thumb') }}" alt="">
+                                <img src="{{ $alumni->getFirstMediaUrl('avatars','avatar') }}" alt="">
                             </div>
                             <div class="card-body text-center">
-                                <div class="font-weight-bold"><span style="color: #8088A5;"> {{ $alumni->name }}</span></div>
+                                <div class="font-weight-bold"><span class="bg-secondary p-1 px-4 rounded text-white">{{ $alumni->name }}</span></div>
+                                <div class="font-weight-bold"><span style="color: #8088A5;">{{ $alumni->instansi }}</span></div>
                                 <div class="small"><span style="color: #8088A5;">{{ $alumni->temaPelatihan->name }}</span></div>
                             </div>
                         </div>
                     </div>
                     @endforeach
-                    <div class="col-lg-3 col-md-6 col-6 d-flex mb-3 p-md-2 p-1">
-                        <a href="https://sekolah.penggerak.kemdikbud.go.id/gurupenggerak/detil-profil?pid=327536" style="width: 100%;">
-                            <div class="card bg-card">
-                                <div class="img-gp-profil">
-                                    <img src="https://files1.simpkb.id/foto-ptk/3301/201511408941-20170712155308-321.jpeg" alt="..." class="card-img-top">
-                                </div>
-                                <div class="card-body text-center">
-                                    <div class="font-weight-bold"><span style="color: #8088A5;"> OKKI KRISHNA...</span></div>
-                                    <div class="small"><span style="color: #8088A5;"> SMP YOS SUDARSO...</span></div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-6 d-flex mb-3 p-md-2 p-1">
-                        <a href="https://sekolah.penggerak.kemdikbud.go.id/gurupenggerak/detil-profil?pid=327536" style="width: 100%;">
-                            <div class="card bg-card">
-                                <div style="height: 130px; overflow: hidden;">
-                                    <img src="https://files1.simpkb.id/foto-ptk/3301/201511408941-20170712155308-321.jpeg" alt="..." class="card-img-top">
-                                </div>
-                                <div class="card-body text-center">
-                                    <div class="font-weight-bold"> OKKI KRISHNA...</div>
-                                    <div class="small">SMP YOS SUDARSO...</div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-6 d-flex mb-3 p-md-2 p-1">
-                        <a href="https://sekolah.penggerak.kemdikbud.go.id/gurupenggerak/detil-profil?pid=327536" style="width: 100%;">
-                            <div class="card bg-card">
-                                <div style="height: 130px; overflow: hidden;">
-                                    <img src="https://files1.simpkb.id/foto-ptk/3301/201511408941-20170712155308-321.jpeg" alt="..." class="card-img-top">
-                                </div>
-                                <div class="card-body text-center">
-                                    <div class="font-weight-bold"> OKKI KRISHNA...</div>
-                                    <div class="small">SMP YOS SUDARSO...</div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-6 d-flex mb-3 p-md-2 p-1">
-                        <a href="https://sekolah.penggerak.kemdikbud.go.id/gurupenggerak/detil-profil?pid=327536" style="width: 100%;">
-                            <div class="card bg-card">
-                                <div style="height: 130px; overflow: hidden;">
-                                    <img src="https://files1.simpkb.id/foto-ptk/3301/201511408941-20170712155308-321.jpeg" alt="..." class="card-img-top">
-                                </div>
-                                <div class="card-body text-center">
-                                    <div class="font-weight-bold"> OKKI KRISHNA...</div>
-                                    <div class="small">SMP YOS SUDARSO...</div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
                 </div>
                 <div class="d-flex justify-content-center">
                     {{ $alumnis->links('pagination::bootstrap-4') }}

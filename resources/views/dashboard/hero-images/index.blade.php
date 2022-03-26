@@ -35,6 +35,8 @@ Hero Images
                         <th>Thumbnail</th>
                         <th>Judul</th>
                         <th>Deskripsi</th>
+                        <th>Urutan</th>
+                        <th>Ubah Urutan</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -44,6 +46,8 @@ Hero Images
                         <th>Thumbnail</th>
                         <th>Judul</th>
                         <th>Deskripsi</th>
+                        <th>Urutan</th>
+                        <th>Ubah Urutan</th>
                         <th>Aksi</th>
                     </tr>
                 </tfoot>
@@ -56,6 +60,19 @@ Hero Images
                         </td>
                         <td>{{ $item->title }}</td>
                         <td>{{ $item->description }}</td>
+                        <td>{{ $item->order }}</td>
+                        <td>
+                            <div class="btn-group">
+                                <form action="{{route('dashboard.hero_images.increase', $item->id)}}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-sm btn-info"><i class="fa fa-arrow-up"></i></button>
+                                </form>
+                                <form action="{{route('dashboard.hero_images.decrease', $item->id)}}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-arrow-down"></i></button>
+                                </form>
+                            </div>
+                        </td>
                         <td class="text-center" style="width: 10%;">
                             <a href="{{ route('dashboard.hero_images.edit', $item->id) }}" class="btn btn-warning btn-circle btn-sm">
                                 <i class="fas fa-pencil-alt"></i>

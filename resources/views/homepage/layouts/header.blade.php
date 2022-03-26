@@ -54,7 +54,7 @@
                         <a class="dropdown-item" href="{{ route('homepage.promosi.kerja_sama') }}">Kerja Sama</a>
                     </div>
                 </li>
-                <li class="nav-item {{ Request::is('produk*') ? 'active' : '' }}">
+                <li class="nav-item {{ Request::is('kontak*') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('homepage.kontak.index') }}">Kontak</a>
                 </li>
             </ul>
