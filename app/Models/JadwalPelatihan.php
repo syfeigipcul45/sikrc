@@ -14,7 +14,9 @@ class JadwalPelatihan extends Model
         'lokasi_pelatihan',
         'waktu_pelatihan',
         'jam_mulai',
-        'jam_berakhir'
+        'jam_berakhir',
+        'peserta',
+        'file_undangan'
     ];
 
     public function temaPelatihan()

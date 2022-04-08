@@ -39,7 +39,9 @@ Management Jadwal Pelatihan
                         <th>No</th>
                         <th>Tema Pelatihan</th>
                         <th>Lokasi Pelatihan</th>
-                        <th>Waktu Pelatihan</th>
+                        <th>Tanggal Pelatihan</th>
+                        <th>Peserta Pelatihan</th>
+                        <th>Undangan Pelatihan</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -48,7 +50,9 @@ Management Jadwal Pelatihan
                         <th>No</th>
                         <th>Tema Pelatihan</th>
                         <th>Lokasi Pelatihan</th>
-                        <th>Waktu Pelatihan</th>
+                        <th>Tanggal Pelatihan</th>
+                        <th>Peserta Pelatihan</th>
+                        <th>Undangan Pelatihan</th>
                         <th>Aksi</th>
                     </tr>
                 </tfoot>
@@ -58,7 +62,11 @@ Management Jadwal Pelatihan
                         <td>{{ ++$key }}</td>
                         <td>{{ $item->temaPelatihan->name }}</td>
                         <td>{{ $item->lokasi_pelatihan }}</td>
-                        <td>{{ changeDate($item->waktu_pelatihan).' ('.($item->jam_mulai.' - '.$item->jam_berakhir.' WITA)') }}</td>
+                        <td>{{ changeDate($item->waktu_pelatihan) }}</td>
+                        <td>{{ $item->peserta }}</td>
+                        <td>
+                            <a href="{{ $item->file_undangan }}" class="btn btn-info btn-sm" target="_blank"><i class="fas fa-file-pdf"></i> Lihat File</a>
+                        </td>
                         <td class="text-center">
                             <!-- <a href="{{ route('dashboard.jadwal_pelatihan.show', $item->id) }}" class="btn btn-info btn-circle btn-sm">
                                 <i class="fas fa-eye"></i>

@@ -40,10 +40,11 @@ Tambah Jadwal Pelatihan
             <!-- Area Chart -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Tema Pelatihan</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Jadwal Pelatihan</h6>
                 </div>
                 <div class="card-body">
-                    <div class="form-group">
+                    <div class="row mb-4">
+                        <strong>Tema Pelatihan</strong>
                         <select name="tema_id" class="form-control js-example-basic-single">
                             <option value="" disabled selected>:: Pilih ::</option>
                             @foreach($tema as $key => $item)
@@ -54,38 +55,42 @@ Tambah Jadwal Pelatihan
                         <small class="form-text error-input">{{ $message }}</small>
                         @enderror
                     </div>
-                </div>
-            </div>
 
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Lokasi Pelatihan</h6>
-                </div>
-                <div class="card-body">
-                    <div class="form-group">
+                    <div class="row mb-4">
+                        <strong>Lokasi Pelatihan</strong>
                         <input type="text" class="form-control" name="lokasi_pelatihan" value="{{ old('lokasi_pelatihan') }}" />
                         @error('lokasi_pelatihan')
                         <small class="form-text error-input">{{ $message }}</small>
                         @enderror
                     </div>
-                </div>
-            </div>
 
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Waktu Pelatihan</h6>
-                </div>
-                <div class="card-body">
-                    <div class="form-group">
+                    <div class="row mb-4">
+                        <strong>Tanggal Pelatihan</strong>
                         <input type="date" class="form-control" name="waktu_pelatihan" value="{{ old('waktu_pelatihan') }}" />
                         @error('waktu_pelatihan')
+                        <small class="form-text error-input">{{ $message }}</small>
+                        @enderror
+                    </div>
+
+                    <div class="row mb-4">
+                        <strong>Peserta Pelatihan</strong>
+                        <textarea class="form-control" rows="3" name="peserta">{{ old('peserta')}}</textarea>
+                        @error('peserta')
+                        <small class="form-text error-input">{{ $message }}</small>
+                        @enderror
+                    </div>
+
+                    <div class="row mb-4">
+                        <strong>File Undangan</strong>
+                        <input type="file" class="form-control-file" name="file_undangan" accept=".pdf">
+                        @error('peserta')
                         <small class="form-text error-input">{{ $message }}</small>
                         @enderror
                     </div>
                 </div>
             </div>
 
-            <div class="card shadow mb-4">
+            <!-- <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Jam Pelatihan</h6>
                 </div>
@@ -103,7 +108,7 @@ Tambah Jadwal Pelatihan
                         @enderror
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
 
         <!-- Donut Chart -->

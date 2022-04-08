@@ -7,6 +7,7 @@ use App\Models\JadwalPelatihan;
 use App\Models\TemaPelatihan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class JadwalPelatihanController extends Controller
@@ -56,14 +57,18 @@ class JadwalPelatihanController extends Controller
                 'tema_id' => 'required',
                 'lokasi_pelatihan' => 'required',
                 'waktu_pelatihan' => 'required',
-                'jam_mulai'     => 'required',
-                'jam_berakhir'  => 'required'
+                // 'jam_mulai'     => 'required',
+                // 'jam_berakhir'  => 'required',
+                'peserta'   => 'required',
+                'file_undangan' => 'required'
             ], [
                 'tema_id.required' => 'Tema pelatihan harus diisi!',
                 'lokasi_pelatihan.required' => 'Lokasi pelatihan harus diisi!',
                 'waktu_pelatihan.required' => 'Waktu pelatihan harus diisi!',
-                'jam_mulai.required'    => 'Jam mulai harus diisi!',
-                'jam_berakhir.required'    => 'Jam berakhir harus diisi!',
+                // 'jam_mulai.required'    => 'Jam mulai harus diisi!',
+                // 'jam_berakhir.required'    => 'Jam berakhir harus diisi!',
+                'peserta.required'  => 'Peserta harus diisi!',
+                'file_undangan' => 'File undangan harus diisi!'
             ]);
 
             if ($validator->fails()) {
@@ -74,9 +79,16 @@ class JadwalPelatihanController extends Controller
                 "tema_id" => $request->tema_id,
                 "lokasi_pelatihan" => $request->lokasi_pelatihan,
                 "waktu_pelatihan" => $request->waktu_pelatihan,
-                "jam_mulai"     => $request->jam_mulai,
-                "jam_berakhir"     => $request->jam_berakhir
+                // "jam_mulai"     => $request->jam_mulai,
+                // "jam_berakhir"     => $request->jam_berakhir,
+                "peserta"   => $request->peserta,
             ];
+
+            if ($request->hasFile('file_undangan')) {
+                $file = $request->file('file_undangan');
+                $path = Storage::disk('public')->putFileAs('file-undangan', $file, time()."_".$file->getClientOriginalName());
+                $data['file_undangan'] = url('/') . '/storage/' . $path;
+            }
             // dd($data);
 
             JadwalPelatihan::create($data);
@@ -128,14 +140,16 @@ class JadwalPelatihanController extends Controller
                 'tema_id' => 'required',
                 'lokasi_pelatihan' => 'required',
                 'waktu_pelatihan' => 'required',
-                'jam_mulai'     => 'required',
-                'jam_berakhir'  => 'required'
+                // 'jam_mulai'     => 'required',
+                // 'jam_berakhir'  => 'required',
+                'peserta'   => 'required'
             ], [
                 'tema_id.required' => 'Tema pelatihan harus diisi!',
                 'lokasi_pelatihan.required' => 'Lokasi pelatihan harus diisi!',
                 'waktu_pelatihan.required' => 'Waktu pelatihan harus diisi!',
-                'jam_mulai.required'    => 'Jam mulai harus diisi!',
-                'jam_berakhir.required'    => 'Jam berakhir harus diisi!',
+                // 'jam_mulai.required'    => 'Jam mulai harus diisi!',
+                // 'jam_berakhir.required'    => 'Jam berakhir harus diisi!',
+                'peserta.required' => 'Peserta harus diisi!'
             ]);
 
             if ($validator->fails()) {
@@ -146,10 +160,19 @@ class JadwalPelatihanController extends Controller
                 "tema_id" => $request->tema_id,
                 "lokasi_pelatihan" => $request->lokasi_pelatihan,
                 "waktu_pelatihan" => $request->waktu_pelatihan,
-                "jam_mulai"     => $request->jam_mulai,
-                "jam_berakhir"     => $request->jam_berakhir
+                // "jam_mulai"     => $request->jam_mulai,
+                // "jam_berakhir"     => $request->jam_berakhir
+                "peserta"  => $request->peserta
             ];
-            // dd($data);
+            if ($request->hasFile('file_undangan')) {
+                $file = $request->file('file_undangan');
+                $path = Storage::disk('public')->putFileAs('file-undangan', $file, time()."_".$file->getClientOriginalName());
+
+                Storage::disk('public')->delete('/file-undangan/' . basename($request->old_file_undangan));
+                $updateData['file_undangan'] = url('/') . '/storage/' . $path;;
+            } else {
+                $updateData['file_undangan'] = $request->old_file_undangan;
+            }
 
             $jadwal->update($updateData);
 

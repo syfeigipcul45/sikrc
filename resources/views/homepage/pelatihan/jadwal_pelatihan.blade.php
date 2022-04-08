@@ -37,7 +37,9 @@ Jadwal Pelatihan
                                         <th>No</th>
                                         <th>Tema Pelatihan</th>
                                         <th>Lokasi Pelatihan</th>
-                                        <th>Waktu Pelatihan</th>
+                                        <th>Tanggal Pelatihan</th>
+                                        <th>Peserta Pelatihan</th>
+                                        <th>Undangan Pelatihan</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -46,7 +48,11 @@ Jadwal Pelatihan
                                         <td>{{ ++$key }}.</td>
                                         <td>{{ $jadwal_pelatihan->temaPelatihan->name }}</td>
                                         <td>{{ $jadwal_pelatihan->lokasi_pelatihan }}</td>
-                                        <td>{{ changeDate($jadwal_pelatihan->waktu_pelatihan).' ('.($jadwal_pelatihan->jam_mulai.' - '.$jadwal_pelatihan->jam_berakhir.' WITA)') }}</td>
+                                        <td>{{ changeDate($jadwal_pelatihan->waktu_pelatihan) }}</td>
+                                        <td>{{ $jadwal_pelatihan->peserta }}</td>
+                                        <td>
+                                            <a href="{{ $jadwal_pelatihan->file_undangan }}" class="btn btn-info btn-sm" target="_blank"><i class="fas fa-file-pdf"></i> Lihat File</a>
+                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>
