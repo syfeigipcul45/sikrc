@@ -133,7 +133,7 @@
     </a>
 </li>
 
-<li class="nav-item {{ Request::is('management-settings*') ? 'active' : '' }}">
+<li class="nav-item {{ Request::is('management-setting*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('dashboard.settings.index') }}">
         <i class="fas fa-fw fa-cog"></i>
         <span>Pengaturan</span>

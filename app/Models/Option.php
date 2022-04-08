@@ -25,6 +25,9 @@ class Option extends Model implements HasMedia
         'facebook',
         'instagram',
         'youtube',
+        'profile_url',
+        'profile_title',
+        'profile_description'
     ];
 
     public function registerMediaConversions(Media $media = null): void

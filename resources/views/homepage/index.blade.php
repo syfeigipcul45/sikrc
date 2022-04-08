@@ -154,6 +154,19 @@ Home
             font-weight: 700;
         }
     }
+
+    .carousel-text {
+        position: absolute;
+        right: 15%;
+        bottom: 50%;
+        top: 40%;
+        left: 15%;
+        z-index: 10;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        color: #fff;
+        text-align: center;
+    }
 </style>
 @endsection
 
@@ -169,10 +182,10 @@ Home
         @endif
         <div class="carousel-item {{ $active }}">
             <img class="d-block w-100" style="height: 872px;" src="{{ $hero_image->getFirstMediaUrl("hero-image", "cover") }}" alt="First slide">
-            <div class="carousel-caption d-none d-md-block">
+            <div class="carousel-text d-none d-md-block">
                 <div class="container text-center wow zoomIn">
-                    <!-- <span class="subhead">{{ $hero_image->description }}</span> -->
-                    <!-- <h1 class="display-4">{{ $hero_image->title }}</h1> -->
+                    <h1 class="display-4" style="font-weight: bold;">{{ $hero_image->title }}</h1>
+                    <h4 class="subhead">{{ $hero_image->description }}</h4>
                 </div>
             </div>
         </div>
@@ -182,27 +195,21 @@ Home
 
 <div class="bg-light">
 
-    <div class="page-section pb-0">
+    <div class="page-section">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 py-3 wow fadeInUp">
                     <h1>
-                        Selamat Datang di SI-KRC
+                        {{ getOption()->profile_title ?? 'Selamat Datang di SI-KRC'}}
                     </h1>
                     <p class="text-grey mb-4" style="text-align: justify;">
-                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                        diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                        aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                        justo duo dolores et ea rebum. Accusantium aperiam earum ipsa
-                        eius, inventore nemo labore eaque porro consequatur ex
-                        aspernatur. Explicabo, excepturi accusantium! Placeat voluptates
-                        esse ut optio facilis!
+                        {{ getOption()->profile_description ?? ''}}
                     </p>
                     <!-- <a href="about.html" class="btn btn-primary">Learn More</a> -->
                 </div>
                 <div class="col-lg-6 wow fadeInRight" data-wow-delay="400ms">
-                    <div class="img-place custom-img-1">
-                        <img src="{{ asset('_homepage/assets/img/bg-doctor.png') }}" alt="" />
+                    <div class="custom-img-1">
+                        {!!  convertVideoProfile(getOption()->profile_url) ?? 'Selamat Datang di SI-KRC' !!}
                     </div>
                 </div>
             </div>

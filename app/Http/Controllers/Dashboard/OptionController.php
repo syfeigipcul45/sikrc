@@ -60,7 +60,10 @@ class OptionController extends Controller
                 'facebook' => 'required',
                 'instagram' => 'required',
                 'youtube' => 'required',
-                'banner' => 'required'
+                'banner' => 'required',
+                'profile_title' => 'required',
+                'profile_url' => 'required',
+                'profile_description' => 'required'
             ], [
                 'logo.required' => 'Logo harus diisi!',
                 'logo.max' => 'Logo harus di bawah atau sama dengan 2MB',
@@ -74,7 +77,10 @@ class OptionController extends Controller
                 'facebook.required' => 'Facebook harus diisi!',
                 'instagram.required' => 'Instagram harus diisi!',
                 'youtube.required' => 'Youtube harus diisi!',
-                'banner.required' => 'Banner utama harus diisi'
+                'banner.required' => 'Banner utama harus diisi',
+                'profile_title.required' => 'Judul profil harus diisi',
+                'profile_url.required' => 'Video profil harus diisi',
+                'profile_description.required' => 'Deskripsi profil harus diisi'
             ]);
 
             if($validator->fails()) {
@@ -92,7 +98,10 @@ class OptionController extends Controller
                     'twitter' => $request->twitter,
                     'facebook' => $request->facebook,
                     'instagram' => $request->instagram,
-                    'youtube' => $request->youtube
+                    'youtube' => $request->youtube,
+                    'profile_title' => $request->profile_title,
+                    'profile_url' => $request->profile_url,
+                    'profile_description' => $request->profile_description
                 ];
 
                 if($request->hasFile('logo')) {
@@ -125,7 +134,10 @@ class OptionController extends Controller
                     'twitter' => $request->twitter,
                     'facebook' => $request->facebook,
                     'instagram' => $request->instagram,
-                    'youtube' => $request->youtube
+                    'youtube' => $request->youtube,
+                    'profile_title' => $request->profile_title,
+                    'profile_url' => $request->profile_url,
+                    'profile_description' => $request->profile_description
                 ];
 
                 if($request->hasFile('logo')) {
