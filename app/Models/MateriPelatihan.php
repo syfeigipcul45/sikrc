@@ -18,7 +18,8 @@ class MateriPelatihan extends Model implements HasMedia
         'tema_id',
         'link_media',
         'caption',
-        'type'
+        'type',
+        'is_published'
     ];
 
     public function registerMediaConversions(Media $media = null): void

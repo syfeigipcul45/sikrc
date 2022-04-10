@@ -52,29 +52,46 @@ Edit Materi Pelatihan
                     <h6 class="m-0 font-weight-bold text-primary">File Presentasi</h6>
                 </div>
                 <div class="card-body">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <input type="file" class="form-control-file" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.pdf,.ppt,.pptx" name="link_media" />
-                            <input type="hidden" class="form-control-file" name="old_link_media" value="{{ $materi->link_media }}" />
-                            @error('link_media')
-                            <small class="form-text error-input">{{ $message }}</small>
-                            @enderror
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="file" class="form-control-file" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.pdf,.ppt,.pptx" name="link_media" />
+                                <input type="hidden" class="form-control-file" name="old_link_media" value="{{ $materi->link_media }}" />
+                                @error('link_media')
+                                <small class="form-text error-input">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <a href="{{ $materi->link_media }}" target="_blank" class="btn btn-primary btn-sm btn-icon-split">
+                                    <span class="icon text-white-50">
+                                        @if(pathinfo($materi->link_media, PATHINFO_EXTENSION) == 'doc' || pathinfo($materi->link_media, PATHINFO_EXTENSION) == 'docx')
+                                        <i class="fas fa-file-word"></i>
+                                        @elseif(pathinfo($materi->link_media, PATHINFO_EXTENSION) == 'ppt' || pathinfo($materi->link_media, PATHINFO_EXTENSION) == 'pptx')
+                                        <i class="fas fa-file-powerpoint"></i>
+                                        @else
+                                        <i class="fas fa-file-pdf"></i>
+                                        @endif
+                                    </span>
+                                    <span class="text">Lihat Data</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <a href="{{ $materi->link_media }}" target="_blank" class="btn btn-primary btn-sm btn-icon-split">
-                                <span class="icon text-white-50">
-                                    @if(pathinfo($materi->link_media, PATHINFO_EXTENSION) == 'doc' || pathinfo($materi->link_media, PATHINFO_EXTENSION) == 'docx')
-                                    <i class="fas fa-file-word"></i>
-                                    @elseif(pathinfo($materi->link_media, PATHINFO_EXTENSION) == 'ppt' || pathinfo($materi->link_media, PATHINFO_EXTENSION) == 'pptx')
-                                    <i class="fas fa-file-powerpoint"></i>
-                                    @else
-                                    <i class="fas fa-file-pdf"></i>
-                                    @endif
-                                </span>
-                                <span class="text">Lihat Data</span>
-                            </a>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Status Dokumen</label>
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" id="status" class="custom-control-input" {{ $materi->is_published == 1 ? 'checked' : '' }} />
+                                    <input type="hidden" id="status-value" name="is_published" value="{{ old('is_published', $materi->is_published) }}" />
+                                    <label class="custom-control-label" for="status">Publish</label>
+                                </div>
+                                @error('is_published')
+                                <small class="form-text error-input">{{ $message }}</small>
+                                @enderror
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -122,5 +139,13 @@ Edit Materi Pelatihan
 @endsection
 
 @section('extra-js')
-
+<script>
+    $('#status').change(function() {
+        if ($('#status').is(':checked')) {
+            $('#status-value').val(1);
+        } else {
+            $('#status-value').val(0);
+        }
+    });
+</script>
 @endsection

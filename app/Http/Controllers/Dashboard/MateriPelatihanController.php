@@ -62,7 +62,8 @@ class MateriPelatihanController extends Controller
             $data = [
                 'tema_id' => $request->tema_id,
                 'caption' => $request->caption,
-                'type' => 'presentasi'
+                'type' => 'presentasi',
+                'is_published' => $request->is_published
             ];
 
             if ($request->hasFile('link_media')) {
@@ -100,8 +101,15 @@ class MateriPelatihanController extends Controller
                 return redirect()->back()->withInput()->withErrors($validator);
             }
 
+            if($request->is_published == 1){
+                $is_published = 1;
+            } else {
+                $is_published = 0;
+            }
+
             $updateData = [
                 'caption' => $request->caption,
+                'is_published' => $is_published
             ];
 
             if ($request->hasFile('link_media')) {
@@ -159,7 +167,8 @@ class MateriPelatihanController extends Controller
             $data = [
                 'tema_id' => $request->tema_id,
                 'caption' => $request->caption,
-                'type' => 'gambar'
+                'type' => 'gambar',
+                'is_published' => $request->is_published
             ];
 
             if ($request->hasFile('link_media')) {
@@ -197,8 +206,15 @@ class MateriPelatihanController extends Controller
                 return redirect()->back()->withInput()->withErrors($validator);
             }
 
+            if($request->is_published == 1){
+                $is_published = 1;
+            } else {
+                $is_published = 0;
+            }
+
             $updateData = [
                 'caption' => $request->caption,
+                'is_published' => $is_published
             ];
 
             if ($request->hasFile('link_media')) {
@@ -314,5 +330,11 @@ class MateriPelatihanController extends Controller
         Session::flash('success', 'Data berhasil dihapus');
         Session::flash('video', 'show');
         return redirect()->back();
+    }
+
+    public function filePresentasi($id) 
+    {
+        $data['materi'] = MateriPelatihan::find($id);
+        return view('dashboard.materi-pelatihan.materi', $data);
     }
 }

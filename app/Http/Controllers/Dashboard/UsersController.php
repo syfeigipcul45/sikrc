@@ -36,7 +36,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        $data['roles'] = Role::where('id', '!=', 3)->orderBy('id', 'asc')->get();
+        $data['roles'] = Role::orderBy('id', 'asc')->get();
         return view('dashboard.user.create', $data);
     }
 
@@ -106,7 +106,7 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        $data['roles'] = Role::where('id', '!=', 3)->orderBy('id', 'asc')->get();
+        $data['roles'] = Role::orderBy('id', 'asc')->get();
         $data['user'] = User::find($id);
         return view('dashboard.user.edit', $data);
     }

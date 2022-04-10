@@ -103,7 +103,9 @@ class HomeController extends Controller
     {
         $data['tema'] = TemaPelatihan::where('slug', $slug)->first();
         $data['presentasi'] = MateriPelatihan::where('tema_id', $data['tema']->id)->where('type', 'presentasi')->orderby('created_at', 'desc')->get();
+        $data['presentasi_private'] = MateriPelatihan::where('tema_id', $data['tema']->id)->where('type', 'presentasi')->where('is_published', 1)->orderby('created_at', 'desc')->get();
         $data['gambar'] = MateriPelatihan::where('tema_id', $data['tema']->id)->where('type', 'gambar')->orderby('created_at', 'desc')->get();
+        $data['gambar_private'] = MateriPelatihan::where('tema_id', $data['tema']->id)->where('type', 'gambar')->where('is_published', 1)->orderby('created_at', 'desc')->get();
         $data['video'] = MateriPelatihan::where('tema_id', $data['tema']->id)->where('type', 'video')->orderby('created_at', 'desc')->get();
         return view('homepage.pelatihan.show_materi', $data);
     }

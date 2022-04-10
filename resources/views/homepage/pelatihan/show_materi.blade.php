@@ -70,26 +70,47 @@ Materi Pelatihan
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    @hasanyrole('superadmin|admin|pemateri')
                                                     @foreach($presentasi as $key => $item)
                                                     <tr>
                                                         <td>{{++$key}}</td>
                                                         <td>
                                                             <a href="{{ $item->link_media }}" target="_blank" class="btn btn-primary btn-sm btn-icon-split">
-                                                                <span class="icon text-white-50">
-                                                                    @if(pathinfo($item->link_media, PATHINFO_EXTENSION) == 'doc' || pathinfo($item->link_media, PATHINFO_EXTENSION) == 'docx')
-                                                                    <i class="fas fa-file-word"></i>
-                                                                    @elseif(pathinfo($item->link_media, PATHINFO_EXTENSION) == 'ppt' || pathinfo($item->link_media, PATHINFO_EXTENSION) == 'pptx')
-                                                                    <i class="fas fa-file-powerpoint"></i>
-                                                                    @else
-                                                                    <i class="fas fa-file-pdf"></i>
-                                                                    @endif
-                                                                </span>
+
+                                                                @if(pathinfo($item->link_media, PATHINFO_EXTENSION) == 'doc' || pathinfo($item->link_media, PATHINFO_EXTENSION) == 'docx')
+                                                                <i class="fas fa-file-word"></i>
+                                                                @elseif(pathinfo($item->link_media, PATHINFO_EXTENSION) == 'ppt' || pathinfo($item->link_media, PATHINFO_EXTENSION) == 'pptx')
+                                                                <i class="fas fa-file-powerpoint"></i>
+                                                                @else
+                                                                <i class="fas fa-file-pdf"></i>
+                                                                @endif
                                                                 <span class="text">Lihat Data</span>
                                                             </a>
                                                         </td>
                                                         <td>{{ $item->caption }}</td>
                                                     </tr>
                                                     @endforeach
+                                                    @else
+                                                    @foreach($presentasi_private as $key => $item)
+                                                    <tr>
+                                                        <td>{{++$key}}</td>
+                                                        <td>
+                                                            <a href="{{ $item->link_media }}" target="_blank" class="btn btn-primary btn-sm btn-icon-split">
+
+                                                                @if(pathinfo($item->link_media, PATHINFO_EXTENSION) == 'doc' || pathinfo($item->link_media, PATHINFO_EXTENSION) == 'docx')
+                                                                <i class="fas fa-file-word"></i>
+                                                                @elseif(pathinfo($item->link_media, PATHINFO_EXTENSION) == 'ppt' || pathinfo($item->link_media, PATHINFO_EXTENSION) == 'pptx')
+                                                                <i class="fas fa-file-powerpoint"></i>
+                                                                @else
+                                                                <i class="fas fa-file-pdf"></i>
+                                                                @endif
+                                                                <span class="text">Lihat Data</span>
+                                                            </a>
+                                                        </td>
+                                                        <td>{{ $item->caption }}</td>
+                                                    </tr>
+                                                    @endforeach
+                                                    @endhasanyrole
                                                 </tbody>
                                             </table>
                                         </div>
@@ -120,6 +141,7 @@ Materi Pelatihan
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    @hasanyrole('superadmin|admin|pemateri')
                                                     @foreach($gambar as $key => $item)
                                                     <tr>
                                                         <td>{{++$key}}</td>
@@ -134,6 +156,22 @@ Materi Pelatihan
                                                         <td>{{ $item->caption }}</td>
                                                     </tr>
                                                     @endforeach
+                                                    @else
+                                                    @foreach($gambar_private as $key => $item)
+                                                    <tr>
+                                                        <td>{{++$key}}</td>
+                                                        <td>
+                                                            <a href="{{ $item->link_media }}" target="_blank" class="btn btn-primary btn-sm btn-icon-split">
+                                                                <span class="icon text-white-50">
+                                                                    <i class="fas fa-file-image"></i>
+                                                                </span>
+                                                                <span class="text">Lihat Data</span>
+                                                            </a>
+                                                        </td>
+                                                        <td>{{ $item->caption }}</td>
+                                                    </tr>
+                                                    @endforeach
+                                                    @endhasanyrole
                                                 </tbody>
                                             </table>
                                         </div>

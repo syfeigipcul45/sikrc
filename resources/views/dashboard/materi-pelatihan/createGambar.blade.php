@@ -54,6 +54,21 @@ Tambah Materi Pelatihan
                         <small class="form-text error-input">{{ $message }}</small>
                         @enderror
                     </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Status Dokumen</label>
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" id="status" class="custom-control-input" checked />
+                                    <input type="hidden" id="status-value" name="is_published" value="1" />
+                                    <label class="custom-control-label" for="status">Publish</label>
+                                </div>
+                                @error('is_published')
+                                <small class="form-text error-input">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -99,5 +114,13 @@ Tambah Materi Pelatihan
 @endsection
 
 @section('extra-js')
-
+<script>
+    $('#status').change(function() {
+        if ($('#status').is(':checked')) {
+            $('#status-value').val(1);
+        } else {
+            $('#status-value').val(0);
+        }
+    });
+</script>
 @endsection

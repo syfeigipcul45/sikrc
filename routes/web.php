@@ -139,6 +139,7 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::get('/materi', [MateriPelatihanController::class, 'index'])->name('dashboard.materi_pelatihan.index');
         Route::get('/materi/{id}/show', [MateriPelatihanController::class, 'show'])->name('dashboard.materi_pelatihan.show');
+        Route::get('/materi/{id}/file', [MateriPelatihanController::class, 'filePresentasi'])->name('dashboard.materi_pelatihan.file_materi');
 
         Route::get('/materi/{id}/createPresentasi', [MateriPelatihanController::class, 'createPresentasi'])->name('dashboard.materi_pelatihan.createPresentasi');
         Route::post('/materiPresentasi', [MateriPelatihanController::class, 'storePresentasi'])->name('dashboard.materi_pelatihan.storePresentasi');
