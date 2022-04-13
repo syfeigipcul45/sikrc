@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Pengajar;
+use App\Models\Post;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -24,7 +27,10 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('dashboard.dashboard.index');
+        $data['count_post'] = Post::count();
+        $data['count_produk'] = Product::count();
+        $data['count_pengajar'] = Pengajar::count();
+        return view('dashboard.dashboard.index', $data);
     }
 
     /**

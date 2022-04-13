@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AdminLoginController;
 use App\Http\Controllers\Dashboard\AlumniKrcController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\FasilitasController;
@@ -37,6 +38,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Auth::routes();
+Route::post('/login', [AdminLoginController::class, 'login'])->name('login.submit');
 
 // homepage
 Route::get('/', [HomeController::class, 'index'])->name('home');

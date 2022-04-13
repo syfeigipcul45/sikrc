@@ -110,7 +110,7 @@ Tambah Daftar User
                             <select name="role_id" class="costum-select custom-select-sm">
                                 <option value="" disabled selected>:: Pilih ::</option>
                                 @foreach($roles as $role)
-                                <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                <option value="{{ $role->id }}">{{ $role->id.". ".$role->name }}</option>
                                 @endforeach
                             </select>
                             @error('role_id')

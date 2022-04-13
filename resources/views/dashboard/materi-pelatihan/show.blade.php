@@ -87,7 +87,7 @@ Lihat Materi Pelatihan
                                             <tr>
                                                 <td>{{++$key}}</td>
                                                 <td>
-                                                    <a href="{{route('dashboard.materi_pelatihan.file_materi', $item->id)}}" target="_blank" class="btn btn-primary btn-sm btn-icon-split">
+                                                    <a href="{{ $item->link_media }}" target="_blank" class="btn btn-primary btn-sm btn-icon-split">
                                                         <span class="icon text-white-50">
                                                             @if(pathinfo($item->link_media, PATHINFO_EXTENSION) == 'doc' || pathinfo($item->link_media, PATHINFO_EXTENSION) == 'docx')
                                                             <i class="fas fa-file-word"></i>

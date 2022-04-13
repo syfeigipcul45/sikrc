@@ -61,8 +61,10 @@ Management Users
                         <td>
                             @if($user->roles[0]->name == 'superadmin')
                             <button class="btn btn-success btn-sm">{{$user->roles[0]->name}}</button>
-                            @else
+                            @elseif($user->roles[0]->name == 'admin')
                             <button class="btn btn-info btn-sm">{{$user->roles[0]->name}}</button>
+                            @else
+                            <button class="btn btn-warning btn-sm">{{$user->roles[0]->name}}</button>
                             @endif
                         </td>
                         <td class="text-center">

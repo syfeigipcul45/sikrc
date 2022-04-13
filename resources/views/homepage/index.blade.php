@@ -237,21 +237,6 @@ Home
                 </div>
             </div>
             @endforeach
-            <div class="item">
-                <div class="card-doctor">
-                    <div class="header">
-                        <img src="{{ asset('_homepage/assets/img/doctors/doctor_1.jpg') }}" alt="" />
-                        <div class="meta">
-                            <a href="#"><span class="mai-call"></span></a>
-                            <a href="#"><span class="mai-logo-whatsapp"></span></a>
-                        </div>
-                    </div>
-                    <div class="body">
-                        <p class="text-xl mb-0">Dr. Stein Albert</p>
-                        <span class="text-sm text-grey">Cardiology</span>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>
@@ -320,21 +305,6 @@ Home
                 </div>
             </div>
             @endforeach
-            <div class="item">
-                <div class="card-doctor">
-                    <div class="header">
-                        <img src="{{ asset('_homepage/assets/img/doctors/doctor_1.jpg') }}" alt="" />
-                        <div class="meta">
-                            <a href="#"><span class="mai-call"></span></a>
-                            <a href="#"><span class="mai-logo-whatsapp"></span></a>
-                        </div>
-                    </div>
-                    <div class="body">
-                        <p class="text-xl mb-0">Dr. Stein Albert</p>
-                        <span class="text-sm text-grey">Cardiology</span>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>
