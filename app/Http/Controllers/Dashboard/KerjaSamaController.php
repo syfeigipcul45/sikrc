@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\DokumenKerjasama;
 use App\Models\KerjaSama;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class KerjaSamaController extends Controller
@@ -50,6 +52,14 @@ class KerjaSamaController extends Controller
      */
     public function store(Request $request)
     {
+        $count = KerjaSama::latest()->first();
+        if ($count == null) {
+            $id = 1;
+        } else {
+            $id = ($count->id + 1);
+        }
+
+        // $files = [];
         try {
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
@@ -58,7 +68,7 @@ class KerjaSamaController extends Controller
             ], [
                 'name.required' => 'Nama kerja sama harus diisi!',
                 'description.required' => 'Deskripsi kerja sama harus diisi!',
-                'images.required' => 'Gambar harus diisi!'
+                'images.required' => 'Gambar harus diisi!',
             ]);
 
             if ($validator->fails()) {
@@ -66,13 +76,29 @@ class KerjaSamaController extends Controller
             }
 
             $data = [
+                "id" => $id,
                 "name" => $request->name,
                 "description" => $request->description,
                 "slug" => Str::slug($request->name, '-')
             ];
-            // dd($data);
+
+            // $data['link_file'] = json_encode($files);
 
             $kerja_sama = KerjaSama::create($data);
+
+            if ($request->hasFile('files')) {
+                foreach ($request->file('files') as $key => $file) {
+                    // $file = $request->files[$key];
+                    $path = Storage::disk('public')->putFileAs('dokumen-kerjasama', $file, time() . "_" . $file->getClientOriginalName());
+                    $dokumen['id_kerjasama'] = $id;
+                    $dokumen['name'] = $request->names[$key];
+                    $dokumen['link_file'] = url('/') . '/storage/' . $path;
+                    // $file = url('/') . '/storage/' . $path;
+                    // array_push($files, $file);
+                    DokumenKerjasama::insert($dokumen);
+                }
+            }
+
             foreach ($request->file('images', []) as $media) {
                 $kerja_sama->addMedia($media)->toMediaCollection('kerja-sama');
             }
@@ -81,7 +107,7 @@ class KerjaSamaController extends Controller
 
             return redirect()->route('dashboard.kerja_sama.index');
         } catch (\Exception $exception) {
-            return redirect()->back()->with('error', 'Ada sesuatu yang salah di server!');
+            return redirect()->back()->with('error', $exception->getMessage());
         }
     }
 
@@ -94,6 +120,7 @@ class KerjaSamaController extends Controller
     public function show($id)
     {
         $data['kerja_sama'] = KerjaSama::find($id);
+        $data['dokumens'] = DokumenKerjasama::where('id_kerjasama', $id)->get();
         return view('dashboard.kerja-sama.show', $data);
     }
 
@@ -106,6 +133,7 @@ class KerjaSamaController extends Controller
     public function edit($id)
     {
         $data['kerja_sama'] = KerjaSama::find($id);
+        $data['dokumens'] = DokumenKerjasama::where('id_kerjasama', $id)->get();
         return view('dashboard.kerja-sama.edit', $data);
     }
 
@@ -136,9 +164,56 @@ class KerjaSamaController extends Controller
 
         foreach ($request->file('images', []) as $media) {
             $kerja_sama->addMedia($media)->toMediaCollection('kerja-sama');
-        }
+        }        
 
         $kerja_sama->update($updateData);
+
+        // tambah file
+        if ($request->hasFile('addFiles')) {
+            foreach ($request->file('addFiles') as $key => $file) {
+                // $file = $request->files[$key];
+                $path = Storage::disk('public')->putFileAs('dokumen-kerjasama', $file, time() . "_" . $file->getClientOriginalName());
+                $dokumen['id_kerjasama'] = $id;
+                $dokumen['name'] = $request->addNames[$key];
+                $dokumen['link_file'] = url('/') . '/storage/' . $path;
+                // $file = url('/') . '/storage/' . $path;
+                // array_push($files, $file);
+                DokumenKerjasama::insert($dokumen);
+            }
+        }
+
+        // update dokumen
+        if ($request->hasFile('files')) {
+            foreach ($request->file('files') as $key => $file) {
+                $dokumen = DokumenKerjasama::find($request->id_dokumen[$key]);
+                // if ($request->hasFile('files')) {
+                    $path = Storage::disk('public')->putFileAs('dokumen-kerjasama', $file, $file->getClientOriginalName());
+                    $updateDokumen['name'] = $request->names[$key];
+                    Storage::disk('public')->delete('/dokumen-kerjasama/' . basename($request->old_link_file));
+                    $updateDokumen['link_file'] = url('/') . '/storage/' . $path;
+                // } else {
+                //     $updateDokumen['name'] = $request->names[$key];
+                //     $updateDokumen['link_file'] = $request->old_link_file;
+                // }
+                $dokumen->update($updateDokumen);
+            }
+        } else {
+            foreach ($request->names as $key => $value) {
+                // for($i = 0; $i < count($request->names); $i++) {
+                $dokumen = DokumenKerjasama::find($request->id_dokumen[$key]);
+                // if ($request->hasFile('files')) {
+                    // $path = Storage::disk('public')->putFileAs('datas', $file, $file->getClientOriginalName());
+                    // $updateDokumen['name'] = $request->names[$key];
+                    // Storage::disk('public')->delete('/dokumen-kerjasama/' . basename($request->old_link_file));
+                    // $updateDokumen['link_file'] = url('/') . '/storage/' . $path;
+                // } else {
+                    $updateDokumen['name'] = $request->names[$key];
+                    $updateDokumen['link_file'] = $request->old_link_file;
+                // }
+                $dokumen->update($updateDokumen);
+            }
+        }
+        
         Session::flash('success', 'Data Berhasil Diubah');
 
         return redirect()->route('dashboard.kerja_sama.index');
@@ -152,9 +227,23 @@ class KerjaSamaController extends Controller
      */
     public function destroy($id)
     {
+        $dokumen = DokumenKerjasama::where('id_kerjasama', $id);
+        // dd($dokumen->get('link_file'));
         $kerja_sama = KerjaSama::find($id);
         $kerja_sama->delete();
+        $dokumen->delete();
+        Storage::disk('public')->delete('/dokumen-kerjasama/' . basename($dokumen->get('link_file')));
         Session::flash('success', 'Data Berhasil Dihapus');
+
+        return redirect()->back();
+    }
+
+    public function destroyDokumen($id)
+    {
+        $dokumen = DokumenKerjasama::find($id);
+        $dokumen->delete();
+        Storage::disk('public')->delete('/dokumen-kerjasama/' . basename($dokumen->link_file));
+        Session::flash('success', 'Dokumen Berhasil Dihapus');
 
         return redirect()->back();
     }

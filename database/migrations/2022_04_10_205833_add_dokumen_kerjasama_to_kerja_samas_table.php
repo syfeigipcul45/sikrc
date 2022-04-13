@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateKerjaSamasTable extends Migration
+class AddDokumenKerjasamaToKerjaSamasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateKerjaSamasTable extends Migration
      */
     public function up()
     {
-        Schema::create('kerja_samas', function (Blueprint $table) {
-            $table->string('id')->primary();
-            $table->string('name');
-            $table->string('slug');
-            $table->text('description');
-            $table->timestamps();
+        Schema::table('kerja_samas', function (Blueprint $table) {
+            $table->text('link_file')->after('description')->nullable();
         });
     }
 
@@ -29,6 +25,8 @@ class CreateKerjaSamasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kerja_samas');
+        Schema::table('kerja_samas', function (Blueprint $table) {
+            //
+        });
     }
 }

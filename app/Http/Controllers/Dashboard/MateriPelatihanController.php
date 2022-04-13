@@ -326,7 +326,6 @@ class MateriPelatihanController extends Controller
     {
         $materi = MateriPelatihan::find($id);
         $materi->delete();
-        Storage::disk('public')->delete('/materi/' . basename($materi->link_media));
         Session::flash('success', 'Data berhasil dihapus');
         Session::flash('video', 'show');
         return redirect()->back();

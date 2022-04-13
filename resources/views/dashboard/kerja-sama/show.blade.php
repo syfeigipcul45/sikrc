@@ -65,74 +65,78 @@ Lihat Kerja Sama
 
 @section('content')
 
-    <!-- Content Row -->
-    <div class="row">
-        <div class="col-xl-8 col-lg-7">
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Foto</h6>
-                </div>
-                <div class="card-body">
-                    <div id="imageWrapper" class="row">
-                        @foreach($kerja_sama->getMedia('kerja-sama') as $image)
-                        <div class="col-sm-4">
-                            <img src="{{ $image->getUrl('thumb') }}" alt="" class="img-fluid" />
-                        </div>
-                        @endforeach
+<!-- Content Row -->
+<div class="row">
+    <div class="col-xl-8 col-lg-7">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Foto</h6>
+            </div>
+            <div class="card-body">
+                <div id="imageWrapper" class="row">
+                    @foreach($kerja_sama->getMedia('kerja-sama') as $image)
+                    <div class="col-sm-4">
+                        <img src="{{ $image->getUrl('thumb') }}" alt="" class="img-fluid" />
                     </div>
+                    @endforeach
                 </div>
             </div>
+        </div>
 
-            <!-- Area Chart -->
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Kerja Sama</h6>
-                </div>
-                <div class="card-body">
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="name" value="{{ old('name', $kerja_sama->name) }}" readonly/>
-                        @error('name')
-                        <small class="form-text error-input">{{ $message }}</small>
-                        @enderror
-                    </div>
-                </div>
+        <!-- Area Chart -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Kerja Sama</h6>
             </div>
-
-            <!-- Bar Chart -->
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Deskripsi</h6>
-                </div>
-                <div class="card-body">
-                    <textarea id="content-kerja_sama" name="description">{{ old('description', $kerja_sama->description) }}</textarea>
-                    @error('description')
+            <div class="card-body">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="name" value="{{ old('name', $kerja_sama->name) }}" readonly />
+                    @error('name')
                     <small class="form-text error-input">{{ $message }}</small>
                     @enderror
                 </div>
             </div>
-
         </div>
 
-        <!-- Donut Chart -->
-        <div class="col-xl-4 col-lg-5">
-            <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Informasi</h6>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                    <div class="d-flex align-items-center justify-content-between mb-2">
-                        <span>{{ \Carbon\Carbon::now()->isoFormat('dddd, D MMMM Y') }}</span>
-                        <a href="" class="btn btn-warning" onclick="location.href = document.referrer; return false;">
-                            Kembali
-                        </a>
+        <!-- Bar Chart -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Deskripsi</h6>
+            </div>
+            <div class="card-body">
+                <textarea id="content-kerja_sama" name="description">{{ old('description', $kerja_sama->description) }}</textarea>
+                @error('description')
+                <small class="form-text error-input">{{ $message }}</small>
+                @enderror
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Donut Chart -->
+    <div class="col-xl-4 col-lg-5">
+        <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Dokumen Kerjasama</h6>
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+                @foreach($dokumens as $dokumen)
+                <div class="row mb-4">
+                    <div class="col-lg-12">
+                        <span style="font-size: 10pt; font-weight: bold;">{{ $dokumen->name }}</span>
                     </div>
-                    <hr>
+                    <div class="col-lg-12">
+                        <a href="{{ $dokumen->link_file }}" class="btn btn-info btn-sm" target="_blank">File</a>
+                    </div>
                 </div>
+                @endforeach
+                <hr>
             </div>
         </div>
     </div>
+</div>
 
 @endsection
 
@@ -239,7 +243,7 @@ Lihat Kerja Sama
         $('#imageWrapper').hide();
     });
 
-    $(".imgAdd").click(function(){
+    $(".imgAdd").click(function() {
         $(this).closest(".row").find('.imgAdd').before(`
             <div class="col-sm-4 imgUp">
                 <div class="imagePreview"></div>
@@ -251,23 +255,23 @@ Lihat Kerja Sama
         `);
     });
 
-    $(document).on("click", "i.del" , function() {
+    $(document).on("click", "i.del", function() {
         $(this).parent().remove();
     });
 
     $(function() {
-        $(document).on("change",".uploadFile", function() {
+        $(document).on("change", ".uploadFile", function() {
             var uploadFile = $(this);
             var files = !!this.files ? this.files : [];
             if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
-    
-            if (/^image/.test( files[0].type)) { // only image file
+
+            if (/^image/.test(files[0].type)) { // only image file
                 var reader = new FileReader(); // instance of the FileReader
                 reader.readAsDataURL(files[0]); // read the local file
-    
-                reader.onloadend = function(){ // set image data as background of div
+
+                reader.onloadend = function() { // set image data as background of div
                     //alert(uploadFile.closest(".upimage").find('.imagePreview').length);
-                    uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url("+this.result+")");
+                    uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url(" + this.result + ")");
                 }
             }
         });

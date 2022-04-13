@@ -61,6 +61,34 @@ Tambah Data Kerja Sama
         cursor: pointer;
         font-size: 15px;
     }
+
+    .fileAdd {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #4bd7ef;
+        color: #fff;
+        box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        line-height: 30px;
+        margin-top: 0px;
+        cursor: pointer;
+        font-size: 15px;
+    }
+
+    .fileDel {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #d44950;
+        color: #fff;
+        box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        line-height: 30px;
+        margin-top: 0px;
+        cursor: pointer;
+        font-size: 15px;
+    }
 </style>
 @endsection
 
@@ -68,6 +96,11 @@ Tambah Data Kerja Sama
 
 <form action="{{ route('dashboard.kerja_sama.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
+    @if (session('error'))
+    <div class="alert alert-error" role="alert">
+        {{ session('error') }}
+    </div>
+    @endif
 
     <!-- Content Row -->
     <div class="row">
@@ -138,6 +171,42 @@ Tambah Data Kerja Sama
                         </a>
                     </div>
                     <hr>
+                </div>
+            </div>
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Dokumen Kerjasama</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <!-- <div class="row">
+                        <div class="input-group control-group increment">
+                            <div class="col-md-8">
+                                <input type="file" class="form-control-file" name="files[]" accept=".jpep, .jpg, .png, .word, .wordx, .ppt., .pptx, .pdf">
+                            </div>
+                            <i class="fa fa-plus fileAdd"></i>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="clone hide">
+                            <div class="control-group input-group" style="margin-top: 10px;">
+                                <div class="col-md-8">
+                                    <input type="file" class="form-control-file" name="files[]" accept=".jpep, .jpg, .png, .word, .wordx, .ppt., .pptx, .pdf">
+                                </div>
+                                <i class="fa fa-times fileDel"></i>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="row">
+                        <div class="col-lg-10">
+                            <strong>Nama File</strong>
+                            <input type="text" class="form-control" name="names[]">
+                            <br>
+                            <input type="file" class="form-control-file" name="files[]" accept=".jpep, .jpg, .png, .word, .wordx, .ppt., .pptx, .pdf">
+                        </div>
+                        <i class="fa fa-plus fileAdd"></i>
+                    </div>
                 </div>
             </div>
         </div>
@@ -270,6 +339,35 @@ Tambah Data Kerja Sama
     });
 
     $(document).on("click", "i.del", function() {
+        $(this).parent().remove();
+    });
+
+    // $(document).ready(function() {
+    //     $(".fileAdd").click(function() {
+    //         let html = $(".clone").html();
+    //         $(".increment").after(html);
+    //     });
+
+    //     $("body").on("click", ".fileDel", function() {
+    //         $(this).parents(".control-group").remove();
+    //     });
+    // });
+
+    $(".fileAdd").click(function() {
+        $(this).closest(".row").find('.fileAdd').before(`
+        <div class="clone d-flex align-items-center mb-3">
+            <div class="col-lg-10" style="margin-top: 10px;">
+            <strong>Nama File</strong>
+                            <input type="text" class="form-control" name="names[]"> 
+                            <br>
+                <input type="file" class="form-control-file" name="files[]" accept=".jpep, .jpg, .png, .word, .wordx, .ppt., .pptx, .pdf">
+            </div>
+            <i class="fa fa-times fileDel"></i> &nbsp
+        </div>
+        `);
+    });
+
+    $(document).on("click", "i.fileDel", function() {
         $(this).parent().remove();
     });
 

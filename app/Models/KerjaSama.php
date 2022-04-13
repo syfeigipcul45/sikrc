@@ -15,9 +15,11 @@ class KerjaSama extends Model implements HasMedia
     use InteractsWithMedia;
 
     protected $fillable = [
+        'id',
         'name',
         'description',
-        'slug'
+        'slug',
+        'link_file'
     ];
 
     public function registerMediaConversions(Media $media = null): void

@@ -179,6 +179,15 @@ Detail Kerja Sama
                     @endif
                     </p>
                     {!! $kerja_sama->description !!}
+                    <div class="row">
+                        <span style="font-size: medium; font-weight: bold;">Dokumen Kerjasama:</span>
+                        @foreach($dokumens as $key => $dokumen)
+                        <div class="col-lg-12">
+                            <span style="font-weight: bold;">{{ ++$key.". ".$dokumen->name }}</span>
+                            <span><a href="{{ $dokumen->link_file }}" target="_blank">File Dokumen</a></span>
+                        </div>
+                        @endforeach
+                    </div>
                 </article> <!-- .blog-details -->
             </div>
             <div class="col-lg-4">

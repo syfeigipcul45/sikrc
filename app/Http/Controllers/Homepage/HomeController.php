@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Homepage;
 
 use App\Http\Controllers\Controller;
 use App\Models\AlumniKrc;
+use App\Models\DokumenKerjasama;
 use App\Models\Fasilitas;
 use App\Models\HeroImage;
 use App\Models\JadwalPelatihan;
@@ -206,6 +207,7 @@ class HomeController extends Controller
         $data['total'] = 0;
         $data['kerja_sama'] = KerjaSama::where('slug', $slug)->first();
         $data['other_kerja_sama'] = KerjaSama::where('slug', '!=', $slug)->latest()->limit(4)->get();
+        $data['dokumens'] = DokumenKerjasama::where('id_kerjasama', $data['kerja_sama']->id)->get();
         foreach ($data['kerja_sama']->getMedia('kerja-sama') as $image) {
             $data['total']++;
         }

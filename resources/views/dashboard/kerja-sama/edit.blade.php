@@ -60,6 +60,34 @@ Edit Kerja Sama
         cursor: pointer;
         font-size: 15px;
     }
+
+    .fileAdd {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #4bd7ef;
+        color: #fff;
+        box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        line-height: 30px;
+        margin-top: 0px;
+        cursor: pointer;
+        font-size: 15px;
+    }
+
+    .fileDel {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #d44950;
+        color: #fff;
+        box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        line-height: 30px;
+        margin-top: 0px;
+        cursor: pointer;
+        font-size: 15px;
+    }
 </style>
 @endsection
 
@@ -67,7 +95,11 @@ Edit Kerja Sama
 
 <form action="{{ route('dashboard.kerja_sama.update', $kerja_sama->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
-
+    @if (session('success'))
+    <div class="alert alert-success" role="alert">
+        {{ session('success') }}
+    </div>
+    @endif
     <!-- Content Row -->
     <div class="row">
         <div class="col-xl-8 col-lg-7">
@@ -149,10 +181,73 @@ Edit Kerja Sama
                     <hr>
                 </div>
             </div>
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Dokumen Kerjasama</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <!-- <div class="row">
+                        <div class="input-group control-group increment">
+                            <div class="col-md-8">
+                                <input type="file" class="form-control-file" name="files[]" accept=".jpep, .jpg, .png, .word, .wordx, .ppt., .pptx, .pdf">
+                            </div>
+                            <i class="fa fa-plus fileAdd"></i>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="clone hide">
+                            <div class="control-group input-group" style="margin-top: 10px;">
+                                <div class="col-md-8">
+                                    <input type="file" class="form-control-file" name="files[]" accept=".jpep, .jpg, .png, .word, .wordx, .ppt., .pptx, .pdf">
+                                </div>
+                                <i class="fa fa-times fileDel"></i>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div id="fileDokumen">
+                        @foreach($dokumens as $dokumen)
+                        <div class="row mb-4">
+                            <input type="hidden" name="id_dokumen[]" value="{{ $dokumen->id }}">
+                            <div class="col-lg-12">
+                                <input type="text" class="form-control" name="names[]" value="{{ $dokumen->name }}">
+                            </div>
+                            <div class="col-lg-6" style="margin-top: 10pt;">
+                                <a href="{{ $dokumen->link_file }}" class="btn btn-info btn-sm" target="_blank">File</a>
+                            </div>
+                            <div class="col-lg-6" style="margin-top: 10pt;">
+                                <a href="#" class="btn btn-danger btn-circle btn-sm remove-kerja_sama" data-toggle="modal" data-target="#deleteModal" data-href="{{ route('dashboard.kerja_sama.destroyDokumen', $dokumen->id)}}">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </div>
+                            <div class="col-lg-12" style="margin-top: 10px;">
+                                <input type="file" class="form-control-file" name="files[]" accept=".jpep, .jpg, .png, .word, .wordx, .ppt., .pptx, .pdf">
+                                <input type="hidden" name="old_link_file" value="{{ $dokumen->link_file }}" />
+                            </div>
+                        </div>
+                        @endforeach
+                        <button class="btn btn-primary btn-sm" id="btnEdit" type="button">Tambah File</button>
+                    </div>
+                    <div class="row" id="editFile" hidden disabled>
+                        <div class="col-lg-10">
+                            <strong>Nama File</strong>
+                            <input type="text" class="form-control" name="addNames[]">
+                            <br>
+                            <input type="file" class="form-control-file" name="addFiles[]" accept=".jpep, .jpg, .png, .word, .wordx, .ppt., .pptx, .pdf">
+                        </div>
+                        <i class="fa fa-plus fileAdd"></i>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </form>
+
+<!-- Delete Modal-->
+@include('dashboard.kerja-sama.includes.modal-delete')
 @endsection
+
 
 @section('extra-js')
 <script>
@@ -256,7 +351,7 @@ Edit Kerja Sama
         $('#imageWrapper').hide();
     });
 
-    $(".imgAdd").click(function(){
+    $(".imgAdd").click(function() {
         $(this).closest(".row").find('.imgAdd').before(`
             <div class="col-sm-4 imgUp">
                 <div class="imagePreview"></div>
@@ -268,26 +363,55 @@ Edit Kerja Sama
         `);
     });
 
-    $(document).on("click", "i.del" , function() {
+    $(document).on("click", "i.del", function() {
+        $(this).parent().remove();
+    });
+
+    $(".fileAdd").click(function() {
+        $(this).closest(".row").find('.fileAdd').before(`
+        <div class="clone d-flex align-items-center mb-3">
+            <div class="col-lg-10" style="margin-top: 10px;">
+            <strong>Nama File</strong>
+                            <input type="text" class="form-control" name="addNames[]">
+                            <br>
+                            <input type="file" class="form-control-file" name="addFiles[]" accept=".jpep, .jpg, .png, .word, .wordx, .ppt., .pptx, .pdf">
+            </div>
+            <i class="fa fa-times fileDel"></i> &nbsp
+        </div>
+        `);
+    });
+
+    $(document).on("click", "i.fileDel", function() {
         $(this).parent().remove();
     });
 
     $(function() {
-        $(document).on("change",".uploadFile", function() {
+        $(document).on("change", ".uploadFile", function() {
             var uploadFile = $(this);
             var files = !!this.files ? this.files : [];
             if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
-    
-            if (/^image/.test( files[0].type)) { // only image file
+
+            if (/^image/.test(files[0].type)) { // only image file
                 var reader = new FileReader(); // instance of the FileReader
                 reader.readAsDataURL(files[0]); // read the local file
-    
-                reader.onloadend = function(){ // set image data as background of div
+
+                reader.onloadend = function() { // set image data as background of div
                     //alert(uploadFile.closest(".upimage").find('.imagePreview').length);
-                    uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url("+this.result+")");
+                    uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url(" + this.result + ")");
                 }
             }
         });
+    });
+
+    $('#btnEdit').click(function() {
+        $('#editFile').removeAttr('hidden');
+        $('#editFile').prop('disabled', true);
+        $('#btnEdit').hide();
+    });
+
+    $('.remove-kerja_sama').click(function() {
+        const hrefRemove = $(this).data('href');
+        $('#remove-kerja_sama').attr('action', hrefRemove);
     });
 </script>
 @endsection

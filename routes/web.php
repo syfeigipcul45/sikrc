@@ -213,6 +213,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/kerja-sama/{id}/show', [KerjaSamaController::class, 'show'])->name('dashboard.kerja_sama.show');
         Route::post('/kerja-sama/{id}/update', [KerjaSamaController::class, 'update'])->name('dashboard.kerja_sama.update');
         Route::post('/kerja-sama/{id}', [KerjaSamaController::class, 'destroy'])->name('dashboard.kerja_sama.destroy');
+        Route::post('/kerja-sama/{id}/destroyDokumen', [KerjaSamaController::class, 'destroyDokumen'])->name('dashboard.kerja_sama.destroyDokumen');
     });
 
     Route::get('/management-testimonial', [TestimonialController::class, 'index'])->name('dashboard.testimonial.index');
