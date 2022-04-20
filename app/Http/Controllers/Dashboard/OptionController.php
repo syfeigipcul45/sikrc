@@ -105,14 +105,14 @@ class OptionController extends Controller
                 ];
 
                 if($request->hasFile('logo')) {
-                    $file = $request->file('logo');
-                    $path = Storage::disk('public')->put('logo', $file);
+                    $file_logo = $request->file('logo');
+                    $path = Storage::disk('public')->putFileAs('logo', $file_logo, time()."_".$file_logo->getClientOriginalName());
                     $data['logo'] = url('/') . '/storage/' . $path;
                 }
 
                 if($request->hasFile('favicon')) {
-                    $file = $request->file('favicon');
-                    $path = Storage::disk('public')->put('favicon', $file);
+                    $file_fav = $request->file('favicon');
+                    $path = Storage::disk('public')->putFileAs('favicon', $file_fav, time()."_".$file_fav->getClientOriginalName());
                     $data['favicon'] = url('/') . '/storage/' . $path;
                 }
 
@@ -141,14 +141,14 @@ class OptionController extends Controller
                 ];
 
                 if($request->hasFile('logo')) {
-                    $file = $request->file('logo');
-                    $path = Storage::disk('public')->put('logo', $file);
+                    $file_logo = $request->file('logo');
+                    $path = Storage::disk('public')->putFileAs('logo', $file_logo, time()."_".$file_logo->getClientOriginalName());
                     $data['logo'] = url('/') . '/storage/' . $path;
                 }
 
                 if($request->hasFile('favicon')) {
-                    $file = $request->file('favicon');
-                    $path = Storage::disk('public')->put('favicon', $file);
+                    $file_fav = $request->file('favicon');
+                    $path = Storage::disk('public')->putFileAs('favicon', $file_fav, time()."_".$file_fav->getClientOriginalName());
                     $data['favicon'] = url('/') . '/storage/' . $path;
                 }
 
