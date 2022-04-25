@@ -15,7 +15,7 @@ class CreateDokumenKerjasamasTable extends Migration
     {
         Schema::create('dokumen_kerjasamas', function (Blueprint $table) {
             $table->id();
-            $table->string('id_kerjasama');
+            $table->unsignedBigInteger('id_kerjasama');
             $table->foreign('id_kerjasama')->references('id')->on('kerja_samas')->onDelete('cascade');
             $table->string('name')->nullable();
             $table->text('link_file')->nullable();

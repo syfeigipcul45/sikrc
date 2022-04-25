@@ -66,7 +66,7 @@ Management Pengajar
                             <img src="{{ $item->getFirstMediaUrl('pengajars', 'thumb')}} " alt="" height="80px" width="80px" class="img-profile rounded-circle" />
                         </td>
                         <td>{{ $item->name }}</td>
-                        <td>{{ $item->description }}</td>
+                        <td>{!! $item->description !!}</td>
                         <td>{{ $item->kategoriPengajar->kategori_pengajar }}</td>
                         <td>{{ $item->order }}</td>
                         <td>

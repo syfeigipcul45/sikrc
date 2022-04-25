@@ -114,7 +114,7 @@ Tambah Data Kerja Sama
                         <div class="col-sm-4 imgUp">
                             <div class="imagePreview"></div>
                             <label class="btn btn-primary">
-                                Upload<input type="file" class="uploadFile img" name="images[]" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;" accept=".png, .jpg, .jpeg" />
+                                Upload<input type="file" class="uploadFile img" name="images[]" value="Upload Photo" accept=".png, .jpg, .jpeg" style="width: 0px;height: 0px;overflow: hidden;" />
                             </label>
                         </div>
                         <i class="fa fa-plus imgAdd"></i>

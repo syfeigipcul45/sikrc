@@ -86,6 +86,18 @@ class KerjaSamaController extends Controller
 
             $kerja_sama = KerjaSama::create($data);
 
+            if ($request->file('images')) {
+                if (count($request->file('images')) > 0) {
+                    foreach ($request->file('images', []) as $media) {
+                        $kerja_sama->clearMediaCollection('kerja-sama');
+                    }
+                }
+            }
+
+            foreach ($request->file('images', []) as $media) {
+                $kerja_sama->addMedia($media)->toMediaCollection('kerja-sama');
+            }
+
             if ($request->hasFile('files')) {
                 foreach ($request->file('files') as $key => $file) {
                     // $file = $request->files[$key];
@@ -97,10 +109,6 @@ class KerjaSamaController extends Controller
                     // array_push($files, $file);
                     DokumenKerjasama::insert($dokumen);
                 }
-            }
-
-            foreach ($request->file('images', []) as $media) {
-                $kerja_sama->addMedia($media)->toMediaCollection('kerja-sama');
             }
 
             Session::flash('success', 'Data Berhasil Tersimpan');
@@ -164,7 +172,7 @@ class KerjaSamaController extends Controller
 
         foreach ($request->file('images', []) as $media) {
             $kerja_sama->addMedia($media)->toMediaCollection('kerja-sama');
-        }        
+        }
 
         $kerja_sama->update($updateData);
 
@@ -185,35 +193,37 @@ class KerjaSamaController extends Controller
         // update dokumen
         if ($request->hasFile('files')) {
             foreach ($request->file('files') as $key => $file) {
-                $dokumen = DokumenKerjasama::find($request->id_dokumen[$key]);
+                $dokumen_kerjasama = DokumenKerjasama::find($request->id_dokumen[$key]);
                 // if ($request->hasFile('files')) {
-                    $path = Storage::disk('public')->putFileAs('dokumen-kerjasama', $file, $file->getClientOriginalName());
-                    $updateDokumen['name'] = $request->names[$key];
-                    Storage::disk('public')->delete('/dokumen-kerjasama/' . basename($request->old_link_file));
-                    $updateDokumen['link_file'] = url('/') . '/storage/' . $path;
+                $path = Storage::disk('public')->putFileAs('dokumen-kerjasama', $file, $file->getClientOriginalName());
+                $updateDokumen['name'] = $request->names[$key];
+                Storage::disk('public')->delete('/dokumen-kerjasama/' . basename($request->old_link_file[$key]));
+                $updateDokumen['link_file'] = url('/') . '/storage/' . $path;
                 // } else {
                 //     $updateDokumen['name'] = $request->names[$key];
                 //     $updateDokumen['link_file'] = $request->old_link_file;
-                // }
-                $dokumen->update($updateDokumen);
+                // }                           
+                $dokumen_kerjasama->update($updateDokumen);
             }
         } else {
-            foreach ($request->names as $key => $value) {
-                // for($i = 0; $i < count($request->names); $i++) {
-                $dokumen = DokumenKerjasama::find($request->id_dokumen[$key]);
-                // if ($request->hasFile('files')) {
+            if ($request->has('names')) {
+                foreach ($request->names as $key => $value) {
+                    // for($i = 0; $i < count($request->names); $i++) {
+                    $dokumen_kerjasama = DokumenKerjasama::find($request->id_dokumen[$key]);
+                    // if ($request->hasFile('files')) {
                     // $path = Storage::disk('public')->putFileAs('datas', $file, $file->getClientOriginalName());
                     // $updateDokumen['name'] = $request->names[$key];
                     // Storage::disk('public')->delete('/dokumen-kerjasama/' . basename($request->old_link_file));
                     // $updateDokumen['link_file'] = url('/') . '/storage/' . $path;
-                // } else {
+                    // } else {
                     $updateDokumen['name'] = $request->names[$key];
-                    $updateDokumen['link_file'] = $request->old_link_file;
-                // }
-                $dokumen->update($updateDokumen);
+                    $updateDokumen['link_file'] = $request->old_link_file[$key];
+                    // }
+                    $dokumen_kerjasama->update($updateDokumen);
+                }
             }
         }
-        
+
         Session::flash('success', 'Data Berhasil Diubah');
 
         return redirect()->route('dashboard.kerja_sama.index');
@@ -228,10 +238,9 @@ class KerjaSamaController extends Controller
     public function destroy($id)
     {
         $dokumen = DokumenKerjasama::where('id_kerjasama', $id);
-        // dd($dokumen->get('link_file'));
+        $dokumen->delete();
         $kerja_sama = KerjaSama::find($id);
         $kerja_sama->delete();
-        $dokumen->delete();
         Storage::disk('public')->delete('/dokumen-kerjasama/' . basename($dokumen->get('link_file')));
         Session::flash('success', 'Data Berhasil Dihapus');
 

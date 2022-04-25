@@ -46,7 +46,7 @@
                 </div>
                 <div class="text-justify">
                     <p>
-                        {{ $pengajar->description }}
+                        {!! $pengajar->description !!}
                     </p>
                 </div>
             </div>

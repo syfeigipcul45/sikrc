@@ -231,7 +231,7 @@ Home
                         <img src="{{ $pengajar->getFirstMediaUrl('pengajars','thumb') }}" alt="" />
                     </div>
                     <div class="body">
-                        <p class="text-m mb-0">{{ $pengajar->name }}</p>
+                        <p class="text-m mb-0"> <a href="{{ route('homepage.pengajar.detail', $pengajar->id)}}">{{ $pengajar->name }}</a></p>
                         <span class="text-sm text-grey">{{ $pengajar->kategoriPengajar->kategori_pengajar }}</span>
                     </div>
                 </div>

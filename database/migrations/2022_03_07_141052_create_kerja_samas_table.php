@@ -14,7 +14,7 @@ class CreateKerjaSamasTable extends Migration
     public function up()
     {
         Schema::create('kerja_samas', function (Blueprint $table) {
-            $table->string('id')->primary();
+            $table->id();
             $table->string('name');
             $table->string('slug');
             $table->text('description');

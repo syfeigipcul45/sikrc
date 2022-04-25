@@ -197,7 +197,7 @@ Detail Kerja Sama
                         @foreach($other_kerja_sama as $other)
                         <div class="post-entry-big horizontal d-flex mb-4">
                             <a href="{{ route('homepage.promosi.detail_kerja_sama', $other->slug) }}" class="img-link mr-4">
-                                <img src="{{ $other->getFirstMediaUrl('kerja_sama', 'preview') }}" alt="Image" class="img-fluid">
+                                <img src="{{ $other->getFirstMediaUrl('kerja-sama', 'preview') }}" alt="Image" class="img-fluid">
                             </a>
                             <div class="post-content">
                                 <h6 class="post-heading"><a href="{{ route('homepage.promosi.detail_kerja_sama', $other->slug) }}">{{shrinkTitle($other->name)}}</a></h6>

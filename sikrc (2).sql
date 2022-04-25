@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 14, 2022 at 03:56 PM
+-- Generation Time: Apr 23, 2022 at 05:18 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.14
 
@@ -40,6 +40,13 @@ CREATE TABLE `alumni_krcs` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `alumni_krcs`
+--
+
+INSERT INTO `alumni_krcs` (`id`, `name`, `tempat_lahir`, `tanggal_lahir`, `alamat`, `instansi`, `no_hp`, `tema_id`, `created_at`, `updated_at`) VALUES
+(1, 'Syafei Karim', 'Samarinda', '1992-12-07', 'Jalan Kemangi Blok WW 27, Kota Samarinda', 'Politeknik Pertanian Negeri Samarinda', '082236265992', 1, '2022-04-23 01:01:55', '2022-04-23 01:01:55');
+
 -- --------------------------------------------------------
 
 --
@@ -54,6 +61,14 @@ CREATE TABLE `dokumen_kerjasamas` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `dokumen_kerjasamas`
+--
+
+INSERT INTO `dokumen_kerjasamas` (`id`, `id_kerjasama`, `name`, `link_file`, `created_at`, `updated_at`) VALUES
+(1, '1', 'Dokumen 1', 'http://localhost:8000/storage/dokumen-kerjasama/03. Profil-PEGAS_v1.pdf', NULL, '2022-04-23 01:06:41'),
+(2, '1', 'Proposal Kerjasama', 'http://localhost:8000/storage/dokumen-kerjasama/1650679501_02. Draft_Proposal Kerjasama DLH-PEGAS Politani Samarinda_2022_v2.pdf', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -87,6 +102,13 @@ CREATE TABLE `fasilitas` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `fasilitas`
+--
+
+INSERT INTO `fasilitas` (`id`, `name`, `slug`, `description`, `order`, `created_at`, `updated_at`) VALUES
+(1, 'Gedung Belajar', 'gedung-belajar', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>', 1, '2022-04-23 01:28:20', '2022-04-23 01:28:20');
+
 -- --------------------------------------------------------
 
 --
@@ -101,6 +123,15 @@ CREATE TABLE `hero_images` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `hero_images`
+--
+
+INSERT INTO `hero_images` (`id`, `title`, `description`, `order`, `created_at`, `updated_at`) VALUES
+(1, 'KENDILO BEE', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut', 1, '2022-04-22 06:13:50', '2022-04-22 06:13:50'),
+(2, 'PROPOLIS', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut', 3, '2022-04-22 06:14:59', '2022-04-23 01:24:28'),
+(3, 'MINYAK SEREH', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut', 2, '2022-04-22 06:16:01', '2022-04-23 01:24:34');
 
 -- --------------------------------------------------------
 
@@ -121,6 +152,13 @@ CREATE TABLE `jadwal_pelatihans` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `jadwal_pelatihans`
+--
+
+INSERT INTO `jadwal_pelatihans` (`id`, `tema_id`, `lokasi_pelatihan`, `waktu_pelatihan`, `jam_mulai`, `jam_berakhir`, `peserta`, `file_undangan`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Gedung Belajar', '2022-04-23', NULL, NULL, 'Kelompok Tani', 'http://localhost:8000/storage/file-undangan/1650681222_03. Profil-PEGAS_v1.pdf', '2022-04-23 01:33:42', '2022-04-23 01:33:42');
+
 -- --------------------------------------------------------
 
 --
@@ -133,6 +171,16 @@ CREATE TABLE `kategori_pengajars` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `kategori_pengajars`
+--
+
+INSERT INTO `kategori_pengajars` (`id`, `kategori_pengajar`, `created_at`, `updated_at`) VALUES
+(1, 'Pengajar Akademisi', '2022-04-23 00:53:43', '2022-04-23 00:53:43'),
+(2, 'Pengajar Instansi', '2022-04-23 00:53:52', '2022-04-23 00:53:52'),
+(3, 'Pengajar Praktisi', '2022-04-23 00:54:02', '2022-04-23 00:54:02'),
+(4, 'Pengajar NGO', '2022-04-23 00:54:09', '2022-04-23 00:54:09');
 
 -- --------------------------------------------------------
 
@@ -149,6 +197,13 @@ CREATE TABLE `kerja_samas` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `kerja_samas`
+--
+
+INSERT INTO `kerja_samas` (`id`, `name`, `slug`, `description`, `link_file`, `created_at`, `updated_at`) VALUES
+('1', 'Kerja Sama Pembuatan Lebah Madu', 'kerja-sama-pembuatan-lebah-madu', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>', NULL, '2022-04-23 01:05:01', '2022-04-23 01:05:01');
 
 -- --------------------------------------------------------
 
@@ -184,6 +239,14 @@ CREATE TABLE `materi_pelatihans` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `materi_pelatihans`
+--
+
+INSERT INTO `materi_pelatihans` (`id`, `tema_id`, `link_media`, `caption`, `type`, `is_published`, `created_at`, `updated_at`) VALUES
+(1, 1, 'http://localhost:8000/storage/materi/1650286245_947-File Proposal Penelitian_Pengabdian [Word] [Doc_docx]-2415-1-2-20220415.docx', 'Dokumentasi Pelatihan Budidaya Madu', 'presentasi', 0, '2022-04-18 11:50:45', '2022-04-23 00:16:59'),
+(2, 1, 'http://localhost:8000/storage/materi/1650610943_03. Profil-PEGAS_v1.pdf', 'Kegiatan Sensus Tanaman RHL Tahun 2021 Di Desa Saing Prupuk Kabupaten Paser Kalimantan Timur', 'presentasi', 1, '2022-04-22 06:02:23', '2022-04-22 06:02:23');
+
 -- --------------------------------------------------------
 
 --
@@ -210,6 +273,25 @@ CREATE TABLE `media` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `media`
+--
+
+INSERT INTO `media` (`id`, `model_type`, `model_id`, `uuid`, `collection_name`, `name`, `file_name`, `mime_type`, `disk`, `conversions_disk`, `size`, `manipulations`, `custom_properties`, `generated_conversions`, `responsive_images`, `order_column`, `created_at`, `updated_at`) VALUES
+(3, 'App\\Models\\Option', 1, '22b2f863-dd7c-4740-bb9a-675b1cfd25e1', 'banner', '18771', '18771.jpg', 'image/jpeg', 'public', 'public', 26899, '[]', '[]', '{\"cover\":true}', '[]', 3, '2022-04-15 13:22:14', '2022-04-15 13:22:15'),
+(4, 'App\\Models\\Option', 1, '978a97d8-d37a-43a8-a675-db7ff89388a9', 'banner-login', 'flat-lay-laptop-with-lock-key', 'flat-lay-laptop-with-lock-key.jpg', 'image/jpeg', 'public', 'public', 1649073, '[]', '[]', '{\"cover\":true}', '[]', 4, '2022-04-15 13:22:15', '2022-04-15 13:22:20'),
+(5, 'App\\Models\\Post', 1, '86b04a6b-6081-4283-88ee-7f7a2b871f87', 'posts', 'M7OrdaKD91l6C3sTiOSIoYnGKPDWZfY5qKXLKT6N', 'M7OrdaKD91l6C3sTiOSIoYnGKPDWZfY5qKXLKT6N.jpg', 'image/jpeg', 'public', 'public', 120593, '[]', '[]', '{\"preview\":true,\"thumb\":true,\"cover\":true}', '[]', 5, '2022-04-15 13:32:50', '2022-04-15 13:32:54'),
+(6, 'App\\Models\\TemaPelatihan', 1, '86ba6bfb-6787-434e-afad-64920b15b8b7', 'tema-pelatihan', 'data', 'data.jpeg', 'image/jpeg', 'public', 'public', 48151, '[]', '[]', '{\"preview\":true,\"thumb\":true,\"cover\":true}', '[]', 6, '2022-04-18 11:50:04', '2022-04-18 11:50:09'),
+(7, 'App\\Models\\HeroImage', 1, 'bfc02b71-8ed5-46ec-a477-fe49dfec2f22', 'hero-image', 'kendilo-bee', 'kendilo-bee.jpg', 'image/jpeg', 'public', 'public', 2865838, '[]', '[]', '{\"preview\":true,\"thumb\":true,\"cover\":true}', '[]', 7, '2022-04-22 06:13:53', '2022-04-22 06:14:10'),
+(8, 'App\\Models\\HeroImage', 2, '6955122a-4df7-490e-87b5-e60a6a4e658b', 'hero-image', 'propolis', 'propolis.jpg', 'image/jpeg', 'public', 'public', 926303, '[]', '[]', '{\"preview\":true,\"thumb\":true,\"cover\":true}', '[]', 8, '2022-04-22 06:14:59', '2022-04-22 06:15:15'),
+(9, 'App\\Models\\HeroImage', 3, 'a5d72122-fd18-4345-a7ef-d3ed0583e3ac', 'hero-image', 'minyak-sereh', 'minyak-sereh.jpg', 'image/jpeg', 'public', 'public', 807581, '[]', '[]', '{\"preview\":true,\"thumb\":true,\"cover\":true}', '[]', 9, '2022-04-22 06:16:01', '2022-04-22 06:16:16'),
+(10, 'App\\Models\\Pengajar', 1, '6f0309cf-5800-4bf7-afcd-b20ad30ce5f2', 'pengajars', '4x6 merah', '4x6-merah.jpg', 'image/jpeg', 'public', 'public', 192141, '[]', '[]', '{\"thumb\":true}', '[]', 10, '2022-04-23 00:55:08', '2022-04-23 00:55:12'),
+(11, 'App\\Models\\AlumniKrc', 1, 'e1f0abd7-4201-4025-ac45-35bf5e0b427e', 'avatars', 'Syafei Karim', 'Syafei-Karim.jpg', 'image/jpeg', 'public', 'public', 456774, '[]', '[]', '{\"avatar\":true}', '[]', 11, '2022-04-23 01:01:55', '2022-04-23 01:01:56'),
+(12, 'App\\Models\\KerjaSama', 0, '8356fbc6-2de4-408e-a1c1-cd75c00f0a1f', 'kerja-sama', '6737836_541c12d3-0278-4f6b-9bc4-6a7dd0c558cf_700_700', '6737836_541c12d3-0278-4f6b-9bc4-6a7dd0c558cf_700_700.jpg', 'image/jpeg', 'public', 'public', 64774, '[]', '[]', '{\"preview\":true,\"thumb\":true,\"cover\":true}', '[]', 12, '2022-04-23 01:05:01', '2022-04-23 01:05:05'),
+(13, 'App\\Models\\KerjaSama', 1, '58f807ce-39f4-4832-8bf1-f105e172b186', 'kerja-sama', '6737836_541c12d3-0278-4f6b-9bc4-6a7dd0c558cf_700_700', '6737836_541c12d3-0278-4f6b-9bc4-6a7dd0c558cf_700_700.jpg', 'image/jpeg', 'public', 'public', 64774, '[]', '[]', '{\"preview\":true,\"thumb\":true,\"cover\":true}', '[]', 13, '2022-04-23 01:05:34', '2022-04-23 01:05:37'),
+(14, 'App\\Models\\Fasilitas', 1, '80473b67-515a-475a-b742-e88334f1dc43', 'fasilitas', 'img-bundaran-ub-768x573', 'img-bundaran-ub-768x573.jpg', 'image/jpeg', 'public', 'public', 114156, '[]', '[]', '{\"preview\":true,\"thumb\":true,\"cover\":true}', '[]', 14, '2022-04-23 01:28:20', '2022-04-23 01:28:25'),
+(15, 'App\\Models\\Fasilitas', 1, '0ee0fd3a-1b8e-4c22-8099-21b288591c39', 'fasilitas', 'gor-UB', 'gor-UB.jpg', 'image/jpeg', 'public', 'public', 35876, '[]', '[]', '{\"preview\":true,\"thumb\":true,\"cover\":true}', '[]', 15, '2022-04-23 01:28:25', '2022-04-23 01:28:29');
 
 -- --------------------------------------------------------
 
@@ -308,7 +390,8 @@ CREATE TABLE `model_has_roles` (
 --
 
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
-(1, 'App\\Models\\User', 1);
+(1, 'App\\Models\\User', 1),
+(3, 'App\\Models\\User', 2);
 
 -- --------------------------------------------------------
 
@@ -340,7 +423,7 @@ CREATE TABLE `options` (
 --
 
 INSERT INTO `options` (`id`, `logo`, `favicon`, `phone`, `whatsapp`, `email`, `address`, `twitter`, `facebook`, `instagram`, `youtube`, `profile_url`, `created_at`, `updated_at`, `profile_title`, `profile_description`) VALUES
-(1, '', '', '-', '085389615738', 'kphp.kendilo@gmail.com', 'Jalan Jenderal Sudirman Km 1 No. 09 RT. 009 / RW. 003 Kel. Tanah Grogot Kec. Tanah Grogot Kab. Paser', 'https://twitter.com/', 'https://facebook.com/Kphp Kendilo', 'https://instagram.com/kphpkendilo', 'https://www.youtube.com/channel/UC3EuD4lmQxa2ijJcv9oxTOg', 'https://www.youtube.com/watch?v=UN3f628tJ4U', '2022-04-14 12:55:59', '2022-04-14 12:55:59', 'Selamat Datang di SI-KRC', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum');
+(1, 'http://localhost:8000/storage/logo/9Y1e6FgR9eQG7DmADQfDKE6xuTNIK5pSwfVHfRYW.png', 'http://localhost:8000/storage/favicon/XxVlEEcLNCJTS0Cxn5beyjuYNLxOPnXFoRHSmpkF.png', '-', '085389615738', 'kphp.kendilo@gmail.com', 'Jalan Jenderal Sudirman Km 1 No. 09 RT. 009 / RW. 003 Kel. Tanah Grogot Kec. Tanah Grogot Kab. Paser', 'https://twitter.com/', 'https://facebook.com/Kphp Kendilo', 'https://instagram.com/kphpkendilo', 'https://www.youtube.com/channel/UC3EuD4lmQxa2ijJcv9oxTOg', 'https://www.youtube.com/watch?v=UN3f628tJ4U', '2022-04-14 12:55:59', '2022-04-14 13:00:46', 'Selamat Datang di SI-KRC', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum');
 
 -- --------------------------------------------------------
 
@@ -369,6 +452,13 @@ CREATE TABLE `pengajars` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `pengajars`
+--
+
+INSERT INTO `pengajars` (`id`, `name`, `description`, `parent_menu`, `order`, `created_at`, `updated_at`) VALUES
+(1, 'Syafei Karim', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>', 1, 1, '2022-04-23 00:55:06', '2022-04-23 01:26:09');
 
 -- --------------------------------------------------------
 
@@ -417,6 +507,13 @@ CREATE TABLE `posts` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`id`, `author_id`, `title`, `slug`, `content`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Rapat Koordinasi REHAB DAS PT. Kideco Jaya Agung di Desa Suweto dan Desa Muara Andeh', 'rapat-koordinasi-rehab-das-pt-kideco-jaya-agung-di-desa-suweto-dan-desa-muara-andeh', '<p style=\"text-align: justify;\">Tana Paser, 2 Februari 2022 &ndash; Sehubungan dengan adanya kegiatan Rehab DAS yang di laksanakan PT. Kideco Jaya Agung, Dilaksanakan rapat koordinasi antara Pt. Kideco Jaya Agung, Para Perusahaan yang menjadi vendor, dan UPTD KPHP Kendilo yang berlangsung di Ruang Aula Rimbawan KPHP Kendilo dan rapat di pmpin langsung oleh Kepala UPTD KPHP Kendilo Bapak Muhammad Hijrafie, S.T, M.T.</p>\r\n<p style=\"text-align: justify;\">Rehab DAS PT. Kideco Jaya Agung di laksankan di dua desa yaitu Desa Suweto dan Desa Muara Andeh Kabupaten Paser.&nbsp; Beberapa vendor yang mengikuti kegiatan ini adalah PT. Bumindo Artha Taka, PT. Anugerah Rimba Kalimantan, CV. Tepian Jawara, CV. Rindang Sari Persada. Setiap vendor akan melaksanakan penanaman di setiap-tiap bagian blok-blok di lahan yang sudah di sediakan oleh PT. Kideco Jaya Agung.</p>\r\n<p style=\"text-align: justify;\">Nantinya para vendor akan melaksanakan&nbsp;<em>Ground Check</em>&nbsp;Bersama tim dari KPPHP Kendilo ke Desa Suweto dan Desa Muara Andeh di mulai dari minggu pertama hingga minggu ke dua di bulan Maret 2022. Bapak Hijrafie pun mengingatkan untuk setiap vendor bahwa diharapkan untuk setiap bibit yang nantinya akan di bawa ke lapangan adalah bibit yang sudah benar-benar siap tanam, dan mengharapkan agar kegiatan ini merupakan upaya kita Bersama dalam upaya melakukan pemulihan longkungan untuk mendapatkan lingkungan hidup yang lebih baik.</p>', '2022-04-15 13:32:49', '2022-04-15 13:34:55');
 
 -- --------------------------------------------------------
 
@@ -501,6 +598,13 @@ CREATE TABLE `tema_pelatihans` (
   `hit` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `tema_pelatihans`
+--
+
+INSERT INTO `tema_pelatihans` (`id`, `name`, `slug`, `description`, `created_at`, `updated_at`, `hit`) VALUES
+(1, 'Pengolahan Madu', 'pengolahan-madu', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>', '2022-04-18 11:50:02', '2022-04-18 11:50:02', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -541,7 +645,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Syafei Karim', 'syfei.karim@gmail.com', NULL, '$2y$10$gV2ZqtU6embgAOa3vhZB1.VWM3Zrzy6zIN2EtfT/Jw0CIii2dQU5C', NULL, '2022-04-14 12:55:54', '2022-04-14 12:55:54');
+(1, 'Syafei Karim', 'syfei.karim@gmail.com', NULL, '$2y$10$gV2ZqtU6embgAOa3vhZB1.VWM3Zrzy6zIN2EtfT/Jw0CIii2dQU5C', NULL, '2022-04-14 12:55:54', '2022-04-14 12:55:54'),
+(2, 'Bahrul Muhid', 'bahrul.muhid@gmail.com', NULL, '$2y$10$WFi1/5Wuw1ROyExtACwVRO7psin9//nE0mZZzxbVeV1W4G/AMlOMa', NULL, '2022-04-23 01:47:17', '2022-04-23 01:47:17');
 
 --
 -- Indexes for dumped tables
@@ -743,13 +848,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `alumni_krcs`
 --
 ALTER TABLE `alumni_krcs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `dokumen_kerjasamas`
 --
 ALTER TABLE `dokumen_kerjasamas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -761,25 +866,25 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `fasilitas`
 --
 ALTER TABLE `fasilitas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `hero_images`
 --
 ALTER TABLE `hero_images`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `jadwal_pelatihans`
 --
 ALTER TABLE `jadwal_pelatihans`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `kategori_pengajars`
 --
 ALTER TABLE `kategori_pengajars`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `kontaks`
@@ -791,13 +896,13 @@ ALTER TABLE `kontaks`
 -- AUTO_INCREMENT for table `materi_pelatihans`
 --
 ALTER TABLE `materi_pelatihans`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `media`
 --
 ALTER TABLE `media`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `media_galleries`
@@ -821,7 +926,7 @@ ALTER TABLE `options`
 -- AUTO_INCREMENT for table `pengajars`
 --
 ALTER TABLE `pengajars`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `permissions`
@@ -839,7 +944,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -863,7 +968,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `tema_pelatihans`
 --
 ALTER TABLE `tema_pelatihans`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `testimonials`
@@ -875,7 +980,7 @@ ALTER TABLE `testimonials`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

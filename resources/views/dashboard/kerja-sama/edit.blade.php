@@ -223,7 +223,7 @@ Edit Kerja Sama
                             </div>
                             <div class="col-lg-12" style="margin-top: 10px;">
                                 <input type="file" class="form-control-file" name="files[]" accept=".jpep, .jpg, .png, .word, .wordx, .ppt., .pptx, .pdf">
-                                <input type="hidden" name="old_link_file" value="{{ $dokumen->link_file }}" />
+                                <input type="hidden" name="old_link_file[]" value="{{ $dokumen->link_file }}" />
                             </div>
                         </div>
                         @endforeach
