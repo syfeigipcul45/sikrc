@@ -35,9 +35,17 @@ Materi Pelatihan
                     </div>
                     <div class="card-body">
                         <div class="form-group">
-                            <div class="d-flex align-items-center justify-content-between mb-2">
+                            <article class="blog-details">
+                                <div class="post-thumb">
+                                    @if($tema->getFirstMediaUrl('tema-pelatihan', 'cover'))
+                                    <img src="{{ $tema->getFirstMediaUrl('tema-pelatihan', 'cover') }}" alt="Image">
+                                    @else
+                                    @endif
+                                </div>
+                                <div class="post-content">
                                 {!! $tema->description !!}
-                            </div>
+                                </div>
+                            </article>
                         </div>
                         @if (session('success'))
                         <div class="alert alert-success" role="alert">
@@ -75,7 +83,7 @@ Materi Pelatihan
                                                     <tr>
                                                         <td>{{++$key}}</td>
                                                         <td>
-                                                            <a href="{{ $item->link_media }}" target="_blank" class="btn btn-primary btn-sm btn-icon-split">
+                                                            <a href="https://docs.google.com/viewer?url={{$item->link_media}}&embedded=true" target="_blank" class="btn btn-primary btn-sm btn-icon-split">
 
                                                                 @if(pathinfo($item->link_media, PATHINFO_EXTENSION) == 'doc' || pathinfo($item->link_media, PATHINFO_EXTENSION) == 'docx')
                                                                 <i class="fas fa-file-word"></i>
