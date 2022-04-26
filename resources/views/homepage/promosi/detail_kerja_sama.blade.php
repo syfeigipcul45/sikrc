@@ -184,7 +184,7 @@ Detail Kerja Sama
                         @foreach($dokumens as $key => $dokumen)
                         <div class="col-lg-12">
                             <span style="font-weight: bold;">{{ ++$key.". ".$dokumen->name }}</span>
-                            <span><a href="{{ $dokumen->link_file }}" target="_blank">File Dokumen</a></span>
+                            <span><a href="https://docs.google.com/viewer?url={{$dokumen->link_file}}&embedded=true" target="_blank">File Dokumen</a></span>
                         </div>
                         @endforeach
                     </div>
