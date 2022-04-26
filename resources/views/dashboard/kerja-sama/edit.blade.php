@@ -214,7 +214,7 @@ Edit Kerja Sama
                                 <input type="text" class="form-control" name="names[]" value="{{ $dokumen->name }}">
                             </div>
                             <div class="col-lg-6" style="margin-top: 10pt;">
-                                <a href="{{ $dokumen->link_file }}" class="btn btn-info btn-sm" target="_blank">File</a>
+                                <a href="https://docs.google.com/viewer?url={{$dokumen->link_file}}&embedded=true" class="btn btn-info btn-sm" target="_blank">File</a>
                             </div>
                             <div class="col-lg-6" style="margin-top: 10pt;">
                                 <a href="#" class="btn btn-danger btn-circle btn-sm remove-kerja_sama" data-toggle="modal" data-target="#deleteModal" data-href="{{ route('dashboard.kerja_sama.destroyDokumen', $dokumen->id)}}">
@@ -222,7 +222,7 @@ Edit Kerja Sama
                                 </a>
                             </div>
                             <div class="col-lg-12" style="margin-top: 10px;">
-                                <input type="file" class="form-control-file" name="files[]" accept=".jpep, .jpg, .png, .word, .wordx, .ppt., .pptx, .pdf">
+                                <input type="file" class="form-control-file" name="files[]" accept=".jpep, .jpg, .png, .doc, .docx, .ppt., .pptx, .pdf">
                                 <input type="hidden" name="old_link_file[]" value="{{ $dokumen->link_file }}" />
                             </div>
                         </div>
@@ -234,7 +234,7 @@ Edit Kerja Sama
                             <strong>Nama File</strong>
                             <input type="text" class="form-control" name="addNames[]">
                             <br>
-                            <input type="file" class="form-control-file" name="addFiles[]" accept=".jpep, .jpg, .png, .word, .wordx, .ppt., .pptx, .pdf">
+                            <input type="file" class="form-control-file" name="addFiles[]" accept=".jpep, .jpg, .png, .doc, .docx, .ppt., .pptx, .pdf">
                         </div>
                         <i class="fa fa-plus fileAdd"></i>
                     </div>
@@ -374,7 +374,7 @@ Edit Kerja Sama
             <strong>Nama File</strong>
                             <input type="text" class="form-control" name="addNames[]">
                             <br>
-                            <input type="file" class="form-control-file" name="addFiles[]" accept=".jpep, .jpg, .png, .word, .wordx, .ppt., .pptx, .pdf">
+                            <input type="file" class="form-control-file" name="addFiles[]" accept=".jpep, .jpg, .png, .doc, .docx, .ppt., .pptx, .pdf">
             </div>
             <i class="fa fa-times fileDel"></i> &nbsp
         </div>

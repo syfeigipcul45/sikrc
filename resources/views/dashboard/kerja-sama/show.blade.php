@@ -128,7 +128,7 @@ Lihat Kerja Sama
                         <span style="font-size: 10pt; font-weight: bold;">{{ $dokumen->name }}</span>
                     </div>
                     <div class="col-lg-12">
-                        <a href="{{ $dokumen->link_file }}" class="btn btn-info btn-sm" target="_blank">File</a>
+                        <a href="https://docs.google.com/viewer?url={{$dokumen->link_file}}&embedded=true" class="btn btn-info btn-sm" target="_blank">File</a>
                     </div>
                 </div>
                 @endforeach

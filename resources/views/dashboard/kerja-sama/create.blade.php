@@ -183,7 +183,7 @@ Tambah Data Kerja Sama
                     <!-- <div class="row">
                         <div class="input-group control-group increment">
                             <div class="col-md-8">
-                                <input type="file" class="form-control-file" name="files[]" accept=".jpep, .jpg, .png, .word, .wordx, .ppt., .pptx, .pdf">
+                                <input type="file" class="form-control-file" name="files[]" accept=".jpep, .jpg, .png, .doc, .docx, .ppt., .pptx, .pdf">
                             </div>
                             <i class="fa fa-plus fileAdd"></i>
                         </div>
@@ -192,7 +192,7 @@ Tambah Data Kerja Sama
                         <div class="clone hide">
                             <div class="control-group input-group" style="margin-top: 10px;">
                                 <div class="col-md-8">
-                                    <input type="file" class="form-control-file" name="files[]" accept=".jpep, .jpg, .png, .word, .wordx, .ppt., .pptx, .pdf">
+                                    <input type="file" class="form-control-file" name="files[]" accept=".jpep, .jpg, .png, .doc, .docx, .ppt., .pptx, .pdf">
                                 </div>
                                 <i class="fa fa-times fileDel"></i>
                             </div>
@@ -203,7 +203,7 @@ Tambah Data Kerja Sama
                             <strong>Nama File</strong>
                             <input type="text" class="form-control" name="names[]">
                             <br>
-                            <input type="file" class="form-control-file" name="files[]" accept=".jpep, .jpg, .png, .word, .wordx, .ppt., .pptx, .pdf">
+                            <input type="file" class="form-control-file" name="files[]" accept=".jpep, .jpg, .png, .doc, .docx, .ppt., .pptx, .pdf">
                         </div>
                         <i class="fa fa-plus fileAdd"></i>
                     </div>
@@ -360,7 +360,7 @@ Tambah Data Kerja Sama
             <strong>Nama File</strong>
                             <input type="text" class="form-control" name="names[]"> 
                             <br>
-                <input type="file" class="form-control-file" name="files[]" accept=".jpep, .jpg, .png, .word, .wordx, .ppt., .pptx, .pdf">
+                <input type="file" class="form-control-file" name="files[]" accept=".jpep, .jpg, .png, .doc, .docx, .ppt., .pptx, .pdf">
             </div>
             <i class="fa fa-times fileDel"></i> &nbsp
         </div>
