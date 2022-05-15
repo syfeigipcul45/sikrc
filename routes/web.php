@@ -69,8 +69,8 @@ Route::get('/promosi/produk/{slug}',[HomeController::class, 'getDetailProduk'])-
 Route::get('/promosi/kerja-sama',[HomeController::class, 'getKerjaSama'])->name('homepage.promosi.kerja_sama');
 Route::get('/promosi/kerja-sama/{slug}',[HomeController::class, 'getDetailKerjaSama'])->name('homepage.promosi.detail_kerja_sama');
 // kontak
-Route::get('/kontak', [HomeController::class, 'getKontak'])->name('homepage.kontak.index');
-Route::post('/kontak', [HomeController::class, 'storeTestimonial'])->name('homepage.kontak.store');
+Route::get('/testimoni', [HomeController::class, 'getTestimoni'])->name('homepage.testimoni.index');
+Route::post('/testimoni', [HomeController::class, 'storeTestimonial'])->name('homepage.testimoni.store');
 
 // dashboard
 Route::group(['middleware' => ['auth']], function () {

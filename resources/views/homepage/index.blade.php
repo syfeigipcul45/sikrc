@@ -314,7 +314,7 @@ Home
         <section class="pt-5 pb-5">
             <div class="container">
                 <h1 class="text-center wow fadeInUp">Testimonial</h1>
-                <h6 class="text-center wow fadeInUp"><a href="{{ route('homepage.kontak.index') }}">Isi Testimoni</a></h6>
+                <h6 class="text-center wow fadeInUp"><a href="{{ route('homepage.testimoni.index') }}">Isi Testimoni</a></h6>
                 <hr class="midline">
                 <div class="card card-comment col-md-12 mt-2">
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="10000">

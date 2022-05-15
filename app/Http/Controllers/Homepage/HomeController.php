@@ -137,7 +137,7 @@ class HomeController extends Controller
         return view('homepage.media.video', $data);
     }
 
-    public function getKontak()
+    public function getTestimoni()
     {
         $data['tema_pelatihans'] = TemaPelatihan::orderBy('name', 'asc')->get();
         return view('homepage.kontak.index', $data);

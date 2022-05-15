@@ -33,7 +33,7 @@ Kontak
             {{ session('success') }}
         </div>
         @endif
-        <form class="contact-form mt-5" action="{{ route('homepage.kontak.store') }}" method="POST" enctype="multipart/form-data">
+        <form class="contact-form mt-5" action="{{ route('homepage.testimoni.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row mb-3">
                 <div class="col-sm-6 py-2 wow fadeInLeft">
