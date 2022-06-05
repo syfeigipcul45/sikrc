@@ -171,7 +171,7 @@ Home
 @endsection
 
 @section('content')
-<div id="carouselExample" class="carousel slide w-100">
+<div id="carouselExample" class="carousel slide w-100" data-ride="carousel" data-interval="5000">
     <div class="carousel-inner" style="height: 872px;">
         @php $no=0; $active = ''; @endphp
         @foreach($hero_images as $key => $hero_image)
@@ -377,9 +377,9 @@ Home
 @endsection
 
 @section('extra-js')
-<script>
+<!-- <script>
     $('.carousel').carousel({
         interval: 6500
-    })
+    }) -->
 </script>
 @endsection
