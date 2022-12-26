@@ -37,7 +37,9 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Auth::routes();
+Auth::routes([
+    'register' => false
+]);
 Route::post('/login', [AdminLoginController::class, 'login'])->name('login.submit');
 
 // homepage
